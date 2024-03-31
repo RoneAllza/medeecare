@@ -1,7 +1,10 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark sticky-top p-2" style="background-color: #B6252A;">
+<nav class="navbar navbar-expand-lg sticky-top p-2 bg-light border-bottom"     >
     <div class="container-fluid mx-3">
-        <a class="navbar-brand fs-3" href="">medeecare</a>
+        <a class="navbar-brand fs-3" href="">
+            <!-- medeecare -->
+            <img src="{{url('assets/img/logo merah.png')}}" alt="medeecare">
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -21,14 +24,14 @@
                         Layanan
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Forum Diskusi Kesehatan</a></li>
-                        <li><a class="dropdown-item" href="#">Rujuk Rumah Sakit</a></li>
-                        <li><a class="dropdown-item" href="#">Informasi Penyakit</a></li>
+                        <li><a class="dropdown-item" href="#" >Forum Diskusi Kesehatan</a></li>
+                        <li><a class="dropdown-item" href="#" >Rujuk Rumah Sakit</a></li>
+                        <li><a class="dropdown-item" href="#" >Informasi Penyakit</a></li>
                     </ul>
                 </li>
             </ul>
-            <a type="button" href="{{route ('login')}}" class="btn btn-outline-light me-2">Sign in</a>
-            <button type="button" class="btn btn-light">Sign up</button>
+            <a type="button" href="{{route ('login')}}" class="btn me-4 text-dark">Sign in</a>
+            <button type="button" class="btn btn-danger">Sign up</button>
         </div>
     </div>
 </nav>
