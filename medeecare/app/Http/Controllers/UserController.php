@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class LoginController extends Controller
+class UserController extends Controller
 {
-    public function login(){
-        return view('auth.login');
+    public function homepage(){
+        return view('home');
     }
 }
