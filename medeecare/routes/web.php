@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\GuestController;
+use App\Http\Controllers\Controller;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +21,5 @@ Route::get('/', function () {
     return view('home');
 });
 Route::get('/SignIn', [LoginController::class, 'login'])->name('login');
+// Route for informasipenyakit
+Route::get('/infopenyakit', [GuestController::class, 'informasipenyakit'])->name('informasipenyakit');
