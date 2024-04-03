@@ -9,6 +9,7 @@
                 <div class="card" style="border-radius: 1rem;">
                     <div class="row g-0">
                         <div class="col-md-6 col-lg-5 d-none d-md-block">
+                            <a href="{{ url('/') }}" class="position-absolute top-0 start-0 p-3 text-white" style="z-index: 10;"><i class="fas fa-arrow-left fa-2x"></i></a>
                             <img src="https://images.unsplash.com/photo-1623650430273-dbd48d9986c0?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" alt="">
                         </div>
                         <div class="col-md-6 col-lg-7 d-flex align-items-center">

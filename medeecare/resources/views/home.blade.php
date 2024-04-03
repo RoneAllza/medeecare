@@ -5,7 +5,7 @@
 <!-- Banner -->
 <section id="banner" class="mb-5" style="height: 70vh; width:100%; position:relative;">
     <div class="d-none d-lg-block">
-        <img src="{{url('assets/img/banner arya.png')}}" class="w-100 h-100" style="position:absolute; object-fit:cover; z-index: -1; box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2)" alt="">
+        <img src="{{url('assets/img/banner arya.png')}}" class="w-100 h-100" style="position:absolute; object-fit:cover; z-index: -1; box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.1)" alt="">
     </div>
     <div class="container h-100 " style="padding: 10vh 0">
         <h1 class="mb-3">Ayo Cek Kesehatanmu!</h1>
@@ -38,7 +38,41 @@
                 </div>
             </a>
         </div>
-        <button type="button" class="btn btn-outline-danger">Selengkapnya</button>
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Selengkapnya</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Layanan Lainnya</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body d-flex flex-row d-grid gap-5">
+                        <a href="#" style="" class="text-decoration-none">
+                            <div class="d-flex justify-content-center flex-column align-items-center" style="width: 100px;">
+                                <img src="/assets/img/doctor.png" style="height: 10vh; width: 10vh; border-radius:50%; object-fit-cover; filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.2))" class="" alt="">
+                                <div class="d-flex flex-row align-items-center text-dark text-center text-wrap" style="height:5vh; word-break: break-word">Cek Mental</div>
+                            </div>
+                        </a>
+                        <a href="#" style="" class="text-decoration-none">
+                            <div class="d-flex justify-content-center flex-column align-items-center" style="width: 100px;">
+                                <img src="/assets/img/doctor.png" style="height: 10vh; width: 10vh; border-radius:50%; object-fit-cover; filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.2))" class="" alt="">
+                                <div class="d-flex flex-row align-items-center text-dark text-center text-wrap" style="height:5vh; word-break: break-word">Cek Mental</div>
+                            </div>
+                        </a>
+                        <a href="#" style="" class="text-decoration-none">
+                            <div class="d-flex justify-content-center flex-column align-items-center" style="width: 100px;">
+                                <img src="/assets/img/doctor.png" style="height: 10vh; width: 10vh; border-radius:50%; object-fit-cover; filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.2))" class="" alt="">
+                                <div class="d-flex flex-row align-items-center text-dark text-center text-wrap" style="height:5vh; word-break: break-word">Cek Mental</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Modal -->
+
     </div>
 </section>
 <!-- End Banner -->

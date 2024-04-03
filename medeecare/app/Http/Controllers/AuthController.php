@@ -23,7 +23,7 @@ class AuthController extends Controller
             'password' => ['required']
         ]);
         if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
+            $request->session()->regenerate();  
             if (Auth::user()->role == 'Pasien'){
                 return redirect('/');
             } elseif (Auth::user()->role == 'Admin'){
@@ -34,7 +34,7 @@ class AuthController extends Controller
 
         Session::flash('status', 'failed');
         Session::flash('message', 'Email atau Password yang Anda masukan salah');
-        return redirect('/SignIn');
+        return redirect('/');
     }
 
     public function logout()

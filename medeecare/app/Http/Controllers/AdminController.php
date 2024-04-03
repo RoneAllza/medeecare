@@ -11,5 +11,6 @@ class AdminController extends Controller
 {
     public function index(){
         echo Auth::user()->name;
+        echo "<a href='/Logout'>Logout</a>";
     }
 }
