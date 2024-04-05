@@ -68,7 +68,8 @@
                     </div>
                 </div>
                 <p class="py-1">
-            <a href="#" class="btn btn-primary">Gabung</a>
+              <button type="button" class="btn btn-primary btn-sm">Lihat Komunitas</button>
+            <button type="button" class="btn btn-secondary btn-sm">Gabung?</button>
           </div>
       </div>
   </div>
@@ -99,7 +100,8 @@
                     </div>
                 </div>
                 <p class="py-1">
-            <a href="#" class="btn btn-primary">Gabung</a>
+              <button type="button" class="btn btn-primary btn-sm">Lihat Komunitas</button>
+            <button type="button" class="btn btn-secondary btn-sm">Gabung?</button>
           </div>
       </div>
   </div>
@@ -131,7 +133,8 @@
                     </div>
                 </div>
                 <p class="py-1">
-            <a href="#" class="btn btn-primary">Gabung</a>
+                <button type="button" class="btn btn-primary btn-sm">Lihat Komunitas</button>
+              <button type="button" class="btn btn-secondary btn-sm">Gabung?</button>
           </div>
       </div>
   </div>
@@ -162,7 +165,8 @@
                     </div>
                 </div>
                 <p class="py-1">
-            <a href="#" class="btn btn-primary">Gabung</a>
+                <button type="button" class="btn btn-primary btn-sm">Lihat Komunitas</button>
+              <button type="button" class="btn btn-secondary btn-sm">Gabung?</button>
           </div>
       </div>
   </div>
@@ -193,7 +197,8 @@
                     </div>
                 </div>
                 <p class="py-1">
-            <a href="#" class="btn btn-primary">Gabung</a>
+                <button type="button" class="btn btn-primary btn-sm">Lihat Komunitas</button>
+              <button type="button" class="btn btn-secondary btn-sm">Gabung?</button>
           </div>
       </div>
   </div>
@@ -224,7 +229,8 @@
                     </div>
                 </div>
                 <p class="py-1">
-            <a href="#" class="btn btn-primary">Gabung</a>
+                <button type="button" class="btn btn-primary btn-sm">Lihat Komunitas</button>
+              <button type="button" class="btn btn-secondary btn-sm">Gabung?</button>
           </div>
       </div>
   </div>
