@@ -14,7 +14,17 @@ use App\Http\Controllers\LoginController;
 |
 */
 
+<<<<<<< Updated upstream
 Route::get('/', function () {
     return view('home');
+=======
+Route::get('/', [UserController::class, 'homepage'])->name('homepage')->middleware('checkIfNotAdmin');
+Route::get('/SignIn', [AuthController::class, 'login'])->name('login');
+Route::post('/SignIn-Process', [AuthController::class, 'login_process'])->name('login-process');
+Route::get('/Logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::group(['middleware' => ['auth', 'checkrole:Pasien']], function(){
+    Route::get('/Features', [UserController::class, 'feature'])->name('feature');
+>>>>>>> Stashed changes
 });
 Route::get('/SignIn', [LoginController::class, 'login'])->name('login');
