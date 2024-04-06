@@ -7,7 +7,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ms-auto">
-                <a class="nav-link" href="{{ route('admin.dashboard') }}">Manage User</a>
+                <a class="nav-link" href="{{ route('admin.manage') }}">Manage Admin</a>
                 <a class="nav-link" href="{{ "route('notification.settings')" }}">Notifikasi</a>
                 <a class="nav-link" href="{{ route('logout') }}">Log Out</a>
             </div>

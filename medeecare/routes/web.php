@@ -59,7 +59,12 @@ Route::get('/infopenyakit', [GuestController::class, 'informasipenyakit'])->name
 //admin only
 Route::group(['middleware' => ['auth', 'checkrole:Admin']], function(){
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.landing');
-    Route::get('/adminpage', [AdminController::class, 'administrasi'])->name('admin.dashboard');
+    Route::get('/admin/administrasi', [AdminController::class, 'administrasi'])->name('admin.dashboard');
+    Route::get('/admin/manage', [AdminController::class, 'user'])->name('admin.manage');
+    Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
+    Route::post('/admin/store', [AdminController::class, 'store'])->name('admin.store');
+    Route::get('/admin/{id}/edit', [AdminController::class, 'editadmin'])->name('admin.editadmin');
+    Route::put('/admin/{id}', [AdminController::class, 'updateadmin'])->name('admin.updateadmin');
     Route::get('/users/{id}/edit', [AdminController::class, 'edit'])->name('admin.edit');
     Route::put('/users/{id}', [AdminController::class, 'update'])->name('admin.update');
 });

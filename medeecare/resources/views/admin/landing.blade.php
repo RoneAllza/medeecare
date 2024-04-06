@@ -9,9 +9,9 @@
         <div class="col-md-4 mb-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Manajemen Data Pengguna</h5>
-                    <p class="card-text">Kelola data pengguna, termasuk informasi pribadi, riwayat kesehatan, dan laporan aktivitas.</p>
-                    <a href="{{ route('admin.dashboard') }}" class="btn btn-primary">Kelola Pengguna</a>
+                    <h5 class="card-title">Manajemen Data Pasien</h5>
+                    <p class="card-text">Kelola data pasien, termasuk informasi pribadi, riwayat kesehatan, dan laporan aktivitas.</p>
+                    <a href="{{ route('admin.dashboard') }}" class="btn btn-primary">Kelola Pasien</a>
                 </div>
             </div>
         </div>
