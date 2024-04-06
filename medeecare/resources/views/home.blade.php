@@ -5,11 +5,7 @@
 <!-- Banner -->
 <section id="banner" class="mb-5" style="height: 70vh; width:100%; position:relative;">
     <div class="d-none d-lg-block">
-<<<<<<< Updated upstream
-        <img src="{{url('assets/img/banner arya.png')}}" class="w-100 h-100" style="position:absolute; object-fit:cover; z-index: -1; box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2)" alt="">
-=======
         <img src="{{url('assets/img/banner.png')}}" class="w-100 h-100" style="position:absolute; object-fit:cover; z-index: -1; box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.1)" alt="">
->>>>>>> Stashed changes
     </div>
     <div class="container h-100 d-flex flex-column justify-content-center" style="padding: 10vh 0">
         @guest
@@ -42,9 +38,6 @@
             </a>
             @endforeach
         </div>
-<<<<<<< Updated upstream
-        <button type="button" class="btn btn-outline-danger">Selengkapnya</button>
-=======
         @endguest
         @guest
         <div>
@@ -55,7 +48,6 @@
             <a role="button" class="btn btn-danger " href="{{route('feature')}}">Selengkapnya</a>
         </div>
         @endguest
->>>>>>> Stashed changes
     </div>
 </section>
 <!-- End Banner -->
