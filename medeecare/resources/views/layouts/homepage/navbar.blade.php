@@ -30,8 +30,19 @@
                     </ul>
                 </li>
             </ul>
-            <a type="button" href="{{route ('login')}}" class="btn me-4 text-dark">Sign in</a>
-            <button type="button" class="btn btn-danger">Sign up</button>
+            <!-- <a type="button" href="{{route ('login')}}" class="btn me-4 text-dark">Sign in</a>
+            <button type="button" class="btn btn-danger">Sign up</button> -->
+            @if(Auth::check())
+                <!-- Jika pengguna sudah login -->
+                <div class="d-flex">
+                    <a href="" class="btn me-4 text-dark">{{Auth::user()->name}}</a>
+                    <a type="button" href="{{url('/Logout')}}" class="btn btn-danger">Logout</a>
+                </div>
+            @else
+                <!-- Jika pengguna belum login -->
+                <a type="button" href="{{route('login')}}" class="btn me-3 text-danger btn-light btn-outline-danger">Sign in</a>
+                <button type="button" class="btn btn-danger">Sign up</button>
+            @endif
         </div>
     </div>
 </nav>
