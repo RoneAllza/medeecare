@@ -4,7 +4,14 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\Web\infopenyakitController;
 use App\Http\Controllers\GuestController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\GuestController;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +24,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [UserController::class, 'homepage'])->name('homepage');
+Route::get('/SignIn', [AuthController::class, 'login'])->name('login');
+Route::post('/SignIn-Process', [AuthController::class, 'login_process'])->name('login-process');
+Route::get('/Logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::group(['middleware' => ['auth', 'checkrole:Pasien']], function(){
 });
 
 // Route Category Artikel
@@ -41,4 +52,10 @@ Route::delete('/Artikel/{id}/destroy', [ArtikelController::class, 'destroy'])->n
 Route::get('/infopenyakit', [infopenyakitController::class, 'index'])->name('informasipenyakit');
 Route::get('/Artikel/{id}', [infopenyakitController::class, 'show'])->name('isi.artikel');
 Route::get('/searchinfopenyakit', [GuestController::class, 'search'])->name('search');
+Route::get('/infopenyakit', [GuestController::class, 'informasipenyakit'])->name('informasipenyakit');
+
+
+Route::group(['middleware' => ['auth', 'checkrole:Admin']], function(){
+    Route::get('/admin', [AdminController::class, 'index']);
+});
 
