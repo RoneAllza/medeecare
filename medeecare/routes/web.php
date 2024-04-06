@@ -2,11 +2,11 @@
 
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -27,9 +27,8 @@ Route::get('/Logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth', 'checkrole:Pasien']], function(){
 });
-
+Route::get('/infopenyakit', [GuestController::class, 'informasipenyakit'])->name('informasipenyakit');
 Route::group(['middleware' => ['auth', 'checkrole:Admin']], function(){
     Route::get('/admin', [AdminController::class, 'index']);
 });
-// Route for informasipenyakit
-Route::get('/infopenyakit', [GuestController::class, 'informasipenyakit'])->name('informasipenyakit');
+
