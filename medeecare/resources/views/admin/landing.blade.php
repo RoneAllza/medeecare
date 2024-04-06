@@ -5,7 +5,26 @@
 <div class="container mt-5">
     <h1 class="text-center mb-4">Admin Dashboard</h1>
 
+    <!-- Bagian Notifikasi -->
     <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header text-center">Notification List</div>
+
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        @foreach($notifications as $notification)
+                        <li class="list-group-item">{{ $notification->condition }} - Threshold: {{ $notification->threshold }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Akhir Bagian Notifikasi -->
+
+    <!-- Bagian Isi Konten Landing Page Admin -->
+    <div class="row mt-4">
         <div class="col-md-4 mb-4">
             <div class="card">
                 <div class="card-body">
@@ -36,7 +55,7 @@
             </div>
         </div>
     </div>
+    <!-- Akhir Bagian Isi Konten Landing Page Admin -->
 </div>
-
 
 @endsection

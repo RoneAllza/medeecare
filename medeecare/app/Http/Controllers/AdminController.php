@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Models\NotificationSetting;
+
 
 
 
@@ -15,7 +17,9 @@ class AdminController extends Controller
 
     public function index()
     {
-        return view('admin.landing');
+        $notifications = NotificationSetting::all();
+
+        return view('admin.landing', compact('notifications'));
     }
 
     public function administrasi()
@@ -83,6 +87,28 @@ class AdminController extends Controller
         // Redirect ke halaman dashboard admin
         return redirect()->route('admin.manage')->with('success', 'Admin berhasil ditambahkan.');
     }
+
+
+    // Notifikasi ya ges ya
+
+    public function notificationSettings()
+    {
+        $notificationSettings = NotificationSetting::all();
+        return view('admin.notification_settings', compact('notificationSettings'));
+    }
+
+    public function storeNotificationSettings(Request $request)
+    {
+        $validatedData = $request->validate([
+            'condition' => 'required|string',
+            'threshold' => 'required|numeric',
+        ]);
+
+        NotificationSetting::create($validatedData);
+
+        return redirect()->route('admin.notification_settings')->with('success', 'Pengaturan notifikasi berhasil disimpan.');
+    }
+
 }
 
 
