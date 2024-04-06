@@ -34,7 +34,7 @@ class AuthController extends Controller
 
         Session::flash('status', 'failed');
         Session::flash('message', 'Email atau Password yang Anda masukan salah');
-        return redirect('/');
+        return redirect('/SignIn');
     }
 
     public function logout()

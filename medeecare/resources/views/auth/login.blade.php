@@ -54,8 +54,7 @@
     $(document).ready(function() {
         @if(session('status'))
         $('#alertBox').fadeIn().delay(3000).fadeOut();
-        $('#alertMessage').text('{{ session('
-            message ') }}');
+        $('#alertMessage').text('{{ session('message') }}'); 
         @endif
     });
 </script>
