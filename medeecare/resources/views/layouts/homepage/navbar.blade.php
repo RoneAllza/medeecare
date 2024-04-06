@@ -18,7 +18,6 @@
                     <a href="">
                         <img src="/assets/img/" style="height: 5vh; width: 5vh; border-radius:50%; object-fit-cover;" alt="">
                     </a>
-<<<<<<< Updated upstream
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#" >Forum Diskusi Kesehatan</a></li>
                         <li><a class="dropdown-item" href="#" >Rujuk Rumah Sakit</a></li>
