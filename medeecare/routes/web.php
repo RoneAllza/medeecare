@@ -78,4 +78,8 @@ Route::group(['middleware' => ['auth', 'checkrole:Admin']], function(){
     Route::post('/admin/notification-settings', [AdminController::class, 'storeNotificationSettings'])->name('admin.store_notification_settings');
 });
 
+// Forum yagesya
+Route::get('/', [ForumDiskusiController::class, 'viewForum'])->name('forumdiskusi');
+Route::get('/', [FormDiskusiController::class, 'viewForm'])->name('formdiskusi');
+
 
