@@ -24,4 +24,6 @@ class UserController extends Controller
         return view('feature', compact('features'));
 
     }
+
+    
 }
