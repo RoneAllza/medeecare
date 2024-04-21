@@ -7,7 +7,6 @@ use App\Http\Controllers\GuestController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\GuestController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
@@ -57,7 +56,26 @@ Route::get('/searchinfopenyakit', [GuestController::class, 'search'])->name('sea
 Route::get('/infopenyakit', [GuestController::class, 'informasipenyakit'])->name('informasipenyakit');
 
 
+//admin only
 Route::group(['middleware' => ['auth', 'checkrole:Admin']], function(){
-    Route::get('/admin', [AdminController::class, 'index']);
+    //Bagian Landing
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.landing');
+
+    //Bagian User Admin
+    Route::get('/admin/manage', [AdminController::class, 'user'])->name('admin.manage');
+    Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
+    Route::post('/admin/store', [AdminController::class, 'store'])->name('admin.store');
+    Route::get('/admin/{id}/edit', [AdminController::class, 'editadmin'])->name('admin.editadmin');
+    Route::put('/admin/{id}', [AdminController::class, 'updateadmin'])->name('admin.updateadmin');
+
+    //Bagian User Pasien
+    Route::get('/admin/administrasi', [AdminController::class, 'administrasi'])->name('admin.dashboard');
+    Route::get('/users/{id}/edit', [AdminController::class, 'edit'])->name('admin.edit');
+    Route::put('/users/{id}', [AdminController::class, 'update'])->name('admin.update');
+
+    //Bagian Notifikasi
+    Route::get('/admin/notification-settings', [AdminController::class, 'notificationSettings'])->name('admin.notification_settings');
+    Route::post('/admin/notification-settings', [AdminController::class, 'storeNotificationSettings'])->name('admin.store_notification_settings');
 });
+
 
