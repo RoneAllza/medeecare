@@ -10,6 +10,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ForumDiskusiController;
+use App\Http\Controllers\FormDiskusiController;
 
 
 /*
@@ -79,7 +81,7 @@ Route::group(['middleware' => ['auth', 'checkrole:Admin']], function(){
 });
 
 // Forum yagesya
-Route::get('/', [ForumDiskusiController::class, 'viewForum'])->name('forumdiskusi');
-Route::get('/', [FormDiskusiController::class, 'viewForm'])->name('formdiskusi');
+Route::get('/forumdiskusi', [ForumDiskusiController::class, 'viewForum'])->name('forumdiskusi');
+Route::get('/formdiskusi', [FormDiskusiController::class, 'viewForm'])->name('formdiskusi');
 
 
