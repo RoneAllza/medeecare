@@ -33,22 +33,22 @@ class infopenyakitController extends Controller
     }
     
     $Category = Category::all(); // Mengambil semua kategori
-    $artikelall=Artikel::latest()->get();
-    $artikelterkait=Artikel::latest()->limit(4)->get();
+    $artikelall = Artikel::orderBy('created_at', 'desc')->get(); // Menggunakan orderBy
+    $artikelterkait = Artikel::orderBy('created_at', 'desc')->limit(4)->get(); // Menggunakan orderBy
     
     return view('informasipenyakit', compact('artikel', 'request', 'Category', 'artikelall', 'artikelterkait'));
     }
 
 
 
-   // public function kategori(category $category){
-    //$category=Category::all();
-    //$artikel=$category->Artikel()::latest()->get()->random(2);
-    //$artikelall=$category->Artikel()->get();
-    //$artikelterkait=$category->Artikel()::latest()->limit(4)->get();
+    public function kategori(Category $category){
+    $Category=Category::all();
+    $artikel = $category->artikel()->orderBy('created_at', 'desc')->get();
+    $artikelall=$category->Artikel()->get();
+    $artikelterkait = $category->artikel()->orderBy('created_at', 'desc')->limit(4)->get();
 
-    //return view('front', compact('category','artikel','artikelall','artikelterkait'));
+    return view('informasipenyakit', compact('Category','artikel','artikelall','artikelterkait'));
 
-    //}
+    }
     
 }

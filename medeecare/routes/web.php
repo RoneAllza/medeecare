@@ -53,7 +53,7 @@ Route::delete('/Artikel/{id}/destroy', [ArtikelController::class, 'destroy'])->n
 //Route Tampilan Informasi Penyakit
 Route::get('/infopenyakit', [infopenyakitController::class, 'index'])->name('informasipenyakit');
 Route::get('/Artikel/{id}', [infopenyakitController::class, 'show'])->name('isi.artikel');
-//Route::get('/ArtikelCategory/{category}', [infopenyakitController::class, 'kategori'])->name('Artikel.category');
+Route::get('/ArtikelCategory/{category}', [infopenyakitController::class, 'kategori'])->name('Artikel.category');
 Route::get('/informasipenyakit/search', [infopenyakitController::class, 'search'])->name('informasipenyakit.search');
 
 Route::get('/registrasi', [GuestController:: class, 'registrasi'])->name('registrasi');

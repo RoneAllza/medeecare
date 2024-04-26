@@ -21,8 +21,26 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role'
+        'role',
+        'bday',
+        'photo',
+        'gender',
+        'phone',
+        'address',
     ];
+    
+    public function setBdayAttribute($value)
+    {
+        // Periksa apakah nilai tanggal valid
+        if ($value !== '0000-00-00') {
+            $this->attributes['bday'] = $value;
+        } else {
+            // Set nilai default atau NULL jika tidak valid
+            $this->attributes['bday'] = null; // Atau sesuai dengan nilai default yang diinginkan
+        }
+    }
+
+    
 
     /**
      * The attributes that should be hidden for serialization.

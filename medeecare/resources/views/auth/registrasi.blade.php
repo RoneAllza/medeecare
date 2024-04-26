@@ -128,7 +128,7 @@
                 <div class="shape"></div>
                 <a href="{{ route('registrasi') }}"></a>
             </div>
-            <form action="{{ route('regis_proses') }}" method="POST">
+            <form action="{{ route('regis_proses') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <h3>
                     <span style="color: #8B0C0C;">Medeecare</span>
@@ -153,8 +153,7 @@
                             <small>{{ $message }}</small>
                         @enderror
                     </div>
-                    <button style='background-color:#8B0C0C; border-color:#8B0C0C;' type="submit"
-                        class="btn btn-primary">Registrasi</button>
+                    
 
 
                     <!-- label for="forgotPass">Forgot password?</label>
@@ -170,7 +169,9 @@
                         </div>
                     @endif
                 </div!-->
-                
+        </div> 
+        <button style='background-color:#8B0C0C; border-color:#8B0C0C;' type="submit"
+                        class="btn btn-primary">Registrasi</button>
             </form>
         </body>
     </section>
