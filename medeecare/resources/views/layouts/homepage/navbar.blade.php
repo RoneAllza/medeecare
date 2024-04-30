@@ -18,17 +18,6 @@
                     <a href="">
                         <img src="/assets/img/" style="height: 5vh; width: 5vh; border-radius:50%; object-fit-cover;" alt="">
                     </a>
-<<<<<<< Updated upstream
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#" >Forum Diskusi Kesehatan</a></li>
-                        <li><a class="dropdown-item" href="#" >Rujuk Rumah Sakit</a></li>
-                        <li><a class="dropdown-item" href="#" >Informasi Penyakit</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <a type="button" href="{{route ('login')}}" class="btn me-4 text-dark">Sign in</a>
-            <button type="button" class="btn btn-danger">Sign up</button>
-=======
                     <p class="ms-2 mb-0 fs-5">{{Auth::user()->name}}</p>
                 </div>
                 @else
@@ -59,7 +48,6 @@
                     @endif
                 </ul>
             </div>
->>>>>>> Stashed changes
         </div>
         @if(Auth::check())
         <div class="d-flex align-items-center d-none d-lg-block">
