@@ -17,6 +17,9 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('personal_info')->nullable();// Buat admin ya ges
+            $table->string('health_history')->nullable();
+            $table->string('activity_report')->nullable();// sampe sini
             $table->enum('role', ['Pasien', 'Admin']);
             $table->date('bday');
             $table->string('photo');

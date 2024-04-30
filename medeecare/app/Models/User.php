@@ -27,6 +27,9 @@ class User extends Authenticatable
         'gender',
         'phone',
         'address',
+        'personal_info', 
+        'health_history', 
+        'activity_report'
     ];
     
     public function setBdayAttribute($value)
