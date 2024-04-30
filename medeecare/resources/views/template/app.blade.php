@@ -25,12 +25,23 @@
         <div id="nav">
             <!-- Main Nav -->
             <div id="nav-fixed">
-                <div class="container">
+            <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
+            <!-- Logo -->
+            <div class="nav-logo">
+                <a href="/" class="logo"><img src="logo.png" alt=""></a>
+            </div>
+            <!-- /Logo -->
+
+            <!-- Tulisan "Medeecare" -->
+            <div class="nav-title" style="margin-left: 30px;">
+                <h5 class="logo-text" style="color: #8B0C0C; font-size: 24px; margin: 0;">Medeecare</h5>
+            </div>
                     <!-- nav -->
                     @stack('nav')
                     <!-- /nav -->
 
                     <!-- search & aside toggle -->
+                    <form action="{{ route('informasipenyakit.search') }}" method="GET">
                     <div class="nav-btns">
                         <button class="aside-btn"><i class="fa fa-bars"></i></button>
                         <button class="search-btn"><i class="fa fa-search"></i></button>
@@ -39,6 +50,7 @@
                             <button class="search-close"><i class="fa fa-times"></i></button>
                         </div>
                     </div>
+                    </form>
                     <!-- /search & aside toggle -->
                 </div>
             </div>
@@ -57,52 +69,31 @@
         <div class="container">
             <!-- row -->
             <div class="row">
-                <div class="col-md-5">
-                    <div class="footer-widget">
-                        <div class="footer-logo">
-                            <a href="index.html" class="logo"><img src="{{asset('front/img/logo.png')}}" alt=""></a>
-                        </div>
-                        <ul class="footer-nav">
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Advertisement</a></li>
-                        </ul>
-                        <div class="footer-copyright">
-                            <span>&copy;
-                                <!-- Link back to Colorlib cant be removed. Template is licensed under CC BY 3.0. -->
-                                Copyright &copy;<script>
-                                    document.write(new Date().getFullYear());
-
-                                </script> All rights reserved | This template is made with <i class="fa fa-heart-o"
-                                    aria-hidden="true"></i> by <a href="https://colorlib.com"
-                                    target="_blank">Colorlib</a>
-                        </div>
-                    </div>
+            <div class="col-md-5">
+                <div class="footer-widget">
+                    <h5 class="footer-title" style="color: #8B0C0C;">Medeecare</h5>
+                    <ul class="footer-nav">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Advertisement</a></li>
+                    </ul>
                 </div>
+            </div>
 
-                <div class="col-md-4">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="footer-widget">
-                                <h3 class="footer-title">About Us</h3>
-                                <ul class="footer-links">
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="#">Join Us</a></li>
-                                    <li><a href="contact.html">Contacts</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="footer-widget">
-                                <h3 class="footer-title">Categories</h3>
-                                @stack('categories')
-                            </div>
-                        </div>
-                    </div>
+            <div class="col-md-4">
+                <div class="footer-widget">
+                    <h3 class="footer-title">About Us</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="#">Join Us</a></li>
+                        <li><a href="contact.html">Contacts</a></li>
+                    </ul>
                 </div>
-                <div class="col-md-3">
-                    <div class="footer-widget">
-                        <h3 class="footer-title">Join our Newsletter</h3>
-                        <div class="footer-newsletter">
+            </div>
+
+            <div class="col-md-3">
+                <div class="footer-widget">
+                    <h3 class="footer-title">Join our Newsletter</h3>
+            <div class="footer-newsletter">
                             <form>
                                 <input class="input" type="email" name="newsletter" placeholder="Enter your email">
                                 <button class="newsletter-btn"><i class="fa fa-paper-plane"></i></button>

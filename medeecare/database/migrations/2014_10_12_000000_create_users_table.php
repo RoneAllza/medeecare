@@ -21,6 +21,11 @@ return new class extends Migration
             $table->string('health_history')->nullable();
             $table->string('activity_report')->nullable();// sampe sini
             $table->enum('role', ['Pasien', 'Admin']);
+            $table->date('bday');
+            $table->string('photo');
+            $table->enum('gender', ['Laki-laki', 'Perempuan']);
+            $table->integer('phone');
+            $table->string('address');
             $table->rememberToken();
             $table->timestamps();
         });

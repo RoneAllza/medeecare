@@ -51,11 +51,15 @@ Route::get('/Artikel/{id}/edit', [ArtikelController::class, 'edit'])->name('Arti
 Route::put('/Artikel/{id}/update', [ArtikelController::class, 'update'])->name('Artikel.update');
 Route::delete('/Artikel/{id}/destroy', [ArtikelController::class, 'destroy'])->name('Artikel.destroy');
 
+
 //Route Tampilan Informasi Penyakit
 Route::get('/infopenyakit', [infopenyakitController::class, 'index'])->name('informasipenyakit');
 Route::get('/Artikel/{id}', [infopenyakitController::class, 'show'])->name('isi.artikel');
-Route::get('/searchinfopenyakit', [GuestController::class, 'search'])->name('search');
-Route::get('/infopenyakit', [GuestController::class, 'informasipenyakit'])->name('informasipenyakit');
+Route::get('/ArtikelCategory/{category}', [infopenyakitController::class, 'kategori'])->name('Artikel.category');
+Route::get('/informasipenyakit/search', [infopenyakitController::class, 'search'])->name('informasipenyakit.search');
+
+Route::get('/registrasi', [GuestController:: class, 'registrasi'])->name('registrasi');
+Route::post('/regis-proses', [GuestController:: class, 'regis_proses'])->name('regis_proses');
 
 
 //admin only
