@@ -1,8 +1,8 @@
 @extends('template.app')
 @push('nav')
     <ul class="nav-menu nav navbar-nav">
-        @foreach ($category as $item)
-        <li style="border-color: red;"><a href="#">{{$item->nama_kategori}}</a></li>
+        @foreach ($Category as $item)
+        <li style="border-color: red;"><a href="{{ route('Artikel.category',$item->slug) }}">{{$item->nama_kategori}}</a></li>
         @endforeach
     </ul>
 @endpush
