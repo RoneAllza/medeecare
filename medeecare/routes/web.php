@@ -12,6 +12,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ForumDiskusiController;
 use App\Http\Controllers\FormDiskusiController;
+use App\Http\Controllers\HomepageKesehatanKulitController;
 
 
 /*
@@ -87,5 +88,8 @@ Route::group(['middleware' => ['auth', 'checkrole:Admin']], function(){
 // Forum yagesya
 Route::get('/forumdiskusi', [ForumDiskusiController::class, 'viewForum'])->name('forumdiskusi');
 Route::get('/formdiskusi', [FormDiskusiController::class, 'viewForm'])->name('formdiskusi');
+
+// Cek Kesehatan Kulit
+Route::get('/', [HomepageKesehatanKulitController::class, 'viewHomepageKesehatanKulit'])->name('homepagekesehatankulit');
 
 
