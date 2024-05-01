@@ -12,6 +12,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ForumDiskusiController;
 use App\Http\Controllers\FormDiskusiController;
+use App\Http\Controllers\HeartDiseaseRiskController;
+
+
 
 
 /*
@@ -87,5 +90,10 @@ Route::group(['middleware' => ['auth', 'checkrole:Admin']], function(){
 // Forum yagesya
 Route::get('/forumdiskusi', [ForumDiskusiController::class, 'viewForum'])->name('forumdiskusi');
 Route::get('/formdiskusi', [FormDiskusiController::class, 'viewForm'])->name('formdiskusi');
+
+
+// resiko jantungan
+Route::get('/heart-disease-risk', [HeartDiseaseRiskController::class, 'showForm']);
+Route::post('/heart-disease-risk', [HeartDiseaseRiskController::class, 'calculateRisk']);
 
 
