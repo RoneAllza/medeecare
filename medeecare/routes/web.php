@@ -39,6 +39,7 @@ Route::get('/Logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth', 'checkrole:Pasien']], function(){
     Route::get('/Features', [UserController::class, 'feature'])->name('feature');
+    Route::get('/Profile', [UserController::class, 'profile'])->name('profile');
 });
 
 // Route Category Artikel
