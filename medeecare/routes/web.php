@@ -12,6 +12,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ForumDiskusiController;
 use App\Http\Controllers\FormDiskusiController;
+use App\Http\Controllers\HeartDiseaseRiskController;
+
+
 
 
 /*
@@ -58,6 +61,7 @@ Route::get('/Artikel/{id}', [infopenyakitController::class, 'show'])->name('isi.
 Route::get('/ArtikelCategory/{category}', [infopenyakitController::class, 'kategori'])->name('Artikel.category');
 Route::get('/informasipenyakit/search', [infopenyakitController::class, 'search'])->name('informasipenyakit.search');
 
+// Registrasi
 Route::get('/registrasi', [GuestController:: class, 'registrasi'])->name('registrasi');
 Route::post('/regis-proses', [GuestController:: class, 'regis_proses'])->name('regis_proses');
 
@@ -87,5 +91,10 @@ Route::group(['middleware' => ['auth', 'checkrole:Admin']], function(){
 // Forum yagesya
 Route::get('/forumdiskusi', [ForumDiskusiController::class, 'viewForum'])->name('forumdiskusi');
 Route::get('/formdiskusi', [FormDiskusiController::class, 'viewForm'])->name('formdiskusi');
+
+
+// resiko jantungan
+Route::get('/heart-disease-risk', [HeartDiseaseRiskController::class, 'showForm']);
+Route::post('/heart-disease-risk', [HeartDiseaseRiskController::class, 'calculateRisk']);
 
 
