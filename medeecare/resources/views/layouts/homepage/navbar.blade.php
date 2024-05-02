@@ -55,8 +55,7 @@
                 <img src="/assets/img/" style="height: 5vh; width: 5vh; border-radius:50%; object-fit-cover;">
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-user" style="width: 3vh;"></i>Your Profile</a></li>
-                <!-- <li><a class="dropdown-item" href="#">Another action</a></li> -->
+                <li><a class="dropdown-item" href="{{ route('profile') }}"><i class="fa-solid fa-user" style="width: 3vh;"></i>Your Profile</a></li>
                 <li>
                     <hr class="dropdown-divider">
                 </li>

@@ -5,11 +5,7 @@
 <!-- Banner -->
 <section id="banner" class="mb-5" style="height: 70vh; width:100%; position:relative;">
     <div class="d-none d-lg-block">
-<<<<<<< Updated upstream
-        <img src="{{url('assets/img/banner arya.png')}}" class="w-100 h-100" style="position:absolute; object-fit:cover; z-index: -1; box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2)" alt="">
-=======
         <img src="{{url('assets/img/banner.png')}}" class="w-100 h-100" style="position:absolute; object-fit:cover; z-index: -1; box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.1)" alt="">
->>>>>>> Stashed changes
     </div>
     <div class="container h-100 d-flex flex-column justify-content-center" style="padding: 10vh 0">
         @guest
@@ -25,7 +21,7 @@
             @foreach($features as $feature)
             <a href="{{route('login')}}" class="text-decoration-none">
                 <div class="d-flex justify-content-center flex-column align-items-center" style="width: 100px;">
-                    <img src="/assets/img/{{$feature->photo}}" style="height: 10vh; width: 10vh; border-radius:50%; object-fit-cover; filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.2))" alt="{{$feature->name}}">
+                    <img src="/assets/img/{{$feature->photo}}" style="height: 10vh; width: 10vh; border-radius:50%; object-fit-cover: true; filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.2))" alt="{{$feature->name}}">
                     <div class="d-flex flex-row align-items-center text-dark text-center text-wrap" style="height:5vh; word-break: break-word">{{$feature->name}}</div>
                 </div>
             </a>
@@ -42,9 +38,6 @@
             </a>
             @endforeach
         </div>
-<<<<<<< Updated upstream
-        <button type="button" class="btn btn-outline-danger">Selengkapnya</button>
-=======
         @endguest
         @guest
         <div>
@@ -55,7 +48,6 @@
             <a role="button" class="btn btn-danger " href="{{route('feature')}}">Selengkapnya</a>
         </div>
         @endguest
->>>>>>> Stashed changes
     </div>
 </section>
 <!-- End Banner -->
@@ -65,7 +57,7 @@
     <div class="container">
         <div class="d-flex flex-row justify-content-between align-items-center">
             <h2 class="mb-2">Artikel Kesehatan</h2>
-            <a href="" class="text-decoration-none">Lihat Semua</a>
+            <a href=" {{ route('informasipenyakit') }} " class="text-decoration-none">Lihat Semua</a>
         </div>
         <div>
             <ul class="d-flex flex-row py-3 ps-0" style="overflow-x: auto;">
