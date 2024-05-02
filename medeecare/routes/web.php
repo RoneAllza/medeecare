@@ -61,6 +61,7 @@ Route::get('/Artikel/{id}', [infopenyakitController::class, 'show'])->name('isi.
 Route::get('/ArtikelCategory/{category}', [infopenyakitController::class, 'kategori'])->name('Artikel.category');
 Route::get('/informasipenyakit/search', [infopenyakitController::class, 'search'])->name('informasipenyakit.search');
 
+// Registrasi
 Route::get('/registrasi', [GuestController:: class, 'registrasi'])->name('registrasi');
 Route::post('/regis-proses', [GuestController:: class, 'regis_proses'])->name('regis_proses');
 
