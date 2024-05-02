@@ -12,6 +12,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ForumDiskusiController;
 use App\Http\Controllers\FormDiskusiController;
+use App\Http\Controllers\HomepageKesehatanKulitController;
 use App\Http\Controllers\AnxietyTestController;
 use App\Http\Controllers\DokterMentalController;
 use App\Http\Controllers\KesehatanMentalController;
@@ -96,6 +97,9 @@ Route::group(['middleware' => ['auth', 'checkrole:Admin']], function(){
 Route::get('/forumdiskusi', [ForumDiskusiController::class, 'viewForum'])->name('forumdiskusi');
 Route::get('/formdiskusi', [FormDiskusiController::class, 'viewForm'])->name('formdiskusi');
 
+// Cek Kesehatan Kulit
+Route::get('/', [HomepageKesehatanKulitController::class, 'viewHomepageKesehatanKulit'])->name('homepagekesehatankulit');
+
 //CRUD Dokter Kesehatan Mental
 Route::get('/Dokter', [DokterMentalController::class, 'index'])->name('Dokter');
 Route::get('/Dokter/create', [DokterMentalController::class, 'create'])->name('Dokter.create');
@@ -114,7 +118,6 @@ Route::get('/anxiety/test', [AnxietyTestController::class, 'showForm'])->name('a
 Route::post('/anxiety/submit', [AnxietyTestController::class, 'submitTest'])->name('anxiety.submit')->middleware('auth');
 Route::get('/anxiety/result/{id}', [AnxietyTestController::class, 'showResult'])->name('anxiety.result');
 Route::get('/mental-health', [AnxietyTestController::class, 'showPsychologistsAndPsychiatrists'])->name('cek_kesehatan');
-
 
 // resiko jantungan
 Route::get('/heart-disease-risk', [HeartDiseaseRiskController::class, 'showForm']);
