@@ -17,7 +17,8 @@ use App\Http\Controllers\AnxietyTestController;
 use App\Http\Controllers\DokterMentalController;
 use App\Http\Controllers\KesehatanMentalController;
 use App\Http\Controllers\HeartDiseaseRiskController;
-
+use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\ObatKulitController;
 
 
 
@@ -99,6 +100,8 @@ Route::get('/formdiskusi', [FormDiskusiController::class, 'viewForm'])->name('fo
 
 // Cek Kesehatan Kulit
 Route::get('/', [HomepageKesehatanKulitController::class, 'viewHomepageKesehatanKulit'])->name('homepagekesehatankulit');
+Route::get('/', [ArtikelController::class, 'viewArtikel'])->name('artikel');
+Route::get('/', [ObatKulitController::class, 'viewObatKulit'])->name('obatkulit');
 
 //CRUD Dokter Kesehatan Mental
 Route::get('/Dokter', [DokterMentalController::class, 'index'])->name('Dokter');
