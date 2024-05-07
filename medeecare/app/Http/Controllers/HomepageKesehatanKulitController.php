@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\ArtikelKulitController;
 
 use Illuminate\Http\Request;
 
