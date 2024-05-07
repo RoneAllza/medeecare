@@ -95,13 +95,14 @@ Route::group(['middleware' => ['auth', 'checkrole:Admin']], function(){
 });
 
 // Forum yagesya
-Route::get('/forumdiskusi', [ForumDiskusiController::class, 'viewForum'])->name('forumdiskusi');
-Route::get('/formdiskusi', [FormDiskusiController::class, 'viewForm'])->name('formdiskusi');
+Route::get('/forum', [ForumDiskusiController::class, 'viewForum'])->name('forumdiskusikesehatan');
+Route::get('/pengisian-form', [FormDiskusiController::class, 'viewForm'])->name('formdiskusikesehatan');
+Route::get('/homepage-forum', [HomepageForumController::class, 'viewHomepage'])->name('homepageforum');
 
 // Cek Kesehatan Kulit
-Route::get('/', [HomepageKesehatanKulitController::class, 'viewHomepageKesehatanKulit'])->name('homepagekesehatankulit');
-Route::get('/', [ArtikelController::class, 'viewArtikel'])->name('artikel');
-Route::get('/', [ObatKulitController::class, 'viewObatKulit'])->name('obatkulit');
+Route::get('/homepage-kesehatankulit', [HomepageKesehatanKulitController::class, 'viewHomepageKesehatanKulit'])->name('homepagekesehatankulit');
+Route::get('/homepage-kesehatankulit/artikel', [HomepageKesehatanKulitController::class, 'viewArtikel'])->name('detailArtikel');
+Route::get('/homepage-kesehatankulit/obat-kulit', [ObatKulitController::class, 'viewObatKulit'])->name('obatkulit');
 
 //CRUD Dokter Kesehatan Mental
 Route::get('/Dokter', [DokterMentalController::class, 'index'])->name('Dokter');
