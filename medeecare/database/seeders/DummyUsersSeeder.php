@@ -35,22 +35,22 @@ class DummyUsersSeeder extends Seeder
             User::create($val);
         }
 
-        $faker = Faker::create();
+        // $faker = Faker::create();
 
-        // Membuat 20 pengguna tambahan
-        for ($i = 0; $i < 20; $i++) {
-            $user = new User();
-            $user->name = $faker->name;
-            $user->email = $faker->unique()->safeEmail;
-            $user->role = 'Pasien';
-            $user->password = bcrypt('password');
+        // // Membuat 20 pengguna tambahan
+        // for ($i = 0; $i < 20; $i++) {
+        //     $user = new User();
+        //     $user->name = $faker->name;
+        //     $user->email = $faker->unique()->safeEmail;
+        //     $user->role = 'Pasien';
+        //     $user->password = bcrypt('password');
 
-            // Mengisi kolom personal_info, health_history, dan activity_report dengan data acak
-            $user->personal_info = $faker->sentence();
-            $user->health_history = $faker->sentence();
-            $user->activity_report = $faker->sentence();
+        //     // Mengisi kolom personal_info, health_history, dan activity_report dengan data acak
+        //     $user->personal_info = $faker->sentence();
+        //     $user->health_history = $faker->sentence();
+        //     $user->activity_report = $faker->sentence();
 
-            $user->save();
-        }
+        //     $user->save();
+        // }
     }
 }
