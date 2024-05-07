@@ -17,7 +17,7 @@ use App\Http\Controllers\AnxietyTestController;
 use App\Http\Controllers\DokterMentalController;
 use App\Http\Controllers\KesehatanMentalController;
 use App\Http\Controllers\HeartDiseaseRiskController;
-use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\ArtikelKulitController;
 use App\Http\Controllers\ObatKulitController;
 
 
