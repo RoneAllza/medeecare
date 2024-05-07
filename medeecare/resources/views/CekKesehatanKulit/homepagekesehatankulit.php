@@ -59,8 +59,8 @@
                 </div>
                 <p style="text-align:center">Jerawat adalah penyumbatan minyak dan sel kulit mati pada folikel rambut di kulit seperti wajah, leher, dada bagian atas, dan punggung. Gunakan produk yang aman untuk kulitmu.</p>
                 <div class="py-3">
-                    <button type="button" class="btn btn-info" href="#">Baca artikel sekarang</button>
-                    <button type="button" class="btn btn-outline-info" href="#">Rekomendasi obat</button>
+                    <a href="/homepage-kesehatankulit/artikel" class="btn btn-info">Baca artikel sekarang</a>
+                    <a href="/homepage-kesehatankulit/obat-kulit" class="btn btn-outline-info">Rekomendasi obat</a>
                 </div>
             </div>
         </div>
@@ -72,8 +72,8 @@
                 </div>
                 <p style="text-align:center">Dermatitis dan Eksem adalah peradangan kulit yang ditandai dengan ruam merah. Kondisi ini membuat kulit mengeluarkan cairan, bengkak, gatal, dan bersisik. Kenakan pakaian berbahan lembut dan menyerap.</p>
                 <div class="py-3">
-                    <button type="button" class="btn btn-info" href="#">Baca artikel sekarang</button>
-                    <button type="button" class="btn btn-outline-info" href="#">Rekomendasi obat</button>
+                    <a href="/homepage-kesehatankulit/artikel" class="btn btn-info">Baca artikel sekarang</a>
+                    <a href="/homepage-kesehatankulit/obat-kulit" class="btn btn-outline-info">Rekomendasi obat</a>
                 </div>
             </div>
         </div>
@@ -85,8 +85,8 @@
                 </div>
                 <p style="text-align:center">Kulit dapat mendukung penampilan. Akan tetapi, lingkungan yang kotor bisa membuat kulit terkena infeksi seperti bakteri, jamur, dan virus. Kondisi ini dapat disembuhkan dengan pengobatan yang tepat.</p>
                 <div class="py-3">
-                    <button type="button" class="btn btn-info" href="#">Baca artikel sekarang</button>
-                    <button type="button" class="btn btn-outline-info" href="#">Rekomendasi obat</button>
+                    <a href="/homepage-kesehatankulit/artikel" class="btn btn-info">Baca artikel sekarang</a>
+                    <a href="/homepage-kesehatankulit/obat-kulit" class="btn btn-outline-info">Rekomendasi obat</a>
                 </div>
             </div>
         </div>
@@ -101,8 +101,8 @@
                 </div>
                 <p style="text-align:center">Kulit dapat mendukung penampilan. Akan tetapi, lingkungan yang kotor bisa membuat kulit terkena infeksi seperti bakteri, jamur, dan virus. Kondisi ini dapat disembuhkan dengan pengobatan yang tepat.</p>
                 <div class="py-3">
-                    <button type="button" class="btn btn-info" href="#">Baca artikel sekarang</button>
-                    <button type="button" class="btn btn-outline-info" href="#">Rekomendasi obat</button>
+                    <a href="/homepage-kesehatankulit/artikel" class="btn btn-info">Baca artikel sekarang</a>
+                    <a href="/homepage-kesehatankulit/obat-kulit" class="btn btn-outline-info">Rekomendasi obat</a>
                 </div>
             </div>
         </div>
@@ -114,8 +114,8 @@
                 </div>
                 <p style="text-align:center">Kulit yang sehat terawat adalah impian semua orang. Kini produk kecantikan untuk kesehatan kulit sudah dapat ditemukan dengan mudah. Bahan-bahan yang digunakan pun adalah bahan yang aman.</p>
                 <div class="py-3">
-                    <button type="button" class="btn btn-info" href="#">Baca artikel sekarang</button>
-                    <button type="button" class="btn btn-outline-info" href="#">Rekomendasi obat</button>
+                    <a href="/homepage-kesehatankulit/artikel" class="btn btn-info">Baca artikel sekarang</a>
+                    <a href="/homepage-kesehatankulit/obat-kulit" class="btn btn-outline-info">Rekomendasi obat</a>
                 </div>
             </div>
         </div>
