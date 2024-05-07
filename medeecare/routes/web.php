@@ -15,7 +15,11 @@ use App\Http\Controllers\FormDiskusiController;
 use App\Http\Controllers\AnxietyTestController;
 use App\Http\Controllers\DokterMentalController;
 use App\Http\Controllers\KesehatanMentalController;
-
+use App\Http\Controllers\TestController;
+use App\Http\Controllers\ResultController;
+use App\Http\Controllers\CategoryQuestionController;
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\OptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +64,10 @@ Route::get('/Artikel/{id}', [infopenyakitController::class, 'show'])->name('isi.
 Route::get('/searchinfopenyakit', [GuestController::class, 'search'])->name('search');
 Route::get('/infopenyakit', [GuestController::class, 'informasipenyakit'])->name('informasipenyakit');
 
+//Route registrasi
+Route::get('/registrasi', [GuestController:: class, 'registrasi'])->name('registrasi');
+Route::post('/regis-proses', [GuestController:: class, 'regis_proses'])->name('regis_proses');
+
 
 //admin only
 Route::group(['middleware' => ['auth', 'checkrole:Admin']], function(){
@@ -102,8 +110,7 @@ Route::get('/kesehatanmental/search', [KesehatanMentalController::class, 'search
 
 //Cek Kesehatan Mental
 Route::get('/anxiety/test', [AnxietyTestController::class, 'showForm'])->name('anxiety.form');
-Route::post('/anxiety/submit', [AnxietyTestController::class, 'submitTest'])->name('anxiety.submit')->middleware('auth');
-Route::get('/anxiety/result/{id}', [AnxietyTestController::class, 'showResult'])->name('anxiety.result');
+Route::post('/anxiety/submit', [AnxietyTestController::class, 'submitTest'])->name('anxiety.submit');
+Route::get('/anxiety/result', [AnxietyTestController::class, 'showResult'])->name('anxiety.result');
 Route::get('/mental-health', [AnxietyTestController::class, 'showPsychologistsAndPsychiatrists'])->name('cek_kesehatan');
-
 
