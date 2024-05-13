@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleCovidController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\Web\infopenyakitController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ForumDiskusiController;
 use App\Http\Controllers\FormDiskusiController;
+use App\Models\Articlecovid;
 
 
 /*
@@ -84,4 +86,6 @@ Route::group(['middleware' => ['auth', 'checkrole:Admin']], function(){
 Route::get('/forumdiskusi', [ForumDiskusiController::class, 'viewForum'])->name('forumdiskusi');
 Route::get('/formdiskusi', [FormDiskusiController::class, 'viewForm'])->name('formdiskusi');
 
+//articlecovid
+Route::get('/ArticleCovid', [ArticleCovidController::class, 'FuncArticleCovid'])->name('ArticleCovid');
 
