@@ -17,6 +17,8 @@ use App\Http\Controllers\AnxietyTestController;
 use App\Http\Controllers\DokterMentalController;
 use App\Http\Controllers\KesehatanMentalController;
 use App\Http\Controllers\HeartDiseaseRiskController;
+use App\Http\Controllers\MedicationRecommendationController;
+use App\Http\Controllers\HeartDiseaseCalculatorController;
 
 
 
@@ -41,6 +43,13 @@ Route::get('/Logout', [AuthController::class, 'logout'])->name('logout');
 Route::group(['middleware' => ['auth', 'checkrole:Pasien']], function(){
     Route::get('/Features', [UserController::class, 'feature'])->name('feature');
     Route::get('/Profile', [UserController::class, 'profile'])->name('profile');
+    
+    // resiko jantungan
+    Route::get('/heart-disease-risk', [HeartDiseaseRiskController::class, 'showForm']);
+    Route::post('/heart-disease-risk', [HeartDiseaseRiskController::class, 'calculateRisk']);
+    Route::get('/medication-recommendation', [MedicationRecommendationController::class, 'showRecommendations']);
+    Route::get('/heart-disease-calculator', [HeartDiseaseCalculatorController::class, 'showCalculator']);
+    Route::post('/heart-disease-calculator', [HeartDiseaseCalculatorController::class, 'calculateRisk']);
 });
 
 // Route Category Artikel
@@ -98,7 +107,7 @@ Route::get('/forumdiskusi', [ForumDiskusiController::class, 'viewForum'])->name(
 Route::get('/formdiskusi', [FormDiskusiController::class, 'viewForm'])->name('formdiskusi');
 
 // Cek Kesehatan Kulit
-Route::get('/', [HomepageKesehatanKulitController::class, 'viewHomepageKesehatanKulit'])->name('homepagekesehatankulit');
+Route::get('/sehatkulit', [HomepageKesehatanKulitController::class, 'viewHomepageKesehatanKulit'])->name('homepagekesehatankulit');
 
 //CRUD Dokter Kesehatan Mental
 Route::get('/Dokter', [DokterMentalController::class, 'index'])->name('Dokter');
@@ -122,5 +131,8 @@ Route::get('/mental-health', [AnxietyTestController::class, 'showPsychologistsAn
 // resiko jantungan
 Route::get('/heart-disease-risk', [HeartDiseaseRiskController::class, 'showForm']);
 Route::post('/heart-disease-risk', [HeartDiseaseRiskController::class, 'calculateRisk']);
+Route::get('/medication-recommendation', [MedicationRecommendationController::class, 'showRecommendations']);
+Route::get('/heart-disease-calculator', [HeartDiseaseCalculatorController::class, 'showCalculator']);
+Route::post('/heart-disease-calculator', [HeartDiseaseCalculatorController::class, 'calculateRisk']);
 
 
