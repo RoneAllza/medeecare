@@ -1,8 +1,11 @@
 <?php
 
+// app/Http/Controllers/HeartDiseaseRiskController.php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HeartDiseaseRiskController extends Controller
 {
@@ -13,32 +16,30 @@ class HeartDiseaseRiskController extends Controller
 
     public function calculateRisk(Request $request)
     {
-        // Validasi input BMI
         $request->validate([
             'bmi' => 'required|numeric|min:0',
         ]);
 
         $bmi = $request->input('bmi');
 
-        // Lakukan penghitungan risiko penyakit jantung berdasarkan BMI
-        // Misalnya, Anda dapat menggunakan rumus tertentu untuk ini
+        // Contoh logika perhitungan risiko
+        $riskLevel = $this->determineRiskLevel($bmi);
 
-        $riskLevel = $this->calculateRiskLevel($bmi);
+        // Menyimpan risk_level ke dalam model User
+        $user = Auth::user();
+        $user->risk_level = $riskLevel;
+        $user->save();
 
         return view('heart-disease-risk.result', ['riskLevel' => $riskLevel]);
     }
 
-    private function calculateRiskLevel($bmi)
+    private function determineRiskLevel($bmi)
     {
-        // Logika perhitungan risiko penyakit jantung
-        // Misalnya, Anda dapat menetapkan kategori risiko berdasarkan kisaran BMI
-        // Ini hanya contoh, sesuaikan dengan logika bisnis yang sesuai
-
         if ($bmi < 18.5) {
             return 'Rendah';
-        } elseif ($bmi >= 18.5 && $bmi < 24.9) {
+        } elseif ($bmi < 24.9) {
             return 'Normal';
-        } elseif ($bmi >= 25 && $bmi < 29.9) {
+        } elseif ($bmi < 29.9) {
             return 'Tinggi';
         } else {
             return 'Sangat Tinggi';

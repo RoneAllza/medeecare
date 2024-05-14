@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleCovidController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\Web\infopenyakitController;
@@ -12,10 +13,14 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ForumDiskusiController;
 use App\Http\Controllers\FormDiskusiController;
+use App\Http\Controllers\TesKecemasanController;
+use App\Http\Controllers\HomepageKesehatanKulitController;
 use App\Http\Controllers\AnxietyTestController;
 use App\Http\Controllers\DokterMentalController;
 use App\Http\Controllers\KesehatanMentalController;
 use App\Http\Controllers\HeartDiseaseRiskController;
+use App\Http\Controllers\MedicationRecommendationController;
+use App\Http\Controllers\HeartDiseaseCalculatorController;
 
 
 
@@ -39,6 +44,15 @@ Route::get('/Logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth', 'checkrole:Pasien']], function(){
     Route::get('/Features', [UserController::class, 'feature'])->name('feature');
+    Route::get('/Profile', [UserController::class, 'profile'])->name('profile');
+    Route::put('/Profile-Process', [UserController::class, 'updateProfile'])->name('updateProfile');
+    
+    // resiko jantungan
+    Route::get('/heart-disease-risk', [HeartDiseaseRiskController::class, 'showForm']);
+    Route::post('/heart-disease-risk', [HeartDiseaseRiskController::class, 'calculateRisk']);
+    Route::get('/medication-recommendation', [MedicationRecommendationController::class, 'showRecommendations']);
+    Route::get('/heart-disease-calculator', [HeartDiseaseCalculatorController::class, 'showCalculator']);
+    Route::post('/heart-disease-calculator', [HeartDiseaseCalculatorController::class, 'calculateRisk']);
 });
 
 // Route Category Artikel
@@ -99,6 +113,18 @@ Route::group(['middleware' => ['auth', 'checkrole:Admin']], function(){
 Route::get('/forumdiskusi', [ForumDiskusiController::class, 'viewForum'])->name('forumdiskusi');
 Route::get('/formdiskusi', [FormDiskusiController::class, 'viewForm'])->name('formdiskusi');
 
+
+//Tes Kecemasan
+Route::get('/tes-kecemasan', [TesKecemasanController::class, 'pertanyaan'])->name('tes-kecemasan.pertanyaan');
+Route::post('/tes-kecemasan/hasil', [TesKecemasanController::class, 'simpanHasil'])->name('tes-kecemasan.hasil');
+Route::get('/tes-kecemasan/hasil/{id}', [TesKecemasanController::class, 'lihatHasil'])->name('tes-kecemasan.lihat-hasil');
+
+//articlecovid
+Route::get('/ArticleCovid', [ArticleCovidController::class, 'FuncArticleCovid'])->name('ArticleCovid');
+
+// Cek Kesehatan Kulit
+Route::get('/sehatkulit', [HomepageKesehatanKulitController::class, 'viewHomepageKesehatanKulit'])->name('homepagekesehatankulit');
+
 //CRUD Dokter Kesehatan Mental
 Route::get('/Dokter', [DokterMentalController::class, 'index'])->name('Dokter');
 Route::get('/Dokter/create', [DokterMentalController::class, 'create'])->name('Dokter.create');
@@ -117,10 +143,5 @@ Route::get('/anxiety/test', [AnxietyTestController::class, 'showForm'])->name('a
 Route::post('/anxiety/submit', [AnxietyTestController::class, 'submitTest'])->name('anxiety.submit');
 Route::get('/anxiety/result', [AnxietyTestController::class, 'showResult'])->name('anxiety.result');
 Route::get('/mental-health', [AnxietyTestController::class, 'showPsychologistsAndPsychiatrists'])->name('cek_kesehatan');
-
-
-// resiko jantungan
-Route::get('/heart-disease-risk', [HeartDiseaseRiskController::class, 'showForm']);
-Route::post('/heart-disease-risk', [HeartDiseaseRiskController::class, 'calculateRisk']);
 
 
