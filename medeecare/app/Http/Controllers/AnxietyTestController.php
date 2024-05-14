@@ -2,65 +2,96 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AnxietyTestResult;
 use Illuminate\Http\Request;
 
 class AnxietyTestController extends Controller
 {
+    // Menampilkan daftar psikolog dan psikiater
     public function showPsychologistsAndPsychiatrists()
     {
-        // Ambil data psikolog dan psikiater dari database atau dapat juga dari model jika ada
+        // Data psikolog dan psikiater
         $psychologists = [
-            [
-                'name' => 'Dr. Psikolog A',
-                'specialization' => 'Spesialis Kesehatan Mental',
-                'image' => 'psikolog.jpg',
-            ],
-            // Tambahkan data psikolog lainnya sesuai kebutuhan
+            // Data psikolog
         ];
 
         $psychiatrists = [
-            [
-                'name' => 'Dr. Psikiater B',
-                'specialization' => 'Spesialis Kesehatan Jiwa',
-                'image' => 'psikiater.jpg',
-            ],
-            // Tambahkan data psikiater lainnya sesuai kebutuhan
+            // Data psikiater
         ];
 
         // Tampilkan view dengan data psikolog dan psikiater
         return view('anxiety_test.Cek_Kesehatan', compact('psychologists', 'psychiatrists'));
     }
 
+    // Menampilkan form tes kecemasan
     public function showForm()
     {
         return view('anxiety_test.form');
     }
 
+    // Menghitung skor berdasarkan jawaban tes
     public function submitTest(Request $request)
     {
-        // Proses penghitungan skor dan penyimpanan ke database
+        // Proses penghitungan skor
         $score = $this->calculateScore($request->all());
-        $result = AnxietyTestResult::create([
-            'user_id' => auth()->id(),
-            'score' => $score,
-        ]);
+        
+        // Tentukan tingkat kecemasan berdasarkan skor
+        $anxietyLevel = $this->determineAnxietyLevel($score);
 
-        return redirect()->route('anxiety.result', $result->id);
+        // Redirect ke halaman hasil tes dengan menyertakan skor dan tingkat kecemasan
+        return redirect()->route('anxiety.result', ['score' => $score, 'anxiety_level' => $anxietyLevel]);
     }
 
-    private function calculateScore($answers)
+    // Fungsi untuk menghitung skor berdasarkan jawaban
+    public function calculateScore($answers)
     {
-        // Proses perhitungan skor berdasarkan jawaban
+        // Inisialisasi skor awal
         $score = 0;
-        // Implementasi logika perhitungan skor dari jawaban tes disini
+        
+        // Tabel bobot skor untuk setiap pilihan jawaban
+        $scoreTable = [
+            'option1' => 0, // Tidak Pernah
+            'option2' => 1, // Beberapa Hari
+            'option3' => 2, // Sebagian Besar Hari
+            'option4' => 3, // Hampir Setiap Hari
+        ];
+        
+        // Lakukan perhitungan skor berdasarkan jawaban yang diberikan
+        foreach ($answers as $answer) {
+            // Pastikan jawaban valid
+            if (isset($scoreTable[$answer])) {
+                // Tambahkan skor sesuai dengan pilihan jawaban
+                $score += $scoreTable[$answer];
+            } else {
+                // Penanganan jika jawaban tidak valid (opsional)
+                // Anda dapat menambahkan logika penanganan jawaban yang tidak valid di sini
+                $score += 0; // Set default score to 0 if answer is not valid
+            }
+        }
+
         return $score;
     }
 
-    public function showResult($id)
+    // Fungsi untuk menentukan tingkat kecemasan berdasarkan skor
+    private function determineAnxietyLevel($score)
     {
-        $result = AnxietyTestResult::findOrFail($id);
-        return view('anxiety_test.result', compact('result'));
+        if ($score >= 10) {
+            return 'Tinggi';
+        } elseif ($score >= 5) {
+            return 'Sedang';
+        } else {
+            return 'Rendah';
+        }
+    }
+
+    // Menampilkan hasil tes kecemasan berdasarkan skor
+    public function showResult(Request $request)
+    {
+        // Ambil skor dan tingkat kecemasan dari request
+        $score = $request->input('score');
+        $anxietyLevel = $request->input('anxiety_level'); // Update to get anxiety_level from request
+
+        // Tampilkan view hasil tes dengan skor dan tingkat kecemasan yang diberikan
+        return view('anxiety_test.result', compact('score', 'anxietyLevel'));
     }
 }
 

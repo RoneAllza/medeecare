@@ -39,6 +39,12 @@ class User extends Authenticatable
     
     public function setBdayAttribute($value)
     {
+        // Check if the date value is valid
+        if ($value !== '0000-00-00') {
+            $this->attributes['bday'] = $value;
+        } else {
+            // Set default value or NULL if not valid
+            $this->attributes['bday'] = null; // Or according to the desired default value
         // Periksa apakah nilai tanggal valid
         if ($value !== '0000-00-00') {
             $this->attributes['bday'] = $value;
@@ -47,7 +53,7 @@ class User extends Authenticatable
             $this->attributes['bday'] = null; // Atau sesuai dengan nilai default yang diinginkan
         }
     }
-
+    }
     
 
     /**
