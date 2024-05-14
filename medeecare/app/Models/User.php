@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -20,6 +21,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'risk_level',
         'password',
         'role',
         'bday',
@@ -32,7 +34,7 @@ class User extends Authenticatable
         'tb',
         'personal_info', 
         'health_history', 
-        'activity_report'
+        'activity_report',
     ];
     
     public function setBdayAttribute($value)
