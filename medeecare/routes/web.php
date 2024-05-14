@@ -43,7 +43,7 @@ Route::get('/Logout', [AuthController::class, 'logout'])->name('logout');
 Route::group(['middleware' => ['auth', 'checkrole:Pasien']], function(){
     Route::get('/Features', [UserController::class, 'feature'])->name('feature');
     Route::get('/Profile', [UserController::class, 'profile'])->name('profile');
-    
+
     // resiko jantungan
     Route::get('/heart-disease-risk', [HeartDiseaseRiskController::class, 'showForm']);
     Route::post('/heart-disease-risk', [HeartDiseaseRiskController::class, 'calculateRisk']);
@@ -127,12 +127,5 @@ Route::get('/anxiety/test', [AnxietyTestController::class, 'showForm'])->name('a
 Route::post('/anxiety/submit', [AnxietyTestController::class, 'submitTest'])->name('anxiety.submit')->middleware('auth');
 Route::get('/anxiety/result/{id}', [AnxietyTestController::class, 'showResult'])->name('anxiety.result');
 Route::get('/mental-health', [AnxietyTestController::class, 'showPsychologistsAndPsychiatrists'])->name('cek_kesehatan');
-
-// resiko jantungan
-Route::get('/heart-disease-risk', [HeartDiseaseRiskController::class, 'showForm']);
-Route::post('/heart-disease-risk', [HeartDiseaseRiskController::class, 'calculateRisk']);
-Route::get('/medication-recommendation', [MedicationRecommendationController::class, 'showRecommendations']);
-Route::get('/heart-disease-calculator', [HeartDiseaseCalculatorController::class, 'showCalculator']);
-Route::post('/heart-disease-calculator', [HeartDiseaseCalculatorController::class, 'calculateRisk']);
 
 
