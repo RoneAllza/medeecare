@@ -19,6 +19,8 @@ use App\Http\Controllers\AnxietyTestController;
 use App\Http\Controllers\DokterMentalController;
 use App\Http\Controllers\KesehatanMentalController;
 use App\Http\Controllers\HeartDiseaseRiskController;
+use App\Http\Controllers\ArtikelKulitController;
+use App\Http\Controllers\ObatKulitController;
 use App\Http\Controllers\MedicationRecommendationController;
 use App\Http\Controllers\HeartDiseaseCalculatorController;
 
@@ -110,8 +112,9 @@ Route::group(['middleware' => ['auth', 'checkrole:Admin']], function(){
 });
 
 // Forum yagesya
-Route::get('/forumdiskusi', [ForumDiskusiController::class, 'viewForum'])->name('forumdiskusi');
-Route::get('/formdiskusi', [FormDiskusiController::class, 'viewForm'])->name('formdiskusi');
+Route::get('/forum', [ForumDiskusiController::class, 'viewForum'])->name('forumdiskusikesehatan');
+Route::get('/pengisian-form', [FormDiskusiController::class, 'viewForm'])->name('formdiskusikesehatan');
+Route::get('/homepage-forum', [HomepageForumController::class, 'viewHomepage'])->name('homepageforum');
 
 
 //Tes Kecemasan
@@ -123,6 +126,9 @@ Route::get('/tes-kecemasan/hasil/{id}', [TesKecemasanController::class, 'lihatHa
 Route::get('/ArticleCovid', [ArticleCovidController::class, 'FuncArticleCovid'])->name('ArticleCovid');
 
 // Cek Kesehatan Kulit
+Route::get('/homepage-kesehatankulit', [HomepageKesehatanKulitController::class, 'viewHomepageKesehatanKulit'])->name('homepagekesehatankulit');
+Route::get('/homepage-kesehatankulit/artikel', [HomepageKesehatanKulitController::class, 'viewArtikel'])->name('detailArtikel');
+Route::get('/homepage-kesehatankulit/obat-kulit', [ObatKulitController::class, 'viewObatKulit'])->name('obatkulit');
 Route::get('/sehatkulit', [HomepageKesehatanKulitController::class, 'viewHomepageKesehatanKulit'])->name('homepagekesehatankulit');
 
 //CRUD Dokter Kesehatan Mental
