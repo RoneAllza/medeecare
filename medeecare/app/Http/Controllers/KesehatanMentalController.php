@@ -18,16 +18,6 @@ class KesehatanMentalController extends Controller
         return view('front.artikel_detail', compact('dokter_detail'));
     }
 
-    // function search(Request $request)
-    // {
-    //     if ($request->has('search')) {
-    //         $query = $request->input('search');
-    //         $dokter = Dokter::where('nama', 'like', '%'.$query.'%')->get(); // Assuming 'nama' is the correct column name for doctor's name
-    //     } else {
-    //         $dokter = Dokter::all();
-    //     }
-        
-    //     return view('kesehatanmental', compact('dokter'));
-    // }
+   
 }
 

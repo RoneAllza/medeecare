@@ -15,24 +15,26 @@ class GuestController extends Controller
     }
 
     public function regis_proses(Request $request)
-{
-    $request->validate([
-        'email' => 'required',
-        'password' => 'required',
-    ]);
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+            'name' => 'required' // Ensure the 'name' field is also validated as required
+        ]);
 
-    // Buat user baru hanya dengan email dan password
-    $user = User::create([
-        'email' => $request->email,
-        'password' => bcrypt($request->password),
-    ]);
+        // Create a new user with email, password, and name
+        $user = new User([
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'name' => $request->name,
+        ]);
 
-    // Jika Anda masih ingin menggunakan dd() untuk debug, letakkan di bawah pembuatan pengguna
-    dd($request->all());
+        // Save the user to the database
+        $user->save();
 
-    // Redirect ke halaman login atau halaman lain sesuai kebutuhan
-    return redirect()->route('registrasi')->with('success', 'Akun berhasil didaftarkan');
-}
+        // Redirect to the login page or another page as needed
+        return redirect()->route('login')->with('success', 'Account successfully registered');
+    }
 
 
     public function informasipenyakit()

@@ -1,4 +1,4 @@
-@extends('template.app')
+@extends('template.appMental')
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,8 +10,8 @@
         .card {
             border: 1px solid #ccc;
             border-radius: 8px;
-            margin: 16px;
-            width: 18rem;
+            margin: 16px auto; /* Center the card horizontally */
+            width: 80%; /* Make the card wider */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
@@ -38,39 +38,33 @@
             flex-wrap: wrap;
             justify-content: center;
         }
+
+        .card-psikolog {
+            margin-top: 150px; /* Added margin-top to move the card below the navbar */
+        }
+
+        .card-cek {
+            margin-top: 50px; /* Adjusted margin-top to move the card further down */
+        }
     </style>
 </head>
 <body>
-    <h1>Pilih Psikolog, Psikiater, atau Cek Gangguan Kesehatan Mental</h1>
-
     <div class="container">
         <!-- Card Psikolog -->
-        <div class="card">
-            <img src="psikolog.jpg" class="card-img-top" alt="Psikolog">
+        <div class="card card-psikolog">
             <div class="card-body">
-                <h3 class="card-title">Dr. Psikolog A</h3>
-                <p class="card-text">Spesialis Kesehatan Mental</p>
-                <button class="btn btn-primary">Pilih</button>
-            </div>
-        </div>
-
-        <!-- Card Psikiater -->
-        <div class="card">
-            <img src="psikiater.jpg" class="card-img-top" alt="Psikiater">
-            <div class="card-body">
-                <h3 class="card-title">Dr. Psikiater B</h3>
-                <p class="card-text">Spesialis Kesehatan Jiwa</p>
-                <button class="btn btn-primary">Pilih</button>
+                <h3 class="card-title">Psikolog dan Psikiater</h3>
+                <p class="card-text" style="margin-bottom: 10px;">Lihatlah psikolog atau psikiater untuk membantu Anda dalam pengujian kesehatan mental.</p>
+                <a href="{{ route('kesehatanmental') }}" class="btn btn-danger" style="margin-top: 10px; background-color: #8B0C0C;">Lihat</a>
             </div>
         </div>
 
         <!-- Card Cek Gangguan Kesehatan Mental -->
-        <div class="card">
-            <img src="cek_gangguan.jpg" class="card-img-top" alt="Cek Gangguan">
+        <div class="card card-cek">
             <div class="card-body">
                 <h3 class="card-title">Cek Gangguan Kesehatan Mental</h3>
-                <p class="card-text">Lakukan tes untuk mengetahui kondisi kesehatan mental Anda.</p>
-                <button class="btn btn-primary">Mulai Tes</button>
+                <p class="card-text" style="margin-bottom: 10px;">Lakukan tes untuk mengetahui kondisi kesehatan mental Anda.</p>
+                <a href="{{ route('anxiety.form') }}" class="btn btn-danger" style="margin-top: 10px; background-color: #8B0C0C;">Mulai Tes</a>
             </div>
         </div>
     </div>
