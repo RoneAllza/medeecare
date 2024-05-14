@@ -15,7 +15,7 @@
                     <form method="GET" action="{{ route('tes-kecemasan.pertanyaan') }}">
                         <button type="submit" class="btn btn-primary">Ulangi Tes</button>
                     </form>
-                    <a href="{{ route('tes-kecemasan.lihat-hasil') }}" class="btn btn-primary">Lihat Detail Tes</a>
+                    <a href="{{ route('tes-kecemasan.lihat-hasil', ['id' => $hasilTes->id]) }}" class="btn btn-primary">Lihat Detail Tes</a>
                 </div>
             </div>
         </div>

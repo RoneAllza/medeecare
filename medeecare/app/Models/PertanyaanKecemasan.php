@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,6 +14,6 @@ class PertanyaanKecemasan extends Model
 
     public function opsiJawaban()
     {
-        return $this->hasMany('App\OpsiJawabanKecemasan', 'id_pertanyaan_kecemasan');
+        return $this->hasMany(OpsiJawabanKecemasan::class, 'id_pertanyaan_kecemasan');
     }
 }

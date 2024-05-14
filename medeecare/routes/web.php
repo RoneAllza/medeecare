@@ -25,17 +25,6 @@ use App\Http\Controllers\HeartDiseaseCalculatorController;
 
 
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 
 Route::get('/', [UserController::class, 'homepage'])->name('homepage')->middleware('checkIfNotAdmin');
 Route::get('/SignIn', [AuthController::class, 'login'])->name('login');
@@ -108,10 +97,16 @@ Route::group(['middleware' => ['auth', 'checkrole:Admin']], function(){
 Route::get('/forumdiskusi', [ForumDiskusiController::class, 'viewForum'])->name('forumdiskusi');
 Route::get('/formdiskusi', [FormDiskusiController::class, 'viewForm'])->name('formdiskusi');
 
+// Tes Kecemasan Route
+Route::get('/tes-kecemasan', function () {
+    return view('tes_kecemasan');
+})->name('tes-kecemasan');
 
-//Tes Kecemasan
-Route::get('/tes-kecemasan', [TesKecemasanController::class, 'pertanyaan'])->name('tes-kecemasan.pertanyaan');
-Route::post('/tes-kecemasan/hasil', [TesKecemasanController::class, 'simpanHasil'])->name('tes-kecemasan.hasil');
+Route::get('/tes-kecemasan/pertanyaan', function () {
+    return view('pertanyaan_kecemasan');
+})->name('tes-kecemasan.pertanyaan');
+
+Route::post('/tes-kecemasan/simpan-hasil', [TesKecemasanController::class, 'simpanHasil'])->name('tes-kecemasan.simpan-hasil');
 Route::get('/tes-kecemasan/hasil/{id}', [TesKecemasanController::class, 'lihatHasil'])->name('tes-kecemasan.lihat-hasil');
 
 //articlecovid
