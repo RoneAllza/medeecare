@@ -13,7 +13,15 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ForumDiskusiController;
 use App\Http\Controllers\FormDiskusiController;
-use App\Models\Articlecovid;
+use App\Http\Controllers\HomepageKesehatanKulitController;
+use App\Http\Controllers\AnxietyTestController;
+use App\Http\Controllers\DokterMentalController;
+use App\Http\Controllers\KesehatanMentalController;
+use App\Http\Controllers\HeartDiseaseRiskController;
+use App\Http\Controllers\MedicationRecommendationController;
+use App\Http\Controllers\HeartDiseaseCalculatorController;
+
+
 
 
 /*
@@ -35,6 +43,14 @@ Route::get('/Logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth', 'checkrole:Pasien']], function(){
     Route::get('/Features', [UserController::class, 'feature'])->name('feature');
+    Route::get('/Profile', [UserController::class, 'profile'])->name('profile');
+    
+    // resiko jantungan
+    Route::get('/heart-disease-risk', [HeartDiseaseRiskController::class, 'showForm']);
+    Route::post('/heart-disease-risk', [HeartDiseaseRiskController::class, 'calculateRisk']);
+    Route::get('/medication-recommendation', [MedicationRecommendationController::class, 'showRecommendations']);
+    Route::get('/heart-disease-calculator', [HeartDiseaseCalculatorController::class, 'showCalculator']);
+    Route::post('/heart-disease-calculator', [HeartDiseaseCalculatorController::class, 'calculateRisk']);
 });
 
 // Route Category Artikel
@@ -53,11 +69,16 @@ Route::get('/Artikel/{id}/edit', [ArtikelController::class, 'edit'])->name('Arti
 Route::put('/Artikel/{id}/update', [ArtikelController::class, 'update'])->name('Artikel.update');
 Route::delete('/Artikel/{id}/destroy', [ArtikelController::class, 'destroy'])->name('Artikel.destroy');
 
+
 //Route Tampilan Informasi Penyakit
 Route::get('/infopenyakit', [infopenyakitController::class, 'index'])->name('informasipenyakit');
 Route::get('/Artikel/{id}', [infopenyakitController::class, 'show'])->name('isi.artikel');
-Route::get('/searchinfopenyakit', [GuestController::class, 'search'])->name('search');
-Route::get('/infopenyakit', [GuestController::class, 'informasipenyakit'])->name('informasipenyakit');
+Route::get('/ArtikelCategory/{category}', [infopenyakitController::class, 'kategori'])->name('Artikel.category');
+Route::get('/informasipenyakit/search', [infopenyakitController::class, 'search'])->name('informasipenyakit.search');
+
+// Registrasi
+Route::get('/registrasi', [GuestController:: class, 'registrasi'])->name('registrasi');
+Route::post('/regis-proses', [GuestController:: class, 'regis_proses'])->name('regis_proses');
 
 
 //admin only
@@ -88,4 +109,27 @@ Route::get('/formdiskusi', [FormDiskusiController::class, 'viewForm'])->name('fo
 
 //articlecovid
 Route::get('/ArticleCovid', [ArticleCovidController::class, 'FuncArticleCovid'])->name('ArticleCovid');
+
+// Cek Kesehatan Kulit
+Route::get('/sehatkulit', [HomepageKesehatanKulitController::class, 'viewHomepageKesehatanKulit'])->name('homepagekesehatankulit');
+
+//CRUD Dokter Kesehatan Mental
+Route::get('/Dokter', [DokterMentalController::class, 'index'])->name('Dokter');
+Route::get('/Dokter/create', [DokterMentalController::class, 'create'])->name('Dokter.create');
+Route::post('/Dokter/store', [DokterMentalController::class, 'store'])->name('Dokter.store');
+Route::get('/Dokter/{id}/edit', [DokterMentalController::class, 'edit'])->name('Dokter.edit');
+Route::put('/Dokter/{id}/update', [DokterMentalController::class, 'update'])->name('Dokter.update');
+Route::delete('/Dokter/{id}/destroy', [DokterMentalController::class, 'destroy'])->name('Dokter.destroy');
+
+///Route Tampilan Kesehatan Mental
+Route::get('/kesehatanmental', [KesehatanMentalController::class, 'index'])->name('kesehatanmental');
+Route::get('/kesehatanmental/{id}', [KesehatanMentalController::class, 'show'])->name('isi.kesehatanmental');
+Route::get('/kesehatanmental/search', [KesehatanMentalController::class, 'search'])->name('kesehatanmental.search');
+
+//Cek Kesehatan Mental
+Route::get('/anxiety/test', [AnxietyTestController::class, 'showForm'])->name('anxiety.form');
+Route::post('/anxiety/submit', [AnxietyTestController::class, 'submitTest'])->name('anxiety.submit')->middleware('auth');
+Route::get('/anxiety/result/{id}', [AnxietyTestController::class, 'showResult'])->name('anxiety.result');
+Route::get('/mental-health', [AnxietyTestController::class, 'showPsychologistsAndPsychiatrists'])->name('cek_kesehatan');
+
 
