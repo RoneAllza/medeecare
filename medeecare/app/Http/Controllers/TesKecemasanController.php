@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\HasilTesKecemasan;
-use App\PertanyaanKecemasan;
-
+use App\Models\HasilTesKecemasan;
+use App\Models\PertanyaanKecemasan;
 
 class TesKecemasanController extends Controller
 {
@@ -14,50 +13,52 @@ class TesKecemasanController extends Controller
         // Tampilkan halaman utama tes kecemasan
         return view('tes_kecemasan');
     }
-    public function pertanyaan()
-    {
-        $pertanyaan = PertanyaanKecemasan::all();
-        return view('pertanyaan_kecemasan', compact('pertanyaan'));
-    }
 
     public function simpanHasil(Request $request)
     {
-        // Validasi data
+        // Validasi data jika diperlukan
         $request->validate([
             // Definisikan aturan validasi jika diperlukan
-
         ]);
 
-        // Hitung skor berdasarkan jawaban
-        $skor = 0;
-        $jawaban = $request->except('_token');
+        // Ambil ID hasil tes dari input hidden
+        $hasilTesId = $request->input('hasil_tes_id');
+
+        // Ambil semua jawaban dari request
+        $jawaban = $request->except('_token', 'hasil_tes_id');
+
+        // Simpan hasil jawaban ke dalam database
         foreach ($jawaban as $key => $value) {
-            $skor += intval($value);
+            $opsiJawaban = new OpsiJawabanKecemasan();
+            $opsiJawaban->id_pertanyaan_kecemasan = $key;
+            $opsiJawaban->jawaban_kecemasan = $value;
+            $opsiJawaban->save();
         }
-
-        // Tentukan range berdasarkan skor
-        $range = '';
-        if ($skor >= 0 && $skor <= 10) {
-            $range = 'Ringan';
-        } elseif ($skor > 10 && $skor <= 15) {
-            $range = 'Sedang';
-        } else {
-            $range = 'Berat';
-        }
-
-        // Simpan hasil tes ke dalam database
-        $hasilTes = new HasilTesKecemasan();
-        $hasilTes->skor_hasil = $skor;
-        $hasilTes->deskripsi_hasil = $range;
-        $hasilTes->save();
 
         // Redirect ke halaman hasil tes
-        return redirect()->route('hasil-tes-kecemasan', $hasilTes->id);
+        return redirect()->route('tes-kecemasan.lihat-hasil', ['id' => $hasilTesId, 'jawaban' => $jawaban]);
     }
 
+
+    // Controller method
     public function lihatHasil($id)
     {
+        // Mengambil data hasil tes berdasarkan ID
         $hasilTes = HasilTesKecemasan::findOrFail($id);
-        return view('lihat_hasil_kecemasan', compact('hasilTes'));
+
+        // Mengambil jawaban kecemasan terkait hasil tes
+        $jawabanKecemasan = OpsiJawabanKecemasan::where('hasil_tes_id', $id)->get();
+
+        // Membuat array jawaban
+        $jawaban = [];
+        foreach ($jawabanKecemasan as $jawabanItem) {
+            $jawaban['jawaban' . $jawabanItem->id_pertanyaan_kecemasan] = [
+                'jawaban' => $jawabanItem->jawaban_kecemasan,
+                'skor' => $jawabanItem->skor
+            ];
+        }
+
+        return view('lihat_hasil_kecemasan', compact('jawaban'));
     }
+
 }

@@ -8,7 +8,7 @@
                 <div class="card-header">Pertanyaan Kecemasan</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('tes-kecemasan.hasil') }}">
+                    <form method="POST" action="{{ route('tes-kecemasan.simpan-hasil') }}">
                         @csrf
 
                          <!-- Pertanyaan 1 -->
@@ -157,7 +157,7 @@
                                 <label class="form-check-label" for="jawaban7d">Hampir Setiap Hari</label>
                             </div>
                         </div>
-
+                        <input type="hidden" name="hasil_tes_id" value="{{ $hasilTes->id }}">
                         <button type="submit" class="btn btn-primary">Kirim</button>
                     </form>
                 </div>
