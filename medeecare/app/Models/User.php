@@ -27,6 +27,9 @@ class User extends Authenticatable
         'gender',
         'phone',
         'address',
+        'personal_info', 
+        'health_history', 
+        'activity_report'
     ];
     
     public function setBdayAttribute($value)
@@ -37,9 +40,15 @@ class User extends Authenticatable
         } else {
             // Set default value or NULL if not valid
             $this->attributes['bday'] = null; // Or according to the desired default value
+        // Periksa apakah nilai tanggal valid
+        if ($value !== '0000-00-00') {
+            $this->attributes['bday'] = $value;
+        } else {
+            // Set nilai default atau NULL jika tidak valid
+            $this->attributes['bday'] = null; // Atau sesuai dengan nilai default yang diinginkan
         }
     }
-
+    }
     
 
     /**

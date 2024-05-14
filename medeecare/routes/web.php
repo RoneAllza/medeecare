@@ -15,11 +15,10 @@ use App\Http\Controllers\FormDiskusiController;
 use App\Http\Controllers\AnxietyTestController;
 use App\Http\Controllers\DokterMentalController;
 use App\Http\Controllers\KesehatanMentalController;
-use App\Http\Controllers\TestController;
-use App\Http\Controllers\ResultController;
-use App\Http\Controllers\CategoryQuestionController;
-use App\Http\Controllers\QuestionController;
-use App\Http\Controllers\OptionController;
+use App\Http\Controllers\HeartDiseaseRiskController;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -58,11 +57,16 @@ Route::get('/Artikel/{id}/edit', [ArtikelController::class, 'edit'])->name('Arti
 Route::put('/Artikel/{id}/update', [ArtikelController::class, 'update'])->name('Artikel.update');
 Route::delete('/Artikel/{id}/destroy', [ArtikelController::class, 'destroy'])->name('Artikel.destroy');
 
+
 //Route Tampilan Informasi Penyakit
 Route::get('/infopenyakit', [infopenyakitController::class, 'index'])->name('informasipenyakit');
 Route::get('/Artikel/{id}', [infopenyakitController::class, 'show'])->name('isi.artikel');
-Route::get('/searchinfopenyakit', [GuestController::class, 'search'])->name('search');
-Route::get('/infopenyakit', [GuestController::class, 'informasipenyakit'])->name('informasipenyakit');
+Route::get('/ArtikelCategory/{category}', [infopenyakitController::class, 'kategori'])->name('Artikel.category');
+Route::get('/informasipenyakit/search', [infopenyakitController::class, 'search'])->name('informasipenyakit.search');
+
+// Registrasi
+Route::get('/registrasi', [GuestController:: class, 'registrasi'])->name('registrasi');
+Route::post('/regis-proses', [GuestController:: class, 'regis_proses'])->name('regis_proses');
 
 //Route registrasi
 Route::get('/registrasi', [GuestController:: class, 'registrasi'])->name('registrasi');
@@ -113,4 +117,10 @@ Route::get('/anxiety/test', [AnxietyTestController::class, 'showForm'])->name('a
 Route::post('/anxiety/submit', [AnxietyTestController::class, 'submitTest'])->name('anxiety.submit');
 Route::get('/anxiety/result', [AnxietyTestController::class, 'showResult'])->name('anxiety.result');
 Route::get('/mental-health', [AnxietyTestController::class, 'showPsychologistsAndPsychiatrists'])->name('cek_kesehatan');
+
+
+// resiko jantungan
+Route::get('/heart-disease-risk', [HeartDiseaseRiskController::class, 'showForm']);
+Route::post('/heart-disease-risk', [HeartDiseaseRiskController::class, 'calculateRisk']);
+
 
