@@ -35,6 +35,7 @@ class User extends Authenticatable
         'personal_info', 
         'health_history', 
         'activity_report',
+        'diabetes_risk',
     ];
     
     public function setBdayAttribute($value)
