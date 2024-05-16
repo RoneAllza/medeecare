@@ -138,15 +138,7 @@
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="inputName">Name</label>
-                        <input type="text" class="form-control" id="inputName" name="name"
-                            placeholder="Full Name" required>
-                        @error('name')
-                            <small>{{ $message }}</small>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="inputEmail">Email</label>
+                        <label for="inputUsername">Email</label>
                         <input type="text" class="form-control" id="inputEmail" name="email" placeholder="Email"
                             required>
                         @error('email')
@@ -161,8 +153,24 @@
                             <small>{{ $message }}</small>
                         @enderror
                     </div>
-                </div> 
-                <button style='background-color:#8B0C0C; border-color:#8B0C0C;' type="submit"
+                    
+
+
+                    <!-- label for="forgotPass">Forgot password?</label>
+                    <input type="text" id="forgotPass">
+                    @if (session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+                    @if (session('message'))
+                        <div class="alert alert-danger">
+                            {{ session('message') }}
+                        </div>
+                    @endif
+                </div!-->
+        </div> 
+        <button style='background-color:#8B0C0C; border-color:#8B0C0C;' type="submit"
                         class="btn btn-primary">Registrasi</button>
             </form>
         </body>
