@@ -29,8 +29,6 @@ return new class extends Migration
             $table->integer('age')->nullable();
             $table->integer('bb')->nullable();
             $table->integer('tb')->nullable();
-            $table->integer('phone')->nullable();
-            $table->string('address')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

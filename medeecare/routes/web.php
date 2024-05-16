@@ -23,6 +23,14 @@ use App\Http\Controllers\ArtikelKulitController;
 use App\Http\Controllers\ObatKulitController;
 use App\Http\Controllers\MedicationRecommendationController;
 use App\Http\Controllers\HeartDiseaseCalculatorController;
+use App\Http\Controllers\DiabetesRiskController;
+use App\Http\Controllers\HomepageForumController;
+use App\Http\Controllers\DiabetesTestController;
+use App\Http\Controllers\LifestyleRecommendationController;
+use App\Http\Controllers\DiabetesPreventionController;
+
+
+
 
 
 
@@ -55,6 +63,15 @@ Route::group(['middleware' => ['auth', 'checkrole:Pasien']], function(){
     Route::get('/medication-recommendation', [MedicationRecommendationController::class, 'showRecommendations']);
     Route::get('/heart-disease-calculator', [HeartDiseaseCalculatorController::class, 'showCalculator']);
     Route::post('/heart-disease-calculator', [HeartDiseaseCalculatorController::class, 'calculateRisk']);
+
+    //resiko diabetes
+    Route::get('/diabetes-risk', [DiabetesRiskController::class, 'show'])->name('diabetes-risk.show');
+    Route::get('/diabetes-test', [DiabetesTestController::class, 'show'])->name('diabetes-test.show');
+    Route::post('/diabetes-test', [DiabetesTestController::class, 'calculate'])->name('diabetes-test.calculate');
+    Route::get('/lifestyle-recommendation', [LifestyleRecommendationController::class, 'show'])->name('lifestyle-recommendation');
+    Route::get('/diabetes-prevention', [DiabetesPreventionController::class, 'show'])->name('diabetes-prevention');
+
+
 });
 
 // Route Category Artikel
