@@ -28,7 +28,8 @@ use App\Http\Controllers\HomepageForumController;
 use App\Http\Controllers\DiabetesTestController;
 use App\Http\Controllers\LifestyleRecommendationController;
 use App\Http\Controllers\DiabetesPreventionController;
-
+use App\Http\Controllers\FormReservasiController;
+use App\Http\Controllers\ResumeReservasiController;
 
 
 
@@ -165,4 +166,6 @@ Route::post('/anxiety/submit', [AnxietyTestController::class, 'submitTest'])->na
 Route::get('/anxiety/result', [AnxietyTestController::class, 'showResult'])->name('anxiety.result');
 Route::get('/mental-health', [AnxietyTestController::class, 'showPsychologistsAndPsychiatrists'])->name('cek_kesehatan');
 
-
+// Reservasi Nomor Antrian
+Route::get('/reservasi', [FormReservasiController::class, 'viewFormReservasi'])->name('formreservasi');
+Route::get('/reservasi/resume', [ResumeReservasiController::class, 'viewResumeReservasi'])->name('resumereservasi');
