@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticleCovidController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\TestCovidController;
 use App\Http\Controllers\Web\infopenyakitController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\AdminController;
@@ -141,6 +142,11 @@ Route::get('/tes-kecemasan/hasil/{id}', [TesKecemasanController::class, 'lihatHa
 
 //articlecovid
 Route::get('/ArticleCovid', [ArticleCovidController::class, 'FuncArticleCovid'])->name('ArticleCovid');
+
+//testcovid
+Route::get('/TestCovid', [TestCovidController::class, 'FuncTestCovid'])->name('TestCovid');
+Route::post('/TestCovid/submit', [TestCovidController::class, 'submitTestCovid'])->name('covid.submit');
+Route::get('/TestCovid/result', [TestCovidController::class, 'showResultCovid'])->name('covid.result');
 
 // Cek Kesehatan Kulit
 Route::get('/homepage-kesehatankulit', [HomepageKesehatanKulitController::class, 'viewHomepageKesehatanKulit'])->name('homepagekesehatankulit');
