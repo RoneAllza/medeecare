@@ -1,5 +1,4 @@
 @extends('layouts.layoutwonavbar')
-
 @section('content')
     <!DOCTYPE html>
     <html lang="en">
@@ -9,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        <title>Login Admin</title>
+        <title>Registrasi</title>
 
         <!--Stylesheet-->
         <style media="screen">
@@ -129,13 +128,13 @@
                 <div class="shape"></div>
                 <a href="{{ route('registrasi') }}"></a>
             </div>
-            <form action="{{ route('registrasi') }}" method="post">
+            <form action="{{ route('regis_proses') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <h3>
-                    <i><span style="color: #8B0C0C;">Medeecare</span></i>
+                    <span style="color: #8B0C0C;">Medeecare</span>
                 </h3>
                 <br></br>
-                <p style="color: #8B0C0C;">Silahkan registrasi</p>
+                <p style="color: #8B0C0C;">Please register!</p>
 
                 <div class="form-row">
                     <div class="form-group">
@@ -154,8 +153,7 @@
                             <small>{{ $message }}</small>
                         @enderror
                     </div>
-                    <button style='background-color:#8B0C0C; border-color:#8B0C0C;' type="submit"
-                        class="btn btn-primary">Submit</button>
+                    
 
 
                     <!-- label for="forgotPass">Forgot password?</label>
@@ -171,7 +169,9 @@
                         </div>
                     @endif
                 </div!-->
-                
+        </div> 
+        <button style='background-color:#8B0C0C; border-color:#8B0C0C;' type="submit"
+                        class="btn btn-primary">Registrasi</button>
             </form>
         </body>
     </section>

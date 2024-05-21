@@ -19,4 +19,5 @@ class HomepageKesehatanKulitController extends Controller
         return view ('/CekKesehatanKulit/ObatKulit');
     }
 
+
 }

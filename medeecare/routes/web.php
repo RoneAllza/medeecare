@@ -19,8 +19,18 @@ use App\Http\Controllers\AnxietyTestController;
 use App\Http\Controllers\DokterMentalController;
 use App\Http\Controllers\KesehatanMentalController;
 use App\Http\Controllers\HeartDiseaseRiskController;
+use App\Http\Controllers\ArtikelKulitController;
+use App\Http\Controllers\ObatKulitController;
 use App\Http\Controllers\MedicationRecommendationController;
 use App\Http\Controllers\HeartDiseaseCalculatorController;
+use App\Http\Controllers\DiabetesRiskController;
+use App\Http\Controllers\HomepageForumController;
+use App\Http\Controllers\DiabetesTestController;
+use App\Http\Controllers\LifestyleRecommendationController;
+use App\Http\Controllers\DiabetesPreventionController;
+
+
+
 
 
 
@@ -33,6 +43,7 @@ Route::get('/Logout', [AuthController::class, 'logout'])->name('logout');
 Route::group(['middleware' => ['auth', 'checkrole:Pasien']], function(){
     Route::get('/Features', [UserController::class, 'feature'])->name('feature');
     Route::get('/Profile', [UserController::class, 'profile'])->name('profile');
+    Route::put('/Profile-Process', [UserController::class, 'updateProfile'])->name('updateProfile');
     
     // resiko jantungan
     Route::get('/heart-disease-risk', [HeartDiseaseRiskController::class, 'showForm']);
@@ -40,6 +51,15 @@ Route::group(['middleware' => ['auth', 'checkrole:Pasien']], function(){
     Route::get('/medication-recommendation', [MedicationRecommendationController::class, 'showRecommendations']);
     Route::get('/heart-disease-calculator', [HeartDiseaseCalculatorController::class, 'showCalculator']);
     Route::post('/heart-disease-calculator', [HeartDiseaseCalculatorController::class, 'calculateRisk']);
+
+    //resiko diabetes
+    Route::get('/diabetes-risk', [DiabetesRiskController::class, 'show'])->name('diabetes-risk.show');
+    Route::get('/diabetes-test', [DiabetesTestController::class, 'show'])->name('diabetes-test.show');
+    Route::post('/diabetes-test', [DiabetesTestController::class, 'calculate'])->name('diabetes-test.calculate');
+    Route::get('/lifestyle-recommendation', [LifestyleRecommendationController::class, 'show'])->name('lifestyle-recommendation');
+    Route::get('/diabetes-prevention', [DiabetesPreventionController::class, 'show'])->name('diabetes-prevention');
+
+
 });
 
 // Route Category Artikel
@@ -69,6 +89,10 @@ Route::get('/informasipenyakit/search', [infopenyakitController::class, 'search'
 Route::get('/registrasi', [GuestController:: class, 'registrasi'])->name('registrasi');
 Route::post('/regis-proses', [GuestController:: class, 'regis_proses'])->name('regis_proses');
 
+//Route registrasi
+Route::get('/registrasi', [GuestController:: class, 'registrasi'])->name('registrasi');
+Route::post('/regis-proses', [GuestController:: class, 'regis_proses'])->name('regis_proses');
+
 
 //admin only
 Route::group(['middleware' => ['auth', 'checkrole:Admin']], function(){
@@ -92,6 +116,7 @@ Route::group(['middleware' => ['auth', 'checkrole:Admin']], function(){
     Route::post('/admin/notification-settings', [AdminController::class, 'storeNotificationSettings'])->name('admin.store_notification_settings');
 });
 
+<<<<<<< HEAD
 // Forum yagesya
 Route::get('/forumdiskusi', [ForumDiskusiController::class, 'viewForum'])->name('forumdiskusi');
 Route::get('/formdiskusi', [FormDiskusiController::class, 'viewForm'])->name('formdiskusi');
@@ -100,6 +125,11 @@ Route::get('/formdiskusi', [FormDiskusiController::class, 'viewForm'])->name('fo
 Route::get('/tes-kecemasan', function () {
     return view('tes_kecemasan');
 })->name('tes-kecemasan');
+=======
+// Forum Diskusi Kesehatan
+Route::get('/forum', [ForumDiskusiController::class, 'viewForum'])->name('forumdiskusikesehatan');
+Route::get('/pengisian-form', [FormDiskusiController::class, 'viewForm'])->name('formdiskusikesehatan');
+>>>>>>> origin/MED-19-Tes-Depresi-Ilyas
 
 Route::get('/tes-kecemasan/pertanyaan', function () {
     return view('pertanyaan_kecemasan');
@@ -112,6 +142,9 @@ Route::get('/tes-kecemasan/hasil/{id}', [TesKecemasanController::class, 'lihatHa
 Route::get('/ArticleCovid', [ArticleCovidController::class, 'FuncArticleCovid'])->name('ArticleCovid');
 
 // Cek Kesehatan Kulit
+Route::get('/homepage-kesehatankulit', [HomepageKesehatanKulitController::class, 'viewHomepageKesehatanKulit'])->name('homepagekesehatankulit');
+Route::get('/homepage-kesehatankulit/artikel', [HomepageKesehatanKulitController::class, 'viewArtikel'])->name('detailArtikel');
+Route::get('/homepage-kesehatankulit/obat-kulit', [ObatKulitController::class, 'viewObatKulit'])->name('obatkulit');
 Route::get('/sehatkulit', [HomepageKesehatanKulitController::class, 'viewHomepageKesehatanKulit'])->name('homepagekesehatankulit');
 
 //CRUD Dokter Kesehatan Mental
@@ -129,8 +162,8 @@ Route::get('/kesehatanmental/search', [KesehatanMentalController::class, 'search
 
 //Cek Kesehatan Mental
 Route::get('/anxiety/test', [AnxietyTestController::class, 'showForm'])->name('anxiety.form');
-Route::post('/anxiety/submit', [AnxietyTestController::class, 'submitTest'])->name('anxiety.submit')->middleware('auth');
-Route::get('/anxiety/result/{id}', [AnxietyTestController::class, 'showResult'])->name('anxiety.result');
+Route::post('/anxiety/submit', [AnxietyTestController::class, 'submitTest'])->name('anxiety.submit');
+Route::get('/anxiety/result', [AnxietyTestController::class, 'showResult'])->name('anxiety.result');
 Route::get('/mental-health', [AnxietyTestController::class, 'showPsychologistsAndPsychiatrists'])->name('cek_kesehatan');
 
 

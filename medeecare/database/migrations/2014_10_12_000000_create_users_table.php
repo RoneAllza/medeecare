@@ -24,8 +24,11 @@ return new class extends Migration
             $table->date('bday')->nullable();
             $table->string('photo')->nullable();
             $table->enum('gender', ['Laki-laki', 'Perempuan'])->nullable();
-            $table->integer('phone')->nullable();
+            $table->string('phone')->nullable();
             $table->string('address')->nullable();
+            $table->integer('age')->nullable();
+            $table->integer('bb')->nullable();
+            $table->integer('tb')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
