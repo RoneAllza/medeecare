@@ -28,6 +28,12 @@ use App\Http\Controllers\HomepageForumController;
 use App\Http\Controllers\DiabetesTestController;
 use App\Http\Controllers\LifestyleRecommendationController;
 use App\Http\Controllers\DiabetesPreventionController;
+use App\Http\Controllers\HomepageKesehatanMentalController;
+use App\Http\Controllers\HomepageDiabetesController;
+use App\Http\Controllers\HomepageParentingController;
+use App\Http\Controllers\HomepagePregnancyController;
+use App\Http\Controllers\HomepageInfectionController;
+use App\Http\Controllers\HomepageSportController;
 
 
 
@@ -131,7 +137,12 @@ Route::group(['middleware' => ['auth', 'checkrole:Admin']], function(){
 // Forum Diskusi Kesehatan
 Route::get('/forum', [ForumDiskusiController::class, 'viewForum'])->name('forumdiskusikesehatan');
 Route::get('/pengisian-form', [FormDiskusiController::class, 'viewForm'])->name('formdiskusikesehatan');
-
+Route::get('/homepage-forum/mental', [HomepageKesehatanMentalController::class, 'viewHomepage'])->name('homepage-mental');
+Route::get('/homepage-forum/diabetes', [HomepageDiabetesController::class, 'viewHomepage'])->name('homepage-diabetes');
+Route::get('/homepage-forum/parenting', [HomepageParentingController::class, 'viewHomepage'])->name('homepage-parenting');
+Route::get('/homepage-forum/pregnancy', [HomepagePregnancyController::class, 'viewHomepage'])->name('homepage-pregnancy');
+Route::get('/homepage-forum/infection', [HomepageInfectionController::class, 'viewHomepage'])->name('homepage-infection');
+Route::get('/homepage-forum/sport', [HomepageSportController::class, 'viewHomepage'])->name('homepage-sport');
 //Tes Kecemasan
 Route::get('/tes-kecemasan', [TesKecemasanController::class, 'pertanyaan'])->name('tes-kecemasan.pertanyaan');
 Route::post('/tes-kecemasan/hasil', [TesKecemasanController::class, 'simpanHasil'])->name('tes-kecemasan.hasil');
