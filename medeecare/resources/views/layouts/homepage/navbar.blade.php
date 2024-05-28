@@ -55,7 +55,7 @@
         </div>
         @if(Auth::check())
         <div class="d-flex align-items-center d-none d-lg-block">
-            <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" name="profile-img">
                 <img src="/photoprofile/{{Auth::user()->photo}}" style="height: 5vh; width: 5vh; border-radius:50%; object-fit-cover;">
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
@@ -68,7 +68,7 @@
         </div>
         @else
         <div class="d-flex flex-row align-items-center d-none d-lg-block">
-            <a type="button" href="{{route('login')}}" class="btn btn-danger">Sign in</a>
+            <a href="{{route('login')}}" class="btn btn-danger">Sign in</a>
         </div>
         @endif
     </div>

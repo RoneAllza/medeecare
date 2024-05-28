@@ -21,6 +21,7 @@ use App\Http\Controllers\DokterMentalController;
 use App\Http\Controllers\KesehatanMentalController;
 use App\Http\Controllers\HeartDiseaseRiskController;
 use App\Http\Controllers\ArtikelKulitController;
+use App\Http\Controllers\BMIController;
 use App\Http\Controllers\ObatKulitController;
 use App\Http\Controllers\MedicationRecommendationController;
 use App\Http\Controllers\HeartDiseaseCalculatorController;
@@ -65,6 +66,9 @@ Route::group(['middleware' => ['auth', 'checkrole:Pasien']], function(){
     Route::get('/Features', [UserController::class, 'feature'])->name('feature');
     Route::get('/Profile', [UserController::class, 'profile'])->name('profile');
     Route::put('/Profile-Process', [UserController::class, 'updateProfile'])->name('updateProfile');
+    Route::get('/CalculatorBMI', [BMIController::class, 'bmi'])->name('bmi');
+    Route::post('/CalculatorBMI-Result', [BMIController::class, 'bmi_result'])->name('bmi-result');
+
     
     // resiko jantungan
     Route::get('/heart-disease-risk', [HeartDiseaseRiskController::class, 'showForm']);
