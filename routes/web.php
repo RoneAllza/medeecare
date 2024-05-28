@@ -22,10 +22,12 @@ use App\Http\Controllers\HomepageSportController;
 */
 
 Route::get('/forum', [ForumDiskusiController::class, 'viewForum'])->name('forumdiskusikesehatan');
-Route::get('/pengisian-form', [FormDiskusiController::class, 'viewForm'])->name('formdiskusikesehatan');
+Route::get('/pengisian-form', [FormDiskusiController::class, 'viewForm'])->name('formdiskusikesehatan.viewForm');
+Route::post('/submit-forum', [FormDiskusiController::class, 'submitForm'])->name('submit-forum');
 Route::get('/homepage-forum/mental', [HomepageKesehatanMentalController::class, 'viewHomepage'])->name('homepage-mental');
 Route::get('/homepage-forum/diabetes', [HomepageDiabetesController::class, 'viewHomepage'])->name('homepage-diabetes');
 Route::get('/homepage-forum/parenting', [HomepageParentingController::class, 'viewHomepage'])->name('homepage-parenting');
 Route::get('/homepage-forum/pregnancy', [HomepagePregnancyController::class, 'viewHomepage'])->name('homepage-pregnancy');
 Route::get('/homepage-forum/infection', [HomepageInfectionController::class, 'viewHomepage'])->name('homepage-infection');
 Route::get('/homepage-forum/sport', [HomepageSportController::class, 'viewHomepage'])->name('homepage-sport');
+
