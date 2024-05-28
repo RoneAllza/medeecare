@@ -29,11 +29,23 @@ class MedicationRecommendationController extends Controller
     {
         // Contoh logika rekomendasi obat-obatan berdasarkan tingkat risiko
         $medications = [
-            'Rendah' => ['Obat A', 'Obat B'],
-            'Normal' => ['Obat C', 'Obat D'],
-            'Tinggi' => ['Obat E', 'Obat F'],
-            'Sangat Tinggi' => ['Obat G', 'Obat H'],
-        ];
+            'Rendah' => [
+                'Aspirin: Digunakan untuk mengurangi risiko serangan jantung dengan mencegah pembekuan darah.', 
+                'Atorvastatin (Lipitor): Sebuah statin yang digunakan untuk menurunkan kolesterol dan mengurangi risiko penyakit jantung.'
+            ],
+            'Normal' => [
+                'Clopidogrel (Plavix): Digunakan untuk mencegah stroke, serangan jantung, dan masalah jantung lainnya dengan mencegah pembekuan darah.', 
+                'Bisoprolol: Beta-blocker yang digunakan untuk mengobati hipertensi dan mengurangi risiko kejadian kardiovaskular.'
+            ],
+            'Tinggi' => [
+                'Lisinopril: ACE inhibitor yang digunakan untuk mengobati tekanan darah tinggi dan gagal jantung.', 
+                'Metoprolol (Lopressor, Toprol-XL): Beta-blocker yang digunakan untuk mengobati angina (nyeri dada) dan hipertensi, serta untuk meningkatkan kelangsungan hidup setelah serangan jantung.'
+            ],
+            'Sangat Tinggi' => [
+                'Warfarin (Coumadin): Antikoagulan yang digunakan untuk mengurangi pembentukan bekuan darah dan mencegah stroke dan serangan jantung pada pasien dengan fibrilasi atrium atau penyakit katup jantung.', 
+                'Amiodarone (Cordarone): Digunakan untuk mengobati dan mencegah berbagai jenis aritmia jantung.'
+            ],
+        ];        
 
         return $medications[$riskLevel] ?? [];
     }
