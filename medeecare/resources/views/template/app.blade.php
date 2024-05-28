@@ -41,16 +41,17 @@
                     <!-- /nav -->
 
                     <!-- search & aside toggle -->
-                    <form action="{{ route('informasipenyakit.search') }}" method="GET">
+                    <form action="{{ route('informasipenyakit') }}" method="GET">
                     <div class="nav-btns">
                         <button class="aside-btn"><i class="fa fa-bars"></i></button>
                         <button class="search-btn"><i class="fa fa-search"></i></button>
                         <div class="search-form">
-                            <input class="search-input" type="text" name="search" placeholder="Enter Your Search ...">
+                            <input class="search-input" type="text" name="search" placeholder="Search for articles..." required>
                             <button class="search-close"><i class="fa fa-times"></i></button>
                         </div>
                     </div>
                     </form>
+                    
                     <!-- /search & aside toggle -->
                 </div>
             </div>
@@ -122,3 +123,4 @@
 </body>
 
 </html>
+

@@ -13,10 +13,10 @@ class KesehatanMentalController extends Controller
         return view('kesehatanmental', compact('dokter'));
     }
 
-    function show($id){
-        $dokter_detail = Dokter::findOrFail($id);
-        return view('front.artikel_detail', compact('dokter_detail'));
-    }
+    // function show($id){
+    //     $dokter_detail = Dokter::findOrFail($id);
+    //     return view('front.artikel_detail', compact('dokter_detail'));
+    // }
 
    
 }

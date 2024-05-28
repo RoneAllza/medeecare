@@ -28,12 +28,8 @@ use App\Http\Controllers\HomepageForumController;
 use App\Http\Controllers\DiabetesTestController;
 use App\Http\Controllers\LifestyleRecommendationController;
 use App\Http\Controllers\DiabetesPreventionController;
-
-
-
-
-
-
+use App\Http\Controllers\RekomendasiObatController;
+use App\Http\Controllers\ObatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -165,4 +161,22 @@ Route::post('/anxiety/submit', [AnxietyTestController::class, 'submitTest'])->na
 Route::get('/anxiety/result', [AnxietyTestController::class, 'showResult'])->name('anxiety.result');
 Route::get('/mental-health', [AnxietyTestController::class, 'showPsychologistsAndPsychiatrists'])->name('cek_kesehatan');
 
+//route penyakit untuk rekomendasi obat
+Route::get('/penyakit', [RekomendasiObatController::class, 'index'])->name('penyakit');
+Route::get('/penyakit/create', [RekomendasiObatController::class, 'create'])->name('penyakit.create');
+Route::post('/penyakit/store', [RekomendasiObatController::class, 'store'])->name('penyakit.store');
+Route::get('/penyakit/{id}/edit', [RekomendasiObatController::class, 'edit'])->name('penyakit.edit');
+Route::put('/penyakit/{id}/update', [RekomendasiObatController::class, 'update'])->name('penyakit.update');
+Route::delete('/penyakit/{id}/destroy', [RekomendasiObatController::class, 'destroy'])->name('penyakit.destroy');
+
+//route obat untuk rekomendasi obat
+Route::get('/obat', [ObatController::class, 'index'])->name('obat');
+Route::get('/obat/create', [ObatController::class, 'create'])->name('obat.create');
+Route::post('/obat/store', [ObatController::class, 'store'])->name('obat.store');
+Route::get('/obat/{id}/edit', [ObatController::class, 'edit'])->name('obat.edit');
+Route::put('/obat/{id}/update', [ObatController::class, 'update'])->name('obat.update');
+Route::delete('/obat/{id}/destroy', [ObatController::class, 'destroy'])->name('obat.destroy');
+
+Route::get('/rekomendasiobat', [RekomendasiObatController::class, 'rekomendasiobat'])->name('rekomendasiobat');
+Route::get('/rekomendasiobat/{penyakit}', [RekomendasiObatController::class, 'penyakit'])->name('rekomendasiobat.penyakit');
 
