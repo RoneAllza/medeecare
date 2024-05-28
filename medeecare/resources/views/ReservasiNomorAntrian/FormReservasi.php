@@ -33,7 +33,8 @@
         <h2>Form Reservasi Nomor Antrian</h2>
 
         <p class="py-3">
-        <form>
+        <form method="post" action="{{ route('submit-reservasi') }}">
+        @csrf
             <div class="mb-3 row">
                 <label for="inputNamaLengkap" class="col-sm-2 col-form-label">Nama Lengkap</label>
                 <div class="col-sm-10">
