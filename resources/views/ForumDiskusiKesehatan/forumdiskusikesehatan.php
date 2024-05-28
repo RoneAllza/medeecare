@@ -68,7 +68,7 @@
                     </div>
                 </div>
                 <p class="py-1">
-                <a href="/homepage-forum/mental" class="btn btn-primary btn-sm">Lihat Komunitas</a>
+                <a href="/homepage-forum/mental" class="btn btn-primary">Lihat Komunitas</a>
           </div>
       </div>
   </div>
@@ -99,7 +99,7 @@
                     </div>
                 </div>
                 <p class="py-1">
-                <a href="/homepage-forum/diabetes" class="btn btn-primary btn-sm">Lihat Komunitas</a>
+                <a href="/homepage-forum/diabetes" class="btn btn-primary">Lihat Komunitas</a>
           </div>
       </div>
   </div>
@@ -131,7 +131,7 @@
                     </div>
                 </div>
                 <p class="py-1">
-                <a href="/homepage-forum/parenting" class="btn btn-primary btn-sm">Lihat Komunitas</a>
+                <a href="/homepage-forum/parenting" class="btn btn-primary">Lihat Komunitas</a>
           </div>
       </div>
   </div>
@@ -162,7 +162,7 @@
                     </div>
                 </div>
                 <p class="py-1">
-                <a href="/homepage-forum/pregnancy" class="btn btn-primary btn-sm">Lihat Komunitas</a>
+                <a href="/homepage-forum/pregnancy" class="btn btn-primary">Lihat Komunitas</a>
           </div>
       </div>
   </div>
@@ -193,7 +193,7 @@
                     </div>
                 </div>
                 <p class="py-1">
-                <a href="/homepage-forum/infection" class="btn btn-primary btn-sm">Lihat Komunitas</a>
+                <a href="/homepage-forum/infection" class="btn btn-primary">Lihat Komunitas</a>
           </div>
       </div>
   </div>
@@ -224,7 +224,7 @@
                     </div>
                 </div>
                 <p class="py-1">
-                <a href="/homepage-forum/sport" class="btn btn-primary btn-sm">Lihat Komunitas</a>
+                <a href="/homepage-forum/sport" class="btn btn-primary">Lihat Komunitas</a>
           </div>
       </div>
   </div>
@@ -232,4 +232,3 @@
 
 </body>
 </html>
-
