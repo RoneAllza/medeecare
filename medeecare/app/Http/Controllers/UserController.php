@@ -60,4 +60,13 @@ class UserController extends Controller
 
         return redirect('/Profile')->with('success', 'Profile updated successfully!');
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->get('query');
+        $results = Feature::where('name', 'LIKE', "%{$query}%")->get();
+        $link = Feature::select('link');
+
+        return response()->json($results);
+    }
 }

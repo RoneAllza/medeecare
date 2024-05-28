@@ -1,3 +1,16 @@
+<style>
+    .search-results-container {
+        position: relative;
+    }
+
+    #search-results {
+        position: absolute;
+        width: 100%;
+        z-index: 1000;
+        max-height: 200px;
+        overflow-y: auto;
+    }
+</style>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg sticky-top p-2 bg-light border-bottom">
     <div class="container-fluid mx-3">
@@ -5,9 +18,13 @@
             <!-- medeecare -->
             <img src="{{url('assets/img/logo merah.png')}}" alt="medeecare">
         </a>
-        <form class="d-flex d-none d-md-block" role="search">
-            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-        </form>
+        <div class="search-results-container">
+            <form class="d-flex d-none d-md-block" role="search">
+                <input class="form-control" id="search" type="search" placeholder="Search" aria-label="Search" autocomplete="off">
+            </form>
+            <div id="search-results" class="list-group"></div>
+        </div>
+        <div id="search-results" class="list-group position-absolute"></div>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLightNavbar" aria-controls="offcanvasLightNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -70,3 +87,44 @@
     </div>
 </nav>
 <!-- End Navbar -->
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#search').on('input', function() {
+            var query = $(this).val();
+            if (query.length >= 1) {
+                $.ajax({
+                    url: "{{ route('search') }}",
+                    type: "GET",
+                    data: {
+                        'query': query
+                    },
+                    success: function(data) {
+                        $('#search-results').empty();
+                        if (data.length > 0) {
+                            $.each(data, function(index, result) {
+                                // Menggunakan result.link untuk membuat tautan
+                                var link = result.link ? result.link : '#';
+                                $('#search-results').append('<a href="' + link + '" class="list-group-item list-group-item-action">' + result.name + '</a>');
+                            });
+                            $('#search-results').dropdown('show');
+                        } else {
+                            $('#search-results').append('<div class="list-group-item">No results found</div>');
+                            $('#search-results').dropdown('show');
+                        }
+                    }
+                });
+            } else {
+                $('#search-results').empty();
+            }
+        });
+
+        $(document).on('click', function(event) {
+            if (!$(event.target).closest('#search, #search-results').length) {
+                $('#search-results').empty();
+            }
+        });
+    });
+</script>
