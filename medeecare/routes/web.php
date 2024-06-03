@@ -152,6 +152,7 @@ Route::get('/homepage-forum/parenting', [HomepageParentingController::class, 'vi
 Route::get('/homepage-forum/pregnancy', [HomepagePregnancyController::class, 'viewHomepage'])->name('homepage-pregnancy');
 Route::get('/homepage-forum/infection', [HomepageInfectionController::class, 'viewHomepage'])->name('homepage-infection');
 Route::get('/homepage-forum/sport', [HomepageSportController::class, 'viewHomepage'])->name('homepage-sport');
+
 //Tes Kecemasan
 Route::get('/tes-kecemasan', [TesKecemasanController::class, 'pertanyaan'])->name('tes-kecemasan.pertanyaan');
 Route::post('/tes-kecemasan/hasil', [TesKecemasanController::class, 'simpanHasil'])->name('tes-kecemasan.hasil');
@@ -211,4 +212,5 @@ Route::get('/rekomendasiobat/{penyakit}', [RekomendasiObatController::class, 'pe
 
 // Reservasi Nomor Antrian
 Route::get('/reservasi', [FormReservasiController::class, 'viewFormReservasi'])->name('formreservasi');
+Route::post('/submit-reservasi', [FormReservasiController::class, 'submitForm'])->name('submit-reservasi');
 Route::get('/reservasi/resume', [ResumeReservasiController::class, 'viewResumeReservasi'])->name('resumereservasi');
