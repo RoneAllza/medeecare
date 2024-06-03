@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ArticleCovidController extends Controller
 {
     public function FuncArticleCovid(){
-        return view ('ArticleCovid');
+        return view ('Test-Covid.ArticleCovid');
     }
 
 }

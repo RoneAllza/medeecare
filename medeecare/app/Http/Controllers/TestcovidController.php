@@ -2,46 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class AnxietyTestController extends Controller
+class TestCovidController extends Controller
 {
-    // Menampilkan daftar psikolog dan psikiater
-    public function showPsychologistsAndPsychiatrists()
-    {
-        // Data psikolog dan psikiater
-        $psychologists = [
-            // Data psikolog
-        ];
-
-        $psychiatrists = [
-            // Data psikiater
-        ];
-
-        // Tampilkan view dengan data psikolog dan psikiater
-        return view('anxiety_test.Cek_Kesehatan', compact('psychologists', 'psychiatrists'));
+    public function FuncTestCovid(){
+        return view ('Test-Covid.TestCovid');
     }
 
-    // Menampilkan form tes kecemasan
-    public function showForm()
+    public function submitTestCovid(Request $request)
     {
-        return view('anxiety_test.form');
-    }
-
-    // Menghitung skor berdasarkan jawaban tes
-    public function submitTest(Request $request)
-    {
-        // Proses penghitungan skor
         $score = $this->calculateScore($request->all());
-        
-        // Tentukan tingkat kecemasan berdasarkan skor
-        $anxietyLevel = $this->determineAnxietyLevel($score);
-
-        // Redirect ke halaman hasil tes dengan menyertakan skor dan tingkat kecemasan
-        return redirect()->route('anxiety_test.result', ['score' => $score, 'anxiety_level' => $anxietyLevel]);
+        $covidLevel = $this->determineCovidLevel($score);
+        return redirect()->route('TestCovid.ResultCovid', ['score' => $score, 'covid_level' => $covidLevel]);
     }
 
-    // Fungsi untuk menghitung skor berdasarkan jawaban
     public function calculateScore($answers)
     {
         // Inisialisasi skor awal
@@ -72,7 +48,7 @@ class AnxietyTestController extends Controller
     }
 
     // Fungsi untuk menentukan tingkat kecemasan berdasarkan skor
-    private function determineAnxietyLevel($score)
+    private function determineCovidLevel($score)
     {
         if ($score >= 10) {
             return 'Tinggi';
@@ -84,14 +60,14 @@ class AnxietyTestController extends Controller
     }
 
     // Menampilkan hasil tes kecemasan berdasarkan skor
-    public function showResult(Request $request)
+    public function showResultCovid(Request $request)
     {
         // Ambil skor dan tingkat kecemasan dari request
         $score = $request->input('score');
-        $anxietyLevel = $request->input('anxiety_level'); // Update to get anxiety_level from request
+        $covidLevel = $request->input('covid_level'); // Update to get anxiety_level from request
 
         // Tampilkan view hasil tes dengan skor dan tingkat kecemasan yang diberikan
-        return view('anxiety_test.result', compact('score', 'anxietyLevel'));
+        return view('Test-Covid.ResultCovid', compact('score', 'covidLevel'));
     }
 }
 

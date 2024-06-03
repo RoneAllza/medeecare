@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 class FormDiskusiController extends Controller
 {
     public function viewForm(){
-       return view ('formdiskusikesehatan');
+       return view ('/ForumDiskusiKesehatan/formdiskusikesehatan');
    }
    
 } 
+

@@ -47,6 +47,7 @@ abstract class DuskTestCase extends BaseTestCase
         );
     }
 
+
     /**
      * Start the ChromeDriver process.
      *
@@ -108,4 +109,5 @@ abstract class DuskTestCase extends BaseTestCase
     {
         static::$chromeProcess = $process;
     }
+
 }

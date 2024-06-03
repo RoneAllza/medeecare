@@ -17,7 +17,7 @@
     <div class="d-flex flex-row d-grid gap-5 row-cols-1 row-cols-md-5 justify-content-center ">
         @foreach($features as $feature)
         <div class="d-flex flex-column align-items-center">
-            <a href="" class="text-decoration-none rounded">
+            <a href="{{$feature->link}}" class="text-decoration-none rounded">
                 <div class="card text-center text-dark boder border-0 shadow p-3 bg-body-tertiary" style="width: 16rem;">
                     <img src="/assets/img/{{$feature->photo}}" class="card-img-top" alt="{{$feature->photo}}">
                     <div class="card-body">

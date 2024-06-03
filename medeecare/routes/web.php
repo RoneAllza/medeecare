@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticleCovidController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\TestCovidController;
 use App\Http\Controllers\Web\infopenyakitController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\AdminController;
@@ -20,6 +21,7 @@ use App\Http\Controllers\DokterMentalController;
 use App\Http\Controllers\KesehatanMentalController;
 use App\Http\Controllers\HeartDiseaseRiskController;
 use App\Http\Controllers\ArtikelKulitController;
+use App\Http\Controllers\BMIController;
 use App\Http\Controllers\ObatKulitController;
 use App\Http\Controllers\MedicationRecommendationController;
 use App\Http\Controllers\HeartDiseaseCalculatorController;
@@ -30,6 +32,20 @@ use App\Http\Controllers\LifestyleRecommendationController;
 use App\Http\Controllers\DiabetesPreventionController;
 use App\Http\Controllers\RekomendasiObatController;
 use App\Http\Controllers\ObatController;
+use App\Http\Controllers\FormReservasiController;
+use App\Http\Controllers\ResumeReservasiController;
+use App\Http\Controllers\HomepageKesehatanMentalController;
+use App\Http\Controllers\HomepageDiabetesController;
+use App\Http\Controllers\HomepageParentingController;
+use App\Http\Controllers\HomepagePregnancyController;
+use App\Http\Controllers\HomepageInfectionController;
+use App\Http\Controllers\HomepageSportController;
+
+
+
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +68,9 @@ Route::group(['middleware' => ['auth', 'checkrole:Pasien']], function(){
     Route::get('/Features', [UserController::class, 'feature'])->name('feature');
     Route::get('/Profile', [UserController::class, 'profile'])->name('profile');
     Route::put('/Profile-Process', [UserController::class, 'updateProfile'])->name('updateProfile');
+    Route::get('/CalculatorBMI', [BMIController::class, 'bmi'])->name('bmi');
+    Route::post('/CalculatorBMI-Result', [BMIController::class, 'bmi_result'])->name('bmi-result');
+
     
     // resiko jantungan
     Route::get('/heart-disease-risk', [HeartDiseaseRiskController::class, 'showForm']);
@@ -127,7 +146,12 @@ Route::group(['middleware' => ['auth', 'checkrole:Admin']], function(){
 // Forum Diskusi Kesehatan
 Route::get('/forum', [ForumDiskusiController::class, 'viewForum'])->name('forumdiskusikesehatan');
 Route::get('/pengisian-form', [FormDiskusiController::class, 'viewForm'])->name('formdiskusikesehatan');
-
+Route::get('/homepage-forum/mental', [HomepageKesehatanMentalController::class, 'viewHomepage'])->name('homepage-mental');
+Route::get('/homepage-forum/diabetes', [HomepageDiabetesController::class, 'viewHomepage'])->name('homepage-diabetes');
+Route::get('/homepage-forum/parenting', [HomepageParentingController::class, 'viewHomepage'])->name('homepage-parenting');
+Route::get('/homepage-forum/pregnancy', [HomepagePregnancyController::class, 'viewHomepage'])->name('homepage-pregnancy');
+Route::get('/homepage-forum/infection', [HomepageInfectionController::class, 'viewHomepage'])->name('homepage-infection');
+Route::get('/homepage-forum/sport', [HomepageSportController::class, 'viewHomepage'])->name('homepage-sport');
 //Tes Kecemasan
 Route::get('/tes-kecemasan', [TesKecemasanController::class, 'pertanyaan'])->name('tes-kecemasan.pertanyaan');
 Route::post('/tes-kecemasan/hasil', [TesKecemasanController::class, 'simpanHasil'])->name('tes-kecemasan.hasil');
@@ -135,6 +159,11 @@ Route::get('/tes-kecemasan/hasil/{id}', [TesKecemasanController::class, 'lihatHa
 
 //articlecovid
 Route::get('/ArticleCovid', [ArticleCovidController::class, 'FuncArticleCovid'])->name('ArticleCovid');
+
+//testcovid
+Route::get('/TestCovid', [TestCovidController::class, 'FuncTestCovid'])->name('TestCovid');
+Route::post('/TestCovid/submit', [TestCovidController::class, 'submitTestCovid'])->name('covid.submit');
+Route::get('/TestCovid/result', [TestCovidController::class, 'showResultCovid'])->name('covid.result');
 
 // Cek Kesehatan Kulit
 Route::get('/homepage-kesehatankulit', [HomepageKesehatanKulitController::class, 'viewHomepageKesehatanKulit'])->name('homepagekesehatankulit');
@@ -180,3 +209,6 @@ Route::delete('/obat/{id}/destroy', [ObatController::class, 'destroy'])->name('o
 Route::get('/rekomendasiobat', [RekomendasiObatController::class, 'rekomendasiobat'])->name('rekomendasiobat');
 Route::get('/rekomendasiobat/{penyakit}', [RekomendasiObatController::class, 'penyakit'])->name('rekomendasiobat.penyakit');
 
+// Reservasi Nomor Antrian
+Route::get('/reservasi', [FormReservasiController::class, 'viewFormReservasi'])->name('formreservasi');
+Route::get('/reservasi/resume', [ResumeReservasiController::class, 'viewResumeReservasi'])->name('resumereservasi');
