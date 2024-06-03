@@ -30,48 +30,40 @@
         </div>
       </nav>
   
-<form>
-  <p class="py-1">
+<form method="post" action="{{ route('submit-forum') }}">
+  @csrf
     <div class="container mt-5">
-      <label for="formGroupExampleInput" class="form-label">Judul</label>
-      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Masukkan judul yang menarik untuk Anda bagikan ke Forum">
-</div>
-
-    <div class="mb-3">
-    <div class="container mt-5">
-     <label for="formGroupExampleInput2" class="form-label">Deskripsi</label>
-     <textarea class="form-control" id="formGroupExampleInput2" rows="3" placeholder="Isikan dengan pertanyaan atau pernyataan yang ingin Anda bagikan ke Forum"></textarea>
-</div>
-
-
-    <div class="container mt-5">
-    <label for="inputState" class="form-label">Pilih Komunitas</label>
-    <select id="inputState" class="form-select">
-      <option value="1">Kesehatan Mental</option>
-      <option value="2">Diabetes</option>
-      <option value="3">Parenting</option>
-      <option value="4">Kehamilan dan Anak</option>
-      <option value="5">Penyakit Infeksi</option>
-      <option value="6">Olahraga</option>
-    </select>
-
-  <p class="py-1">
-    <div class="col-12">
-    <div class="container mt-5">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck">
-      <label class="form-check-label" for="gridCheck">
-        Post sebagai Anonim?
-      </label>
+        <label for="formGroupExampleInput" class="form-label">Judul</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" name="judul" placeholder="Masukkan judul yang menarik untuk Anda bagikan ke Forum">
     </div>
-  </div>
 
-  <p class="py-1">
-    <div class="col-12">
-    <div class="mb-3 form-check">
-    <button type="submit" class="btn btn-primary">Unggah ke Forum</button>
-  </div>
+    <div class="container mt-5">
+        <label for="formGroupExampleInput2" class="form-label">Deskripsi</label>
+        <textarea class="form-control" id="formGroupExampleInput2" name="deskripsi" rows="3" placeholder="Isikan dengan pertanyaan atau pernyataan yang ingin Anda bagikan ke Forum"></textarea>
+    </div>
+
+    <div class="container mt-5">
+        <label for="inputState" class="form-label">Pilih Komunitas</label>
+        <select id="inputState" class="form-select" name="komunitas">
+            <option value="Kesehatan Mental">Kesehatan Mental</option>
+            <option value="Diabetes">Diabetes</option>
+            <option value="Parenting">Parenting</option>
+            <option value="Kehamilan dan Anak">Kehamilan dan Anak</option>
+            <option value="Penyakit Infeksi">Penyakit Infeksi</option>
+            <option value="Olahraga">Olahraga</option>
+        </select>
+    </div>
+
+    <div class="container mt-5">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck" name="anonim">
+            <label class="form-check-label" for="gridCheck">
+                Post sebagai Anonim?
+            </label>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <button type="submit" class="btn btn-primary">Unggah ke Forum</button>
+    </div>
 </form>
-
-</body>
-</html>
