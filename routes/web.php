@@ -116,7 +116,15 @@ Route::group(['middleware' => ['auth', 'checkrole:Admin']], function(){
     Route::post('/admin/notification-settings', [AdminController::class, 'storeNotificationSettings'])->name('admin.store_notification_settings');
 });
 
-//Forum Diskusi Kesehatan
+// Forum yagesya
+Route::get('/forumdiskusi', [ForumDiskusiController::class, 'viewForum'])->name('forumdiskusi');
+Route::get('/formdiskusi', [FormDiskusiController::class, 'viewForm'])->name('formdiskusi');
+
+// Tes Kecemasan Route
+Route::get('/tes-kecemasan', function () {
+    return view('tes_kecemasan');
+})->name('tes-kecemasan');
+// Forum Diskusi Kesehatan
 Route::get('/forum', [ForumDiskusiController::class, 'viewForum'])->name('forumdiskusikesehatan');
 Route::get('/pengisian-form', [FormDiskusiController::class, 'viewForm'])->name('formdiskusikesehatan');
 
