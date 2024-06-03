@@ -63,6 +63,7 @@ Route::get('/', [UserController::class, 'homepage'])->name('homepage')->middlewa
 Route::get('/SignIn', [AuthController::class, 'login'])->name('login');
 Route::post('/SignIn-Process', [AuthController::class, 'login_process'])->name('login-process');
 Route::get('/Logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/search', [UserController::class, 'search'])->name('search');
 
 Route::group(['middleware' => ['auth', 'checkrole:Pasien']], function(){
     Route::get('/Features', [UserController::class, 'feature'])->name('feature');
