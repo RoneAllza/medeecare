@@ -138,7 +138,15 @@
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="inputUsername">Email</label>
+                        <label for="inputName">Name</label>
+                        <input type="text" class="form-control" id="inputName" name="name"
+                            placeholder="Full Name" required>
+                        @error('name')
+                            <small>{{ $message }}</small>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail">Email</label>
                         <input type="text" class="form-control" id="inputEmail" name="email" placeholder="Email"
                             required>
                         @error('email')
@@ -148,29 +156,17 @@
                     <div class="form-group">
                         <label for="inputPassword">Password</label>
                         <input type="password" class="form-control" id="inputPassword" name="password"
-                            placeholder="Password" required>
+                            placeholder="Password" pattern="^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$" title="Password must contain at least one letter and one number" required>
                         @error('password')
-                            <small>{{ $message }}</small>
+                            @if($message == 'The password format is invalid.')
+                                <small>Password must contain at least one letter and one number.</small>
+                            @else
+                                <small>{{ $message }}</small>
+                            @endif
                         @enderror
                     </div>
-                    
-
-
-                    <!-- label for="forgotPass">Forgot password?</label>
-                    <input type="text" id="forgotPass">
-                    @if (session('error'))
-                        <div class="alert alert-danger">
-                            {{ session('error') }}
-                        </div>
-                    @endif
-                    @if (session('message'))
-                        <div class="alert alert-danger">
-                            {{ session('message') }}
-                        </div>
-                    @endif
-                </div!-->
-        </div> 
-        <button style='background-color:#8B0C0C; border-color:#8B0C0C;' type="submit"
+                </div> 
+                <button style='background-color:#8B0C0C; border-color:#8B0C0C;' type="submit"
                         class="btn btn-primary">Registrasi</button>
             </form>
         </body>

@@ -1,4 +1,5 @@
 @extends('template.app')
+
 @push('nav')
     <ul class="nav-menu nav navbar-nav">
         @foreach ($Category as $item)
@@ -6,6 +7,7 @@
         @endforeach
     </ul>
 @endpush
+
 @section('content')
 <!-- section -->
 <div class="section">
@@ -13,12 +15,11 @@
     <div class="container">
         <!-- row -->
         <div class="row">
-
             <!-- post Atas -->
             @foreach($artikel as $a)
             <div class="col-md-6">
                 <div class="post post-thumb">
-                    <a class="post-img" href="#"><img src="{{ asset('uploads/'.$a->gambar) }}" alt=""width="300" height="300"></a>
+                    <a class="post-img" href="#"><img src="{{ asset('uploads/'.$a->gambar) }}" alt="" width="300" height="300"></a>
                     <div class="post-body">
                         <div class="post-meta">
                             <a class="post-category cat-2" href="category.html">{{$a->category->nama_kategori}}</a>
@@ -26,7 +27,7 @@
                         </div>
                         <h3 class="post-title"><a href="{{ route('isi.artikel', $a->id) }}">{{$a->judul}}</a></h3>
                     </div>
-                    </div>
+                </div>
             </div>
             @endforeach
             <!-- /post Atas -->
@@ -54,8 +55,7 @@
                     @foreach ($artikelall as $all)
                     <div class="col-md-6">
                         <div class="post">
-                            <a class="post-img" href="#"><img src="{{ asset('uploads/'.$all->gambar) }}"
-                                    alt="" height="250px" width="250px"></a>
+                            <a class="post-img" href="#"><img src="{{ asset('uploads/'.$all->gambar) }}" alt="" height="250px" width="250px"></a>
                             <div class="post-body">
                                 <div class="post-meta">
                                     <a class="post-category cat-2" href="#">{{$all->Category->nama_kategori}}</a>
@@ -79,14 +79,13 @@
                     </div>
                     @foreach($artikelterkait as $terkait)
                     <div class="post post-widget">
-                        <a class="post-img" href="blog-post.html"><img src="{{ asset('uploads/'.$terkait->gambar) }}"
-                                alt="" width="80px" height="80px"></a>
+                        <a class="post-img" href="blog-post.html"><img src="{{ asset('uploads/'.$terkait->gambar) }}" alt="" width="80px" height="80px"></a>
                         <div class="post-body">
                             <h3 class="post-title"><a href="blog-post.html">{{$terkait->judul}}</a></h3>
                         </div>
                     </div>
+                    @endforeach
                 </div>
-                @endforeach
             </div>
         </div>
         <!-- /row Terkait -->
@@ -94,5 +93,4 @@
     <!-- /container -->
 </div>
 <!-- /section -->
-
 @endsection
