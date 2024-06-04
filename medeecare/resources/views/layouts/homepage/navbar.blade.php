@@ -55,8 +55,8 @@
                             Layanan
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Forum Diskusi Kesehatan</a></li>
-                            <li><a class="dropdown-item" href="#">Rujuk Rumah Sakit</a></li>
+                            <li><a class="dropdown-item" href="/diabetes-risk">Layanan Diabetes</a></li>
+                            <li><a class="dropdown-item" href="/heart-disease-risk">Layanan Resiko Jantung</a></li>
                             <li><a class="dropdown-item" href="#">Informasi Penyakit</a></li>
                             <li><a class="dropdown-item" href="/TestCovid">Cek Indikasi Covid-19</a></li>
                         </ul>
