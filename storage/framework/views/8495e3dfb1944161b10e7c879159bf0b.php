@@ -52,7 +52,7 @@
         <?php if(Auth::check()): ?>
         <div class="d-flex align-items-center d-none d-lg-block">
             <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="/assets/img/" style="height: 5vh; width: 5vh; border-radius:50%; object-fit-cover;">
+                <img src="/photoprofile/<?php echo e(Auth::user()->photo); ?>" style="height: 5vh; width: 5vh; border-radius:50%; object-fit-cover;">
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
                 <li><a class="dropdown-item" href="<?php echo e(route('profile')); ?>"><i class="fa-solid fa-user" style="width: 3vh;"></i>Your Profile</a></li>

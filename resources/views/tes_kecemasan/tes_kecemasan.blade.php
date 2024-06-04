@@ -15,7 +15,7 @@
                         <li><i class="bi bi-thick"></i> Berisi 7 pertanyaan menggunakan skala 0 sampai 3 untuk menghitung skor akhir.</li>
                         <li><i class="bi bi-thick"></i> Skor kamu bersifat rahasia. Ahli kesehatan mental hanya dapat melihat informasimu jika kamu membagikannya.</li>
                     </ul>
-                    <a href="{{ route('tes-kecemasan.pertanyaan') }}" class="btn btn-primary">Mulai Tes</a>
+                    <a href="{{ route('tes_kecemasan.pertanyaan') }}" class="btn btn-primary">Mulai Tes</a>
                 </div>
             </div>
         </div>

@@ -1,168 +1,88 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    body {
+        font-family: Arial, sans-serif; /* Gunakan font Arial atau font sans-serif */
+        color: #333; /* Warna teks */
+        background-color: #f8f9fa; /* Background putih keabu-abuan */
+    }
+
+    .container {
+        max-width: 700px; /* Lebar maksimum kontainer */
+        margin: auto; /* Posisi tengah */
+        text-align: left; /* Teks berada di kiri */
+        padding: 30px; /* Padding kontainer */
+        background-color: #FFFFFF; /* Background putih */
+        border-radius: 10px; /* Sudut bulatan */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Efek bayangan */
+        margin-top: 20px; /* Jarak atas dari konten */
+    }
+
+    h2 {
+        color: #800000; /* Warna abu-abu tua */
+        margin-bottom: 20px; /* Jarak bawah dari judul */
+    }
+
+    p {
+        color: #6c757d; /* Warna abu-abu */
+        margin-bottom: 20px; /* Jarak bawah dari paragraf */
+    }
+
+    .form-group {
+        margin-bottom: 30px; /* Jarak bawah dari form group */
+    }
+
+    /* .form-group label {
+        font-weight: bold; /* Tebalkan label */
+    } */
+
+    .form-group input[type="radio"] {
+        margin-right: 10px; /* Jarak kanan dari radio button */
+    }
+
+    .btn-primary {
+        background-color: #A91D3A; /* Warna biru */
+        border-color: #A91D3A; /* Warna border biru */
+        color: #FFFFFF;
+        padding: 10px 20px; /* Besar padding tombol */
+        font-size: 14px; /* Besar font tombol */
+        border-radius: 8px; /* Sudut bulatan tombol */
+        transition: background-color 0.3s ease; /* Animasi perubahan warna tombol */
+    }
+
+    .btn-primary:hover {
+        background-color: #C73659; /* Warna biru yang sedikit lebih gelap saat hover */
+        border-color: #C73659; /* Warna border biru saat hover */
+    }
+</style>
+
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Pertanyaan Depresi</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('tes-depresi.simpan-hasil') }}">
-                        @csrf
-
-                         <!-- Pertanyaan 1 -->
-                         <div class="form-group">
-                            <label for="pertanyaan1">1. Merasa gugup, cemas, atau gelisah?</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jawaban1" id="jawaban1a" value="0">
-                                <label class="form-check-label" for="jawaban1a">Tidak pernah</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jawaban1" id="jawaban1b" value="1">
-                                <label class="form-check-label" for="jawaban1b">Beberapa Hari</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jawaban1" id="jawaban1c" value="2">
-                                <label class="form-check-label" for="jawaban1c">Sebagian Besar Hari</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jawaban1" id="jawaban1d" value="3">
-                                <label class="form-check-label" for="jawaban1d">Hampir Setiap Hari</label>
-                            </div>
-                        </div>
-
-                        <!-- Pertanyaan 2 -->
-                        <div class="form-group">
-                            <label for="pertanyaan2">2. Tidak dapat menghentikan atau mengontrol kekhawatiran?</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jawaban2" id="jawaban2a" value="0">
-                                <label class="form-check-label" for="jawaban2a">Tidak pernah</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jawaban2" id="jawaban2b" value="1">
-                                <label class="form-check-label" for="jawaban2b">Beberapa Hari</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jawaban2" id="jawaban2c" value="2">
-                                <label class="form-check-label" for="jawaban2c">Sebagian Besar Hari</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jawaban2" id="jawaban2d" value="3">
-                                <label class="form-check-label" for="jawaban2d">Hampir Setiap Hari</label>
-                            </div>
-                        </div>
-
-                        <!-- Pertanyaan 3 -->
-                        <div class="form-group">
-                            <label for="pertanyaan3">3. Terlalu banyak mengkhawatirkan berbagai hal?</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jawaban3" id="jawaban3a" value="0">
-                                <label class="form-check-label" for="jawaban3a">Tidak pernah</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jawaban3" id="jawaban3b" value="1">
-                                <label class="form-check-label" for="jawaban3b">Beberapa Hari</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jawaban3" id="jawaban3c" value="2">
-                                <label class="form-check-label" for="jawaban3c">Sebagian Besar Hari</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jawaban3" id="jawaban3d" value="3">
-                                <label class="form-check-label" for="jawaban3d">Hampir Setiap Hari</label>
-                            </div>
-                        </div>
-
-                        <!-- Pertanyaan 4 -->
-                        <div class="form-group">
-                            <label for="pertanyaan4">4. Merasa gugup, cemas, atau gelisah?</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jawaban4" id="jawaban4a" value="0">
-                                <label class="form-check-label" for="jawaban4a">Tidak pernah</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jawaban4" id="jawaban4b" value="1">
-                                <label class="form-check-label" for="jawaban4b">Beberapa Hari</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jawaban4" id="jawaban4c" value="2">
-                                <label class="form-check-label" for="jawaban4c">Sebagian Besar Hari</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jawaban4" id="jawaban4d" value="3">
-                                <label class="form-check-label" for="jawaban4d">Hampir Setiap Hari</label>
-                            </div>
-                        </div> 
-
-                        <!-- Pertanyaan 5 -->
-                        <div class="form-group">
-                            <label for="pertanyaan5">5. Merasa gugup, cemas, atau gelisah?</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jawaban5" id="jawaban5a" value="0">
-                                <label class="form-check-label" for="jawaban5a">Tidak pernah</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jawaban5" id="jawaban5b" value="1">
-                                <label class="form-check-label" for="jawaban5b">Beberapa Hari</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jawaban5" id="jawaban5c" value="2">
-                                <label class="form-check-label" for="jawaban5c">Sebagian Besar Hari</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jawaban5" id="jawaban5d" value="3">
-                                <label class="form-check-label" for="jawaban5d">Hampir Setiap Hari</label>
-                            </div>
-                        </div>
-
-                        <!-- Pertanyaan 6 -->
-                        <div class="form-group">
-                            <label for="pertanyaan6">6. Merasa gugup, cemas, atau gelisah?</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jawaban6" id="jawaban6a" value="0">
-                                <label class="form-check-label" for="jawaban6a">Tidak pernah</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jawaban6" id="jawaban6b" value="1">
-                                <label class="form-check-label" for="jawaban6b">Beberapa Hari</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jawaban6" id="jawaban6c" value="2">
-                                <label class="form-check-label" for="jawaban6c">Sebagian Besar Hari</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jawaban6" id="jawaban6d" value="3">
-                                <label class="form-check-label" for="jawaban6d">Hampir Setiap Hari</label>
-                            </div>
-                        </div> 
-
-                        <!-- Pertanyaan 7 -->
-                        <div class="form-group">
-                            <label for="pertanyaan7">7. Merasa gugup, cemas, atau gelisah?</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jawaban7" id="jawaban7a" value="0">
-                                <label class="form-check-label" for="jawaban7a">Tidak pernah</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jawaban7" id="jawaban7b" value="1">
-                                <label class="form-check-label" for="jawaban7b">Beberapa Hari</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jawaban7" id="jawaban7c" value="2">
-                                <label class="form-check-label" for="jawaban7c">Sebagian Besar Hari</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jawaban7" id="jawaban7d" value="3">
-                                <label class="form-check-label" for="jawaban7d">Hampir Setiap Hari</label>
-                            </div>
-                        </div>
-                        <input type="hidden" name="hasil_tes_id" value="{{ $hasilTes->id }}">
-                        <button type="submit" class="btn btn-primary">Kirim</button>
-                    </form>
+    <h2>Tes Depresi</h2>
+    <b>Dalam 2 minggu terakhir, seberapa sering kamu merasa terganggu oleh hal berikut:</b>
+    <p></p>
+    <form action="{{ route('tes-depresi.store') }}" method="POST">
+        @csrf
+        @foreach ($pertanyaan as $item)
+            <div class="form-group">
+                <label>{{ $loop->iteration }}. {{ $item->pertanyaan_depresi }}</label>
+                <div>
+                    <label>
+                        <input type="radio" name="jawaban[{{ $item->id_pertanyaan_depresi }}]" value="0" required> Tidak pernah
+                    </label>
+                    <label>
+                        <input type="radio" name="jawaban[{{ $item->id_pertanyaan_depresi }}]" value="1"> Beberapa Hari
+                    </label>
+                    <label>
+                        <input type="radio" name="jawaban[{{ $item->id_pertanyaan_depresi }}]" value="2"> Sebagian Besar Hari
+                    </label>
+                    <label>
+                        <input type="radio" name="jawaban[{{ $item->id_pertanyaan_depresi }}]" value="3"> Hampir Setiap Hari
+                    </label>
                 </div>
             </div>
-        </div>
-    </div>
+        @endforeach
+        <button type="submit" class="btn btn-primary">Submit Jawaban</button>
+    </form>
 </div>
 @endsection

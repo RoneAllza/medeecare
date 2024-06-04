@@ -1,19 +1,15 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\TesDepresi;
 
 use Illuminate\Database\Eloquent\Model;
 
 class PertanyaanDepresi extends Model
 {
     protected $table = 'pertanyaan_depresi';
+    protected $primaryKey = 'id_pertanyaan_depresi';
+    public $incrementing = false;
+    public $timestamps = false;
 
-    protected $fillable = [
-        'pertanyaan_depresi',
-    ];
-
-    public function opsiJawaban()
-    {
-        return $this->hasMany(OpsiJawabanKecemasan::class, 'id_pertanyaan_depresi');
-    }
+    protected $fillable = ['id_pertanyaan_depresi', 'pertanyaan_depres'];
 }

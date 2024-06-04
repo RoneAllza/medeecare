@@ -3,15 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\HasilTesKecemasan;
-use App\Models\PertanyaanKecemasan;
+use App\Models\TesKecemasan\HasilTesKecemasan;
+use App\Models\OpsiJawabanKecemasan;
 
 class TesKecemasanController extends Controller
 {
-    public function index()
+    public function showTesKecemasan()
     {
         // Tampilkan halaman utama tes kecemasan
-        return view('tes_kecemasan');
+        return view('tes_kecemasan.tes_kecemasan');
+    }
+
+    public function showPertanyaanKecemasan()
+    {
+        // Buat instance baru atau ambil instance yang sudah ada dari session, jika ada
+        $hasilTes = HasilTesKecemasan::create();
+
+        // Ambil semua pertanyaan kecemasan
+        $pertanyaan = PertanyaanKecemasan::all();
+
+        return view('pertanyaan_kecemasan', [
+            'pertanyaan' => $pertanyaan,
+            'hasilTes' => $hasilTes
+        ]);
+        
     }
 
     public function simpanHasil(Request $request)
@@ -39,8 +54,6 @@ class TesKecemasanController extends Controller
         return redirect()->route('tes-kecemasan.lihat-hasil', ['id' => $hasilTesId, 'jawaban' => $jawaban]);
     }
 
-
-    // Controller method
     public function lihatHasil($id)
     {
         // Mengambil data hasil tes berdasarkan ID
@@ -60,5 +73,4 @@ class TesKecemasanController extends Controller
 
         return view('lihat_hasil_kecemasan', compact('jawaban'));
     }
-
 }
