@@ -21,7 +21,7 @@
             @foreach($features as $feature)
             <a href="{{route('login')}}" class="text-decoration-none">
                 <div class="d-flex justify-content-center flex-column align-items-center" style="width: 100px;">
-                    <img src="/assets/img/{{$feature->photo}}" style="height: 10vh; width: 10vh; border-radius:50%; object-fit-cover: true; filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.2))" alt="{{$feature->name}}">
+                    <img src="/assets/img/{{$feature->photo}}" style="height: 10vh; width: 10vh; border-radius:50%; object-fit: cover; filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.2))" alt="{{$feature->name}}">
                     <div class="d-flex flex-row align-items-center text-dark text-center text-wrap" style="height:5vh; word-break: break-word">{{$feature->name}}</div>
                 </div>
             </a>
@@ -32,7 +32,7 @@
             @foreach($features as $feature)
             <a href="{{$feature->link}}" class="text-decoration-none">
                 <div class="d-flex justify-content-center flex-column align-items-center" style="width: 100px;">
-                    <img src="/assets/img/doctor.png" style="height: 10vh; width: 10vh; border-radius:50%; object-fit-cover; filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.2))" class="" alt="">
+                    <img src="/assets/img/doctor.png" style="height: 10vh; width: 10vh; border-radius:50%; object-fit: cover; filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.2))" class="" alt="">
                     <div class="d-flex flex-row align-items-center text-dark text-center text-wrap" style="height:5vh; word-break: break-word">Cek Mental</div>
                 </div>
             </a>
