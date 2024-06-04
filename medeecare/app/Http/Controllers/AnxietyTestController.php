@@ -31,8 +31,21 @@ class AnxietyTestController extends Controller
     // Menghitung skor berdasarkan jawaban tes
     public function submitTest(Request $request)
     {
+        // Validasi bahwa semua pertanyaan telah dijawab
+        $validatedData = $request->validate([
+            'question1' => 'required',
+            'question2' => 'required',
+            'question3' => 'required',
+            'question4' => 'required',
+            'question5' => 'required',
+            'question6' => 'required',
+            // Tambahkan validasi untuk pertanyaan tambahan jika ada
+        ], [
+            'required' => 'Semua pertanyaan harus dijawab.'
+        ]);
+
         // Proses penghitungan skor
-        $score = $this->calculateScore($request->all());
+        $score = $this->calculateScore($validatedData);
         
         // Tentukan tingkat kecemasan berdasarkan skor
         $anxietyLevel = $this->determineAnxietyLevel($score);
@@ -45,7 +58,7 @@ class AnxietyTestController extends Controller
     public function calculateScore($answers)
     {
         // Inisialisasi skor awal
-        $score = 0;
+        $score = 14;
         
         // Tabel bobot skor untuk setiap pilihan jawaban
         $scoreTable = [

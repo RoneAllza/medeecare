@@ -52,9 +52,10 @@
                     <div class="clearfix visible-md visible-lg"></div>
 
                     <!-- post Content-->
-                    @foreach ($artikelall as $all)
-                    <div class="col-md-6">
-                        <div class="post">
+                    @if (isset($artikelall))
+                        @foreach ($artikelall as $all)
+                        <div class="col-md-6">
+                            <div class="post">
                             <a class="post-img" href="#"><img src="{{ asset('uploads/'.$all->gambar) }}" alt="" height="250px" width="250px"></a>
                             <div class="post-body">
                                 <div class="post-meta">
@@ -66,6 +67,7 @@
                         </div>
                     </div>
                     @endforeach
+                    @endif
                     <!-- /post Content -->
 
                     <div class="clearfix visible-md visible-lg"></div>
@@ -77,14 +79,16 @@
                     <div class="section-title">
                         <h2>Most Read</h2>
                     </div>
-                    @foreach($artikelterkait as $terkait)
-                    <div class="post post-widget">
-                        <a class="post-img" href="blog-post.html"><img src="{{ asset('uploads/'.$terkait->gambar) }}" alt="" width="80px" height="80px"></a>
-                        <div class="post-body">
-                            <h3 class="post-title"><a href="blog-post.html">{{$terkait->judul}}</a></h3>
-                        </div>
-                    </div>
-                    @endforeach
+                    @if (isset($artikelterkait))
+                        @foreach($artikelterkait as $terkait)
+                            <div class="post post-widget">
+                                <a class="post-img" href="blog-post.html"><img src="{{ asset('uploads/'.$terkait->gambar) }}" alt="" width="80px" height="80px"></a>
+                                <div class="post-body">
+                                    <h3 class="post-title"><a href="blog-post.html">{{$terkait->judul}}</a></h3>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>

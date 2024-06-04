@@ -65,6 +65,37 @@
             background-color: #0056b3;
         }
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.querySelector("form");
+            form.addEventListener("submit", function(event) {
+                const questions = document.querySelectorAll(".question");
+                let allAnswered = true;
+                questions.forEach(question => {
+                    if (!Array.from(question.querySelectorAll("input[type='radio']")).some(radio => radio.checked)) {
+                        allAnswered = false;
+                    }
+                });
+                if (!allAnswered) {
+                    event.preventDefault();
+                    const errorBar = document.createElement("div");
+                    errorBar.style.position = "fixed";
+                    errorBar.style.left = "0";
+                    errorBar.style.bottom = "0";
+                    errorBar.style.width = "100%";
+                    errorBar.style.backgroundColor = "red";
+                    errorBar.style.color = "white";
+                    errorBar.style.textAlign = "center";
+                    errorBar.style.padding = "10px";
+                    errorBar.textContent = "Please answer all the questions before submitting.";
+                    document.body.appendChild(errorBar);
+                    setTimeout(() => {
+                        document.body.removeChild(errorBar);
+                    }, 3000);
+                }
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="container">
@@ -190,4 +221,6 @@
                 <button type="submit" style="background-color: #8B0C0C;">Submit</button>
             </form>
 </html>
+
+
 
