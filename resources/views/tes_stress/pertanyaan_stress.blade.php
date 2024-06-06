@@ -58,26 +58,29 @@
 </style>
 
 <div class="container">
-    <h2>Tes Kecemasan</h2>
-    <b>Dalam 2 minggu terakhir, Seberapa sering kamu merasa terganggu oleh hal berikut...</b>
+    <h2>Tes Stress</h2>
+    <b>Dalam sebulan terakhir, seberapa sering kamu...</b>
     <p></p>
-    <form action="{{ route('tes-kecemasan.store') }}" method="POST">
+    <form action="{{ route('tes-stress.store') }}" method="POST">
         @csrf
         @foreach ($pertanyaan as $item)
             <div class="form-group">
-                <label>{{ $loop->iteration }}. {{ $item->pertanyaan_kecemasan }}</label>
+                <label>{{ $loop->iteration }}. {{ $item->pertanyaan_stress }}</label>
                 <div>
                     <label>
-                        <input type="radio" name="jawaban[{{ $item->id_pertanyaan_kecemasan }}]" value="0" required> Tidak pernah
+                        <input type="radio" name="jawaban[{{ $item->id_pertanyaan_stress }}]" value="0" required> Tidak pernah
                     </label>
                     <label>
-                        <input type="radio" name="jawaban[{{ $item->id_pertanyaan_kecemasan }}]" value="1"> Beberapa Hari
+                        <input type="radio" name="jawaban[{{ $item->id_pertanyaan_stress }}]" value="1"> Jarang
                     </label>
                     <label>
-                        <input type="radio" name="jawaban[{{ $item->id_pertanyaan_kecemasan }}]" value="2"> Sebagian Besar Hari
+                        <input type="radio" name="jawaban[{{ $item->id_pertanyaan_stress }}]" value="2"> Kadang-kadang 
                     </label>
                     <label>
-                        <input type="radio" name="jawaban[{{ $item->id_pertanyaan_kecemasan }}]" value="3"> Hampir Setiap Hari
+                        <input type="radio" name="jawaban[{{ $item->id_pertanyaan_stress }}]" value="3"> Cukup sering
+                    </label>
+                    <label>
+                        <input type="radio" name="jawaban[{{ $item->id_pertanyaan_stress }}]" value="4"> Sangat sering
                     </label>
                 </div>
             </div>

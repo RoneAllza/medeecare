@@ -66,8 +66,8 @@
 </style>
 
 <div class="container">
-    <h2>Tabel Hasil Tes Kecemasan Kamu :</h2>
-    <a href="{{ route('tes-kecemasan.index') }}" class="btn btn-info">Ambil Tes Lagi</a> <!-- Tombol Ambil Tes Lagi -->
+    <h2>Tabel Hasil Tes Stress Kamu :</h2>
+    <a href="{{ route('tes-stress.index') }}" class="btn btn-info">Ambil Tes Lagi</a> <!-- Tombol Ambil Tes Lagi -->
     <h2>     </h2>
     <table class="table">
         <thead>
@@ -87,7 +87,7 @@
                     <td>{{ $hasil->deskripsi_hasil }}</td>
                     <td>{{ $hasil->updated_at->setTimezone('Asia/Jakarta')->format('d M Y H:i:s') }}</td> <!-- Format waktu dengan WIB -->
                     <td class="action-column">
-                        <a href="{{ route('hasil-tes-kecemasan.show', $hasil->id) }}" class="btn btn-info">Lihat Detail</a>
+                        <a href="{{ route('hasil-tes-stress.show', $hasil->id) }}" class="btn btn-info">Lihat Detail</a>
                     </td>
                 </tr>
             @endforeach

@@ -13,7 +13,6 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ForumDiskusiController;
 use App\Http\Controllers\FormDiskusiController;
-use App\Http\Controllers\TesKecemasanController;
 use App\Http\Controllers\HomepageKesehatanKulitController;
 use App\Http\Controllers\AnxietyTestController;
 use App\Http\Controllers\DokterMentalController;
@@ -29,6 +28,8 @@ use App\Http\Controllers\DiabetesTestController;
 use App\Http\Controllers\LifestyleRecommendationController;
 use App\Http\Controllers\DiabetesPreventionController;
 use App\Http\Controllers\TesDepresiController;
+use App\Http\Controllers\TesKecemasanController;
+use App\Http\Controllers\TesStressController;
 
 
 
@@ -117,13 +118,6 @@ Route::group(['middleware' => ['auth', 'checkrole:Admin']], function(){
 Route::get('/forumdiskusi', [ForumDiskusiController::class, 'viewForum'])->name('forumdiskusi');
 Route::get('/formdiskusi', [FormDiskusiController::class, 'viewForm'])->name('formdiskusi');
 
-// Tes Kecemasan Route
-Route::get('/tes-kecemasan', [TesKecemasanController::class, 'index'])->name('tes_kecemasan');
-Route::get('/tes-kecemasan/pertanyaan', [TesKecemasanController::class, 'showPertanyaanKecemasan'])->name('tes-kecemasan.pertanyaan');
-Route::post('/tes-kecemasan/simpan-hasil', [TesKecemasanController::class, 'simpanHasil'])->name('tes-kecemasan.simpan-hasil');
-Route::get('/tes-kecemasan/hasil/{id}', [TesKecemasanController::class, 'lihatHasil'])->name('tes-kecemasan.lihat-hasil');
-
-
 // Forum Diskusi Kesehatan
 Route::get('/forum', [ForumDiskusiController::class, 'viewForum'])->name('forumdiskusikesehatan');
 Route::get('/pengisian-form', [FormDiskusiController::class, 'viewForm'])->name('formdiskusikesehatan');
@@ -156,10 +150,23 @@ Route::post('/anxiety/submit', [AnxietyTestController::class, 'submitTest'])->na
 Route::get('/anxiety/result', [AnxietyTestController::class, 'showResult'])->name('anxiety.result');
 Route::get('/mental-health', [AnxietyTestController::class, 'showPsychologistsAndPsychiatrists'])->name('cek_kesehatan');
 
-
 //Tes Depresi
 Route::get('/tes-depresi', [TesDepresiController::class, 'index'])->name('tes-depresi.index');
 Route::get('/tes-depresi/pertanyaan', [TesDepresiController::class, 'indexPertanyaan'])->name('pertanyaan-depresi.index');
 Route::post('/tes-depresi/pertanyaan', [TesDepresiController::class, 'store'])->name('tes-depresi.store');
 Route::get('/tes-depresi/hasil', [TesDepresiController::class, 'showHasilTes'])->name('hasil-tes-depresi.index');
 Route::get('/tes-depresi/hasil/{id}', [TesDepresiController::class, 'showDetailHasilTes'])->name('hasil-tes-depresi.show');
+
+//Tes Kecemasan
+Route::get('/tes-kecemasan', [TesKecemasanController::class, 'index'])->name('tes-kecemasan.index');
+Route::get('/tes-kecemasan/pertanyaan', [TesKecemasanController::class, 'indexPertanyaan'])->name('pertanyaan-kecemasan.index');
+Route::post('/tes-kecemasan/pertanyaan', [TesKecemasanController::class, 'store'])->name('tes-kecemasan.store');
+Route::get('/tes-kecemasan/hasil', [TesKecemasanController::class, 'showHasilTes'])->name('hasil-tes-kecemasan.index');
+Route::get('/tes-kecemasan/hasil/{id}', [TesKecemasanController::class, 'showDetailHasilTes'])->name('hasil-tes-kecemasan.show');
+
+//Tes Stress
+Route::get('/tes-stress', [TesStressController::class, 'index'])->name('tes-stress.index');
+Route::get('/tes-stress/pertanyaan', [TesStressController::class, 'indexPertanyaan'])->name('pertanyaan-stress.index');
+Route::post('/tes-stress/pertanyaan', [TesStressController::class, 'store'])->name('tes-stress.store');
+Route::get('/tes-stress/hasil', [TesStressController::class, 'showHasilTes'])->name('hasil-tes-stress.index');
+Route::get('/tes-stress/hasil/{id}', [TesStressController::class, 'showDetailHasilTes'])->name('hasil-tes-stress.show');

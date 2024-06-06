@@ -3,7 +3,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePertanyaanDepresiTable extends Migration
+class CreatePertanyaanStressTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,9 @@ class CreatePertanyaanDepresiTable extends Migration
      */
     public function up()
     {
-        Schema::create('pertanyaan_depresi', function (Blueprint $table) {
-            $table->integer('id_pertanyaan_depresi')->primary();
-            $table->text('pertanyaan_depresi');
+        Schema::create('pertanyaan_stress', function (Blueprint $table) {
+            $table->integer('id_pertanyaan_stress')->primary();
+            $table->text('pertanyaan_stress');
         });
     }
 
@@ -25,6 +25,6 @@ class CreatePertanyaanDepresiTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pertanyaan_depresi');
+        Schema::dropIfExists('pertanyaan_stress');
     }
 }

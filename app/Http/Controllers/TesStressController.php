@@ -3,62 +3,68 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\HasilTesKecemasan;
-use App\Models\PertanyaanKecemasan;
+use App\Models\TesStress\PertanyaanStress;
+use App\Models\TesStress\HasilTesStress;
 
-class TesKecemasanController extends Controller
+class TesStressController extends Controller
 {
     public function index()
     {
-        // Tampilkan halaman utama tes kecemasan
-        return view('tes_kecemasan');
+        return view('tes_stress.tes_stress');
     }
 
-    public function simpanHasil(Request $request)
+    public function indexPertanyaan()
     {
-        // Validasi data jika diperlukan
-        $request->validate([
-            // Definisikan aturan validasi jika diperlukan
+        $pertanyaan = PertanyaanStress::all();
+        return view('tes_stress.pertanyaan_stress', compact('pertanyaan'));
+    }
+
+    public function store(Request $request)
+    {
+        // Validasi input
+        $validatedData = $request->validate([
+            'jawaban' => 'required|array',
         ]);
+    
+        // Proses penyimpanan jawaban dan perhitungan skor tes
+        $jawaban = $validatedData['jawaban'];
+        $skor = array_sum($jawaban); // Contoh perhitungan skor, sesuaikan dengan kebutuhan
+        $deskripsi = $this->getDeskripsiSkor($skor); // Contoh fungsi untuk mendapatkan deskripsi hasil berdasarkan skor
+    
+        // Simpan hasil tes ke database
+        $hasilTes = HasilTesStress::create([
+            'skor_hasil' => $skor,
+            'deskripsi_hasil' => $deskripsi,
+            'jawaban' => json_encode($jawaban)
+        ]);
+    
+        return redirect()->route('hasil-tes-stress.index');
+    }    
 
-        // Ambil ID hasil tes dari input hidden
-        $hasilTesId = $request->input('hasil_tes_id');
 
-        // Ambil semua jawaban dari request
-        $jawaban = $request->except('_token', 'hasil_tes_id');
-
-        // Simpan hasil jawaban ke dalam database
-        foreach ($jawaban as $key => $value) {
-            $opsiJawaban = new OpsiJawabanKecemasan();
-            $opsiJawaban->id_pertanyaan_kecemasan = $key;
-            $opsiJawaban->jawaban_kecemasan = $value;
-            $opsiJawaban->save();
-        }
-
-        // Redirect ke halaman hasil tes
-        return redirect()->route('tes-kecemasan.lihat-hasil', ['id' => $hasilTesId, 'jawaban' => $jawaban]);
+    public function showHasilTes()
+    {
+        $hasilTes = HasilTesStress::all();
+        return view('tes_stress.hasil_stress', compact('hasilTes'));
     }
 
-
-    // Controller method
-    public function lihatHasil($id)
+    public function showDetailHasilTes($id)
     {
-        // Mengambil data hasil tes berdasarkan ID
-        $hasilTes = HasilTesKecemasan::findOrFail($id);
+        $hasilTes = HasilTesStress::findOrFail($id);
+        return view('tes_stress.lihat_hasil_stress', compact('hasilTes'));
+    }
 
-        // Mengambil jawaban kecemasan terkait hasil tes
-        $jawabanKecemasan = OpsiJawabanKecemasan::where('hasil_tes_id', $id)->get();
-
-        // Membuat array jawaban
-        $jawaban = [];
-        foreach ($jawabanKecemasan as $jawabanItem) {
-            $jawaban['jawaban' . $jawabanItem->id_pertanyaan_kecemasan] = [
-                'jawaban' => $jawabanItem->jawaban_kecemasan,
-                'skor' => $jawabanItem->skor
-            ];
+    private function getDeskripsiSkor($skor)
+    {
+        if ($skor <= 10) {
+            return 'Tidak stress';
+        } elseif ($skor <= 20) {
+            return 'Stress ringan';
+        } elseif ($skor <= 30) {
+            return 'Stress sedang';
+        } else {
+            return 'Stress berat';
         }
-
-        return view('lihat_hasil_kecemasan', compact('jawaban'));
     }
 
 }

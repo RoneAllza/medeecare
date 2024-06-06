@@ -24,11 +24,6 @@
         margin-bottom: 20px; /* Jarak bawah dari judul */
     }
 
-    h3 {
-        color: #800000; /* Warna maroon muda */
-        margin-bottom: 20px; /* Jarak bawah dari judul */
-    }
-
     p {
         margin-bottom: 20px; /* Jarak bawah dari paragraf */
     }
@@ -74,29 +69,25 @@
 </style>
 
 <div class="container">
-    <h2>Tes Gangguan Kecemasan</h2>
-    <h3>Tes gangguan kecemasan dengan tes Generalized Anxiety Disorder-7</h3>
-    <p>Tes yang singkat dan valid secara ilmiah, digunakan oleh tenaga kesehatan.</p>
-    <p>Berisi 7 pertanyaan menggunakan skala 0 sampai 3 untuk menghitung skor akhir.</p>
-    <a href="{{ route('pertanyaan-kecemasan.index') }}" class="btn btn-primary">Mulai Tes</a>
+    <h2>Tes Stress!</h2>
+    <p>Stress bisa terjadi pada siapa saja dan kapan saja. Penyebabnya bisa karena hal serius dan sepele. Meskipun wajar terjadi, stres bisa membahayakan kesehatan jika tidak dikelola dengan baik. Ayo cek keadaan kesehatan jiwa kamu di sini!
+    </p>
+    <p>Tes ini berisi 10 pertanyaan menggunakan skala 0 sampai 4 untuk menghitung skor akhir.</p>
+    <a href="{{ route('pertanyaan-stress.index') }}" class="btn btn-primary">Mulai Tes</a>
 </div>
 
 <div class="container card">
-    <h3>Gejala-gejala Kecemasan:</h3>
+    <h3>Gejala-gejala Stress:</h3>
     <ul>
-        <li>Merasa gugup, gelisah, atau tegang.</li>
-        <li>Merasa bahaya, panik, atau takut yang mendekat.</li>
-        <li>Detak jantung meningkat.</li>
-        <li>Bernapas dengan cepat (hiperventilasi).</li>
-        <li>Berkeringat.</li>
-        <li>Gemetar.</li>
-        <li>Merasa lemah atau lelah.</li>
-        <li>Konsentrasi yang buruk atau pikiran yang kosong.</li>
-        <li>Masalah tidur (sulit tidur atau tidur tidak nyenyak).</li>
-        <li>Menghindari situasi yang memicu kecemasan.</li>
-        <li>Mengalami masalah pencernaan atau gangguan lambung.</li>
-        <li>Kesulitan mengendalikan kekhawatiran atau ketakutan.</li>
+        <li>Kesulitan berkonsentrasi atau mengingat detail.</li>
+        <li>Ketegangan otot atau sakit kepala.</li>
+        <li>Kesulitan tidur atau tidur yang tidak nyenyak.</li>
+        <li>Perubahan nafsu makan, bisa meningkat atau menurun.</li>
+        <li>Perasaan gelisah, cemas, atau tegang.</li>
+        <li>Rasa lelah yang berlebihan atau kelelahan.</li>
+        <li>Sikap iritabilitas atau mudah marah.</li>
+        <li>Masalah pencernaan seperti sakit perut atau diare.</li>
+        <li>Menarik diri dari aktivitas sosial dan mengisolasi diri.</li>
     </ul>
 </div>
-
 @endsection

@@ -11,5 +11,5 @@ class PertanyaanDepresi extends Model
     public $incrementing = false;
     public $timestamps = false;
 
-    protected $fillable = ['id_pertanyaan_depresi', 'pertanyaan_depres'];
+    protected $fillable = ['id_pertanyaan_depresi', 'pertanyaan_depresi'];
 }

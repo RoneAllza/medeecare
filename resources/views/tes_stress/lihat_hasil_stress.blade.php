@@ -51,7 +51,7 @@
 </style>
 
 <div class="container">
-    <h2>Detail Hasil Tes Kecemasan</h2>
+    <h2>Detail Hasil Tes Stress</h2>
     <div class="card">
         <div class="card-body">
             <!-- <h5>ID Tes: {{ $hasilTes->id_tes }}</h5> -->
@@ -67,3 +67,4 @@
     </div>
 </div>
 @endsection
+

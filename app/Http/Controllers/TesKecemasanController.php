@@ -3,74 +3,68 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\TesKecemasan\PertanyaanKecemasan;
 use App\Models\TesKecemasan\HasilTesKecemasan;
-use App\Models\OpsiJawabanKecemasan;
 
 class TesKecemasanController extends Controller
 {
-    public function showTesKecemasan()
+    public function index()
     {
-        // Tampilkan halaman utama tes kecemasan
         return view('tes_kecemasan.tes_kecemasan');
     }
 
-    public function showPertanyaanKecemasan()
+    public function indexPertanyaan()
     {
-        // Buat instance baru atau ambil instance yang sudah ada dari session, jika ada
-        $hasilTes = HasilTesKecemasan::create();
-
-        // Ambil semua pertanyaan kecemasan
         $pertanyaan = PertanyaanKecemasan::all();
-
-        return view('pertanyaan_kecemasan', [
-            'pertanyaan' => $pertanyaan,
-            'hasilTes' => $hasilTes
-        ]);
-        
+        return view('tes_kecemasan.pertanyaan_kecemasan', compact('pertanyaan'));
     }
 
-    public function simpanHasil(Request $request)
+    public function store(Request $request)
     {
-        // Validasi data jika diperlukan
-        $request->validate([
-            // Definisikan aturan validasi jika diperlukan
+        // Validasi input
+        $validatedData = $request->validate([
+            'jawaban' => 'required|array',
         ]);
+    
+        // Proses penyimpanan jawaban dan perhitungan skor tes
+        $jawaban = $validatedData['jawaban'];
+        $skor = array_sum($jawaban); // Contoh perhitungan skor, sesuaikan dengan kebutuhan
+        $deskripsi = $this->getDeskripsiSkor($skor); // Contoh fungsi untuk mendapatkan deskripsi hasil berdasarkan skor
+    
+        // Simpan hasil tes ke database
+        $hasilTes = HasilTesKecemasan::create([
+            'skor_hasil' => $skor,
+            'deskripsi_hasil' => $deskripsi,
+            'jawaban' => json_encode($jawaban)
+        ]);
+    
+        return redirect()->route('hasil-tes-kecemasan.index');
+    }    
 
-        // Ambil ID hasil tes dari input hidden
-        $hasilTesId = $request->input('hasil_tes_id');
 
-        // Ambil semua jawaban dari request
-        $jawaban = $request->except('_token', 'hasil_tes_id');
-
-        // Simpan hasil jawaban ke dalam database
-        foreach ($jawaban as $key => $value) {
-            $opsiJawaban = new OpsiJawabanKecemasan();
-            $opsiJawaban->id_pertanyaan_kecemasan = $key;
-            $opsiJawaban->jawaban_kecemasan = $value;
-            $opsiJawaban->save();
-        }
-
-        // Redirect ke halaman hasil tes
-        return redirect()->route('tes-kecemasan.lihat-hasil', ['id' => $hasilTesId, 'jawaban' => $jawaban]);
+    public function showHasilTes()
+    {
+        $hasilTes = HasilTesKecemasan::all();
+        return view('tes_kecemasan.hasil_kecemasan', compact('hasilTes'));
     }
 
-    public function lihatHasil($id)
+    public function showDetailHasilTes($id)
     {
-        // Mengambil data hasil tes berdasarkan ID
         $hasilTes = HasilTesKecemasan::findOrFail($id);
-
-        // Mengambil jawaban kecemasan terkait hasil tes
-        $jawabanKecemasan = OpsiJawabanKecemasan::where('hasil_tes_id', $id)->get();
-
-        // Membuat array jawaban
-        $jawaban = [];
-        foreach ($jawabanKecemasan as $jawabanItem) {
-            $jawaban['jawaban' . $jawabanItem->id_pertanyaan_kecemasan] = [
-                'jawaban' => $jawabanItem->jawaban_kecemasan,
-                'skor' => $jawabanItem->skor
-            ];
-        }
-
-        return view('lihat_hasil_kecemasan', compact('jawaban'));
+        return view('tes_kecemasan.lihat_hasil_kecemasan', compact('hasilTes'));
     }
+
+    private function getDeskripsiSkor($skor)
+    {
+        if ($skor <= 5) {
+            return 'Sedikit cemas';
+        } elseif ($skor <= 10) {
+            return 'Gangguan kecemasan ringan';
+        } elseif ($skor <= 15) {
+            return 'Gangguan kecemasan sedang';
+        } else {
+            return 'Gangguan kecemasan berat';
+        }
+    }
+
 }
