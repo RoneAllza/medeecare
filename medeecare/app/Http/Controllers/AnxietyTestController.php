@@ -1,10 +1,27 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
 class AnxietyTestController extends Controller
 {
+    // Menampilkan daftar psikolog dan psikiater
+    public function showPsychologistsAndPsychiatrists()
+    {
+        // Data psikolog dan psikiater
+        $psychologists = [
+            // Data psikolog
+        ];
+
+        $psychiatrists = [
+            // Data psikiater
+        ];
+
+        // Tampilkan view dengan data psikolog dan psikiater
+        return view('anxiety_test.Cek_Kesehatan', compact('psychologists', 'psychiatrists'));
+    }
+
     // Menampilkan form tes kecemasan
     public function showForm()
     {
@@ -57,6 +74,10 @@ class AnxietyTestController extends Controller
             if (isset($scoreTable[$answer])) {
                 // Tambahkan skor sesuai dengan pilihan jawaban
                 $score += $scoreTable[$answer];
+            } else {
+                // Penanganan jika jawaban tidak valid (opsional)
+                // Anda dapat menambahkan logika penanganan jawaban yang tidak valid di sini
+                $score += 0; // Set default score to 0 if answer is not valid
             }
         }
 
@@ -79,12 +100,8 @@ class AnxietyTestController extends Controller
     public function showResult(Request $request)
     {
         // Ambil skor dari request dan hitung tingkat kecemasan berdasarkan skor tersebut
-        $score = $request->query('score');
-        $anxietyLevel = $request->query('anxiety_level'); // Pastikan anxiety_level diambil dari query string
-
-        // Log untuk debugging
-        \Log::info('Score: ' . $score);
-        \Log::info('Anxiety Level: ' . $anxietyLevel);
+        $score = $request->input('score');
+        $anxietyLevel = $this->determineAnxietyLevel($score); // Menggunakan fungsi determineAnxietyLevel untuk mendapatkan tingkat kecemasan
 
         // Tampilkan view hasil tes dengan skor dan tingkat kecemasan yang diberikan
         return view('anxiety_test.result', compact('score', 'anxietyLevel'));
