@@ -5,6 +5,8 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Category;
+use App\Models\TesDepresi\PertanyaanDepresi;
+use App\Models\TesStress\PertanyaanStress;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,5 +25,11 @@ class DatabaseSeeder extends Seeder
         $this->call(CategoriesTableSeeder::class);
         $this->call(ArtikelTableSeeder::class);
         $this->call(NotificationSettingsSeeder::class);
+        $this->call(DummyUsersSeeder::class);
+        $this->call(DummyFeaturesSeeder::class);
+        $this->call(PertanyaanStressSeeder::class);
+        $this->call(PertanyaanDepresiSeeder::class);
+        $this->call(PertanyaanStressSeeder::class);
+        $this->call(GejalaSeeder::class);
     }
 }
