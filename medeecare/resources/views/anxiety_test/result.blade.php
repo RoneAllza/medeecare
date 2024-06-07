@@ -8,7 +8,6 @@
         .card {
             border: 1px solid #ccc;
             border-radius: 5px;
-            padding: 10px;
             margin: 10px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             font-family: Arial, sans-serif; /* Set font to Arial or fallback to sans-serif */
@@ -21,11 +20,17 @@
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+        .error {
+            color: #FF0000; /* Red color for error messages */
+            text-align: center;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="card">
         <h1 style="color: #8B0C0C; text-align: center;">Hasil Tes Kesehatan Mental</h1>
+        <h2 style="color: black; text-align: center;">Skor Anda: {{ $score }}</h2>
         <!-- Tampilkan saran atau rekomendasi berdasarkan skor disini -->
         <p style="font-family: Arial, sans-serif; color: black; text-align: center;"> <!-- Set font to Arial or fallback to sans-serif and set text color to black -->
             @if($anxietyLevel === 'Tinggi')
@@ -36,6 +41,15 @@
                 Anda memiliki tingkat kecemasan rendah. Tetap menjaga kesehatan mental Anda dengan melakukan aktivitas yang menyenangkan dan berkualitas.
             @endif
         </p>
+        @if ($errors->any())
+            <div class="error">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     </div>
 </body>
 </html>

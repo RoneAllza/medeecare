@@ -65,13 +65,45 @@
             background-color: #0056b3;
         }
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.querySelector("form");
+            form.addEventListener("submit", function(event) {
+                const questions = document.querySelectorAll(".question");
+                let allAnswered = true;
+                questions.forEach(question => {
+                    if (!Array.from(question.querySelectorAll("input[type='radio']")).some(radio => radio.checked)) {
+                        allAnswered = false;
+                    }
+                });
+                if (!allAnswered) {
+                    event.preventDefault();
+                    const errorBar = document.createElement("div");
+                    errorBar.style.position = "fixed";
+                    errorBar.style.left = "0";
+                    errorBar.style.bottom = "0";
+                    errorBar.style.width = "100%";
+                    errorBar.style.backgroundColor = "red";
+                    errorBar.style.color = "white";
+                    errorBar.style.textAlign = "center";
+                    errorBar.style.padding = "10px";
+                    errorBar.textContent = "Please answer all the questions before submitting.";
+                    document.body.appendChild(errorBar);
+                    setTimeout(() => {
+                        document.body.removeChild(errorBar);
+                    }, 3000);
+                }
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="container">
         <div class="card">
             <h1 style="color: #8B0C0C; text-align: center;">Cek Gangguan Kecemasan</h1>
             <p style="text-align: left;">Dalam 2 minggu terakhir,<br>Seberapa sering kamu merasa terganggu oleh hal berikut...</p>
-            <form method="GET" action="{{ route('anxiety.result') }}">
+            <form method="POST" action="{{ route('anxiety.submit') }}">
+                @csrf <!-- Tambahkan token CSRF -->
                 <div class="question">
                     <label for="question1">Tidak dapat menghentikan atau mengontrol kekhawatiran?</label>
                     <div class="option-card">
@@ -189,5 +221,7 @@
                 <!-- Additional questions with similar structure -->
                 <button type="submit" style="background-color: #8B0C0C;">Submit</button>
             </form>
+        </div>
+    </div>
+</body>
 </html>
-
