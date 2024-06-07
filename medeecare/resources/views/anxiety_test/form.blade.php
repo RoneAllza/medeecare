@@ -102,7 +102,8 @@
         <div class="card">
             <h1 style="color: #8B0C0C; text-align: center;">Cek Gangguan Kecemasan</h1>
             <p style="text-align: left;">Dalam 2 minggu terakhir,<br>Seberapa sering kamu merasa terganggu oleh hal berikut...</p>
-            <form method="GET" action="{{ route('anxiety.result') }}">
+            <form method="POST" action="{{ route('anxiety.submit') }}">
+                @csrf <!-- Tambahkan token CSRF -->
                 <div class="question">
                     <label for="question1">Tidak dapat menghentikan atau mengontrol kekhawatiran?</label>
                     <div class="option-card">
@@ -220,7 +221,7 @@
                 <!-- Additional questions with similar structure -->
                 <button type="submit" style="background-color: #8B0C0C;">Submit</button>
             </form>
+        </div>
+    </div>
+</body>
 </html>
-
-
-

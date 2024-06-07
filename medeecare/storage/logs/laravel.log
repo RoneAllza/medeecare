@@ -11556,3 +11556,42 @@ Did you mean this?
 #50 D:\\documents\\Medeecare\\medeecare\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('...')
 #51 {main}
 "} 
+[2024-06-07 03:59:53] local.ERROR: Maximum execution time of 60 seconds exceeded {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Maximum execution time of 60 seconds exceeded at D:\\documents\\Medeecare\\medeecare\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php:45)
+[stacktrace]
+#0 {main}
+"} 
+[2024-06-07 04:37:44] local.INFO: Score:   
+[2024-06-07 04:37:44] local.INFO: Anxiety Level:   
+[2024-06-07 04:40:35] local.ERROR: Unable to prepare route [sehatkulit] for serialization. Another route has already been assigned name [homepagekesehatankulit]. {"exception":"[object] (LogicException(code: 0): Unable to prepare route [sehatkulit] for serialization. Another route has already been assigned name [homepagekesehatankulit]. at D:\\documents\\Medeecare\\medeecare\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\AbstractRouteCollection.php:247)
+[stacktrace]
+#0 D:\\documents\\Medeecare\\medeecare\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\AbstractRouteCollection.php(208): Illuminate\\Routing\\AbstractRouteCollection->addToSymfonyRoutesCollection()
+#1 D:\\documents\\Medeecare\\medeecare\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteCollection.php(246): Illuminate\\Routing\\AbstractRouteCollection->toSymfonyRouteCollection()
+#2 D:\\documents\\Medeecare\\medeecare\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\AbstractRouteCollection.php(192): Illuminate\\Routing\\RouteCollection->toSymfonyRouteCollection()
+#3 D:\\documents\\Medeecare\\medeecare\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\AbstractRouteCollection.php(163): Illuminate\\Routing\\AbstractRouteCollection->dumper()
+#4 D:\\documents\\Medeecare\\medeecare\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\RouteCacheCommand.php(109): Illuminate\\Routing\\AbstractRouteCollection->compile()
+#5 D:\\documents\\Medeecare\\medeecare\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\RouteCacheCommand.php(68): Illuminate\\Foundation\\Console\\RouteCacheCommand->buildRouteCacheFile()
+#6 D:\\documents\\Medeecare\\medeecare\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Foundation\\Console\\RouteCacheCommand->handle()
+#7 D:\\documents\\Medeecare\\medeecare\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#8 D:\\documents\\Medeecare\\medeecare\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure()
+#9 D:\\documents\\Medeecare\\medeecare\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod()
+#10 D:\\documents\\Medeecare\\medeecare\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(662): Illuminate\\Container\\BoundMethod::call()
+#11 D:\\documents\\Medeecare\\medeecare\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(211): Illuminate\\Container\\Container->call()
+#12 D:\\documents\\Medeecare\\medeecare\\vendor\\symfony\\console\\Command\\Command.php(326): Illuminate\\Console\\Command->execute()
+#13 D:\\documents\\Medeecare\\medeecare\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(181): Symfony\\Component\\Console\\Command\\Command->run()
+#14 D:\\documents\\Medeecare\\medeecare\\vendor\\symfony\\console\\Application.php(1096): Illuminate\\Console\\Command->run()
+#15 D:\\documents\\Medeecare\\medeecare\\vendor\\symfony\\console\\Application.php(324): Symfony\\Component\\Console\\Application->doRunCommand()
+#16 D:\\documents\\Medeecare\\medeecare\\vendor\\symfony\\console\\Application.php(175): Symfony\\Component\\Console\\Application->doRun()
+#17 D:\\documents\\Medeecare\\medeecare\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(201): Symfony\\Component\\Console\\Application->run()
+#18 D:\\documents\\Medeecare\\medeecare\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle()
+#19 {main}
+"} 
+[2024-06-07 04:41:12] local.INFO: Score:   
+[2024-06-07 04:41:12] local.INFO: Anxiety Level:   
+[2024-06-07 04:43:12] local.INFO: Score:   
+[2024-06-07 04:43:12] local.INFO: Anxiety Level:   
+[2024-06-07 04:45:40] local.INFO: Score: 10  
+[2024-06-07 04:45:40] local.INFO: Anxiety Level: Sedang  
+[2024-06-07 04:46:05] local.INFO: Score: 0  
+[2024-06-07 04:46:05] local.INFO: Anxiety Level: Rendah  
+[2024-06-07 04:46:22] local.INFO: Score: 18  
+[2024-06-07 04:46:22] local.INFO: Anxiety Level: Tinggi  
