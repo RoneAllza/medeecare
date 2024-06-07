@@ -3,20 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\TesKecemasan\PertanyaanKecemasan;
-use App\Models\TesKecemasan\HasilTesKecemasan;
+use App\Models\TesStress\PertanyaanStress;
+use App\Models\TesStress\HasilTesStress;
 
-class TesKecemasanController extends Controller
+class TesStressController extends Controller
 {
     public function index()
     {
-        return view('tes_kecemasan.tes_kecemasan');
+        return view('tes_stress.tes_stress');
     }
 
     public function indexPertanyaan()
     {
-        $pertanyaan = PertanyaanKecemasan::all();
-        return view('tes_kecemasan.pertanyaan_kecemasan', compact('pertanyaan'));
+        $pertanyaan = PertanyaanStress::all();
+        return view('tes_stress.pertanyaan_stress', compact('pertanyaan'));
     }
 
     public function store(Request $request)
@@ -32,38 +32,38 @@ class TesKecemasanController extends Controller
         $deskripsi = $this->getDeskripsiSkor($skor); // Contoh fungsi untuk mendapatkan deskripsi hasil berdasarkan skor
     
         // Simpan hasil tes ke database
-        $hasilTes = HasilTesKecemasan::create([
+        $hasilTes = HasilTesStress::create([
             'skor_hasil' => $skor,
             'deskripsi_hasil' => $deskripsi,
             'jawaban' => json_encode($jawaban)
         ]);
     
-        return redirect()->route('hasil-tes-kecemasan.index');
+        return redirect()->route('hasil-tes-stress.index');
     }    
 
 
     public function showHasilTes()
     {
-        $hasilTes = HasilTesKecemasan::all();
-        return view('tes_kecemasan.hasil_kecemasan', compact('hasilTes'));
+        $hasilTes = HasilTesStress::all();
+        return view('tes_stress.hasil_stress', compact('hasilTes'));
     }
 
     public function showDetailHasilTes($id)
     {
-        $hasilTes = HasilTesKecemasan::findOrFail($id);
-        return view('tes_kecemasan.lihat_hasil_kecemasan', compact('hasilTes'));
+        $hasilTes = HasilTesStress::findOrFail($id);
+        return view('tes_stress.lihat_hasil_stress', compact('hasilTes'));
     }
 
     private function getDeskripsiSkor($skor)
     {
-        if ($skor <= 5) {
-            return 'Sedikit cemas';
-        } elseif ($skor <= 10) {
-            return 'Gangguan kecemasan ringan';
-        } elseif ($skor <= 15) {
-            return 'Gangguan kecemasan sedang';
+        if ($skor <= 10) {
+            return 'Tidak stress';
+        } elseif ($skor <= 20) {
+            return 'Stress ringan';
+        } elseif ($skor <= 30) {
+            return 'Stress sedang';
         } else {
-            return 'Gangguan kecemasan berat';
+            return 'Stress berat';
         }
     }
 

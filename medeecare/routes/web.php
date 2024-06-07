@@ -14,7 +14,6 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ForumDiskusiController;
 use App\Http\Controllers\FormDiskusiController;
-use App\Http\Controllers\TesKecemasanController;
 use App\Http\Controllers\HomepageKesehatanKulitController;
 use App\Http\Controllers\AnxietyTestController;
 use App\Http\Controllers\DokterMentalController;
@@ -40,23 +39,10 @@ use App\Http\Controllers\HomepageParentingController;
 use App\Http\Controllers\HomepagePregnancyController;
 use App\Http\Controllers\HomepageInfectionController;
 use App\Http\Controllers\HomepageSportController;
+use App\Http\Controllers\TesDepresiController;
+use App\Http\Controllers\TesKecemasanController;
+use App\Http\Controllers\TesStressController;
 
-
-
-
-
-
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 
 Route::get('/', [UserController::class, 'homepage'])->name('homepage')->middleware('checkIfNotAdmin');
@@ -144,6 +130,10 @@ Route::group(['middleware' => ['auth', 'checkrole:Admin']], function(){
     Route::post('/admin/notification-settings', [AdminController::class, 'storeNotificationSettings'])->name('admin.store_notification_settings');
 });
 
+// Forum yagesya
+Route::get('/forumdiskusi', [ForumDiskusiController::class, 'viewForum'])->name('forumdiskusi');
+Route::get('/formdiskusi', [FormDiskusiController::class, 'viewForm'])->name('formdiskusi');
+
 // Forum Diskusi Kesehatan
 Route::get('/forum', [ForumDiskusiController::class, 'viewForum'])->name('forumdiskusikesehatan');
 Route::get('/pengisian-form', [FormDiskusiController::class, 'viewForm'])->name('formdiskusikesehatan');
@@ -153,11 +143,6 @@ Route::get('/homepage-forum/parenting', [HomepageParentingController::class, 'vi
 Route::get('/homepage-forum/pregnancy', [HomepagePregnancyController::class, 'viewHomepage'])->name('homepage-pregnancy');
 Route::get('/homepage-forum/infection', [HomepageInfectionController::class, 'viewHomepage'])->name('homepage-infection');
 Route::get('/homepage-forum/sport', [HomepageSportController::class, 'viewHomepage'])->name('homepage-sport');
-
-//Tes Kecemasan
-Route::get('/tes-kecemasan', [TesKecemasanController::class, 'pertanyaan'])->name('tes-kecemasan.pertanyaan');
-Route::post('/tes-kecemasan/hasil', [TesKecemasanController::class, 'simpanHasil'])->name('tes-kecemasan.hasil');
-Route::get('/tes-kecemasan/hasil/{id}', [TesKecemasanController::class, 'lihatHasil'])->name('tes-kecemasan.lihat-hasil');
 
 //articlecovid
 Route::get('/ArticleCovid', [ArticleCovidController::class, 'FuncArticleCovid'])->name('ArticleCovid');
@@ -215,3 +200,23 @@ Route::get('/rekomendasiobat/{penyakit}', [RekomendasiObatController::class, 'pe
 Route::get('/reservasi', [FormReservasiController::class, 'viewFormReservasi'])->name('formreservasi');
 Route::post('/submit-reservasi', [FormReservasiController::class, 'submitForm'])->name('submit-reservasi');
 Route::get('/reservasi/resume', [ResumeReservasiController::class, 'viewResumeReservasi'])->name('resumereservasi');
+//Tes Depresi
+Route::get('/tes-depresi', [TesDepresiController::class, 'index'])->name('tes-depresi.index');
+Route::get('/tes-depresi/pertanyaan', [TesDepresiController::class, 'indexPertanyaan'])->name('pertanyaan-depresi.index');
+Route::post('/tes-depresi/pertanyaan', [TesDepresiController::class, 'store'])->name('tes-depresi.store');
+Route::get('/tes-depresi/hasil', [TesDepresiController::class, 'showHasilTes'])->name('hasil-tes-depresi.index');
+Route::get('/tes-depresi/hasil/{id}', [TesDepresiController::class, 'showDetailHasilTes'])->name('hasil-tes-depresi.show');
+
+//Tes Kecemasan
+Route::get('/tes-kecemasan', [TesKecemasanController::class, 'index'])->name('tes-kecemasan.index');
+Route::get('/tes-kecemasan/pertanyaan', [TesKecemasanController::class, 'indexPertanyaan'])->name('pertanyaan-kecemasan.index');
+Route::post('/tes-kecemasan/pertanyaan', [TesKecemasanController::class, 'store'])->name('tes-kecemasan.store');
+Route::get('/tes-kecemasan/hasil', [TesKecemasanController::class, 'showHasilTes'])->name('hasil-tes-kecemasan.index');
+Route::get('/tes-kecemasan/hasil/{id}', [TesKecemasanController::class, 'showDetailHasilTes'])->name('hasil-tes-kecemasan.show');
+
+//Tes Stress
+Route::get('/tes-stress', [TesStressController::class, 'index'])->name('tes-stress.index');
+Route::get('/tes-stress/pertanyaan', [TesStressController::class, 'indexPertanyaan'])->name('pertanyaan-stress.index');
+Route::post('/tes-stress/pertanyaan', [TesStressController::class, 'store'])->name('tes-stress.store');
+Route::get('/tes-stress/hasil', [TesStressController::class, 'showHasilTes'])->name('hasil-tes-stress.index');
+Route::get('/tes-stress/hasil/{id}', [TesStressController::class, 'showDetailHasilTes'])->name('hasil-tes-stress.show');

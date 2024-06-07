@@ -3,20 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\TesKecemasan\PertanyaanKecemasan;
-use App\Models\TesKecemasan\HasilTesKecemasan;
+use App\Models\TesDepresi\PertanyaanDepresi;
+use App\Models\TesDepresi\HasilTesDepresi;
 
-class TesKecemasanController extends Controller
+class TesDepresiController extends Controller
 {
     public function index()
     {
-        return view('tes_kecemasan.tes_kecemasan');
+        return view('tes_depresi.tes_depresi');
     }
 
     public function indexPertanyaan()
     {
-        $pertanyaan = PertanyaanKecemasan::all();
-        return view('tes_kecemasan.pertanyaan_kecemasan', compact('pertanyaan'));
+        $pertanyaan = PertanyaanDepresi::all();
+        return view('tes_depresi.pertanyaan_depresi', compact('pertanyaan'));
     }
 
     public function store(Request $request)
@@ -32,38 +32,38 @@ class TesKecemasanController extends Controller
         $deskripsi = $this->getDeskripsiSkor($skor); // Contoh fungsi untuk mendapatkan deskripsi hasil berdasarkan skor
     
         // Simpan hasil tes ke database
-        $hasilTes = HasilTesKecemasan::create([
+        $hasilTes = HasilTesDepresi::create([
             'skor_hasil' => $skor,
             'deskripsi_hasil' => $deskripsi,
             'jawaban' => json_encode($jawaban)
         ]);
     
-        return redirect()->route('hasil-tes-kecemasan.index');
+        return redirect()->route('hasil-tes-depresi.index');
     }    
 
 
     public function showHasilTes()
     {
-        $hasilTes = HasilTesKecemasan::all();
-        return view('tes_kecemasan.hasil_kecemasan', compact('hasilTes'));
+        $hasilTes = HasilTesDepresi::all();
+        return view('tes_depresi.hasil_depresi', compact('hasilTes'));
     }
 
     public function showDetailHasilTes($id)
     {
-        $hasilTes = HasilTesKecemasan::findOrFail($id);
-        return view('tes_kecemasan.lihat_hasil_kecemasan', compact('hasilTes'));
+        $hasilTes = HasilTesDepresi::findOrFail($id);
+        return view('tes_depresi.lihat_hasil_depresi', compact('hasilTes'));
     }
 
     private function getDeskripsiSkor($skor)
     {
         if ($skor <= 5) {
-            return 'Sedikit cemas';
+            return 'Tidak depresi';
         } elseif ($skor <= 10) {
-            return 'Gangguan kecemasan ringan';
+            return 'Depresi ringan';
         } elseif ($skor <= 15) {
-            return 'Gangguan kecemasan sedang';
+            return 'Depresi sedang';
         } else {
-            return 'Gangguan kecemasan berat';
+            return 'Depresi berat';
         }
     }
 
