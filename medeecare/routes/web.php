@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticleCovidController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\RujukRSController;
 use App\Http\Controllers\TestCovidController;
 use App\Http\Controllers\Web\infopenyakitController;
 use App\Http\Controllers\GuestController;
@@ -191,3 +192,8 @@ Route::get('/mental-health', [AnxietyTestController::class, 'showPsychologistsAn
 // Reservasi Nomor Antrian
 Route::get('/reservasi', [FormReservasiController::class, 'viewFormReservasi'])->name('formreservasi');
 Route::get('/reservasi/resume', [ResumeReservasiController::class, 'viewResumeReservasi'])->name('resumereservasi');
+
+//Rujukan Rumah Sakit 
+Route::get('/Rujukrs', [RujukRSController::class, 'FuncRujukrs'])->name('Rujukrs');
+
+Route::get('/Rujukrs/submit', [RujukRSController::class, 'submitRujukan']);

@@ -71,7 +71,7 @@
       </nav>
 
     <h2 class="py-3" style="color: rgb(178, 44, 44);"> <b>Kenali Gejala Covid-19 dari Sekarang!</b></h2>
-    <h5 class="py-3" style="text-align:center"> Cek indikasi covid-19 mu bersama Medeecare.</h5>
+    <h5 class="text-muted" style="text-align:center"> Cek indikasi covid-19 mu bersama Medeecare.</h5>
 
     <div class="container">
       <div class="card">
