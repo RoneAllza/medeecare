@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticleCovidController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\RujukRSController;
 use App\Http\Controllers\TestCovidController;
 use App\Http\Controllers\Web\infopenyakitController;
 use App\Http\Controllers\GuestController;
@@ -220,3 +221,8 @@ Route::get('/tes-stress/pertanyaan', [TesStressController::class, 'indexPertanya
 Route::post('/tes-stress/pertanyaan', [TesStressController::class, 'store'])->name('tes-stress.store');
 Route::get('/tes-stress/hasil', [TesStressController::class, 'showHasilTes'])->name('hasil-tes-stress.index');
 Route::get('/tes-stress/hasil/{id}', [TesStressController::class, 'showDetailHasilTes'])->name('hasil-tes-stress.show');
+
+//Rujukan Rumah Sakit 
+Route::get('/Rujukrs', [RujukRSController::class, 'FuncRujukrs'])->name('Rujukrs');
+
+Route::get('/Rujukrs/submit', [RujukRSController::class, 'submitRujukan']);
