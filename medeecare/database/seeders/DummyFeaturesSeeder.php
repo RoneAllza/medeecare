@@ -86,6 +86,12 @@ class DummyFeaturesSeeder extends Seeder
                 'link' => '/CalculatorBMI',
                 'photo' => 'doctor.png'
             ],
+            [
+                'name' => 'Rujuk Rumah Sakit',
+                'desc' => 'lalala',
+                'link' => '/Rujukrs',
+                'photo' => 'doctor.png'
+            ],
         ];
 
         foreach($featureData as $key => $val){

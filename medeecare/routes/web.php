@@ -42,6 +42,7 @@ use App\Http\Controllers\HomepageSportController;
 use App\Http\Controllers\TesDepresiController;
 use App\Http\Controllers\TesKecemasanController;
 use App\Http\Controllers\TesStressController;
+use App\Http\Controllers\RujukRSController;
 
 //Route registrasi
 Route::get('/registrasi', [GuestController:: class, 'registrasi'])->name('registrasi');
@@ -180,6 +181,9 @@ Route::group(['middleware' => ['auth', 'checkrole:Pasien']], function(){
     Route::get('/tes-stress/hasil', [TesStressController::class, 'showHasilTes'])->name('hasil-tes-stress.index');
     Route::get('/tes-stress/hasil/{id}', [TesStressController::class, 'showDetailHasilTes'])->name('hasil-tes-stress.show');
 
+    //Rujukan Rumah Sakit 
+    Route::get('/Rujukrs', [RujukRSController::class, 'FuncRujukrs'])->name('Rujukrs');
+    Route::get('/Rujukrs/submit', [RujukRSController::class, 'submitRujukan']);
 
 });
 
@@ -214,5 +218,7 @@ Route::group(['middleware' => ['auth', 'checkrole:Admin']], function(){
     Route::get('/Dokter/{id}/edit', [DokterMentalController::class, 'edit'])->name('Dokter.edit');
     Route::put('/Dokter/{id}/update', [DokterMentalController::class, 'update'])->name('Dokter.update');
     Route::delete('/Dokter/{id}/destroy', [DokterMentalController::class, 'destroy'])->name('Dokter.destroy');
+
+
 });
 
