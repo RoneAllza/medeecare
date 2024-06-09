@@ -42,7 +42,7 @@
                 @endif
                 <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-            <div class="offcanvas-body d-flex flex-column">
+            <!-- <div class="offcanvas-body d-flex flex-column">
                 <ul class="navbar-nav me-auto fs-6">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/">Home</a>
@@ -68,7 +68,7 @@
                     <li><a class="nav-link d-lg-none" href="{{ route('logout') }}">Sign out</a></li>
                     @endif
                 </ul>
-            </div>
+            </div> -->
         </div>
         @if(Auth::check())
         <div class="d-flex align-items-center d-none d-lg-block">

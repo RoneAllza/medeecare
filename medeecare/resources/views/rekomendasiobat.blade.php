@@ -1,4 +1,4 @@
-@extends('template.appObat')
+@extends('layouts.homepage.layout')
 
 <!-- @push('nav')
     <ul class="nav-menu nav navbar-nav">

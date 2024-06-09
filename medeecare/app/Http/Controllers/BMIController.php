@@ -13,7 +13,7 @@ class BMIController extends Controller
         $user = Auth::user();
         $bb = $user->bb;
         $tb = $user->tb;
-        return view('bmi', compact('bb', 'tb'));
+        return view('bmi.bmi', compact('bb', 'tb'));
     }
 
     public function bmi_result(Request $request)
@@ -33,7 +33,7 @@ class BMIController extends Controller
 
         $category = $this->getBmiCategory($bmi, $gender);
 
-        return view('bmi_result', compact('bb', 'tb', 'bmi', 'category'));
+        return view('bmi.bmi_result', compact('bb', 'tb', 'bmi', 'category'));
     }
 
     private function getBmiCategory($bmi, $gender)

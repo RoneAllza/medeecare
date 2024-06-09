@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.homepage.layout')
   @section('title','Dahboard')
   @section('page-title','Home')
   @section('content')

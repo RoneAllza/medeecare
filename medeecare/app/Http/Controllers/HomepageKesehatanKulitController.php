@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class HomepageKesehatanKulitController extends Controller
 {
     public function viewHomepageKesehatanKulit(){
-        return view ('/CekKesehatanKulit/HomepageKesehatanKulit');
+        return view ('/CekKesehatanKulit/homepagekesehatankulit');
     }
 
     public function viewArtikel(){

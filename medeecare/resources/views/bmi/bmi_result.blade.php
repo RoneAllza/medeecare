@@ -85,7 +85,7 @@
                 @else
                 <p class="fs-4 w-75">Dalam 60% kasus, <span class="text-danger">pola makan yang buruk</span> dapat <span class="text-danger">berisiko</span> Diabetes</p>
                 @endif
-                <a href="{{ route('bmi') }}" class="btn btn-danger btn-block mt-3 rounded-2">Cek Forum</a>
+                <a href="{{ route('forumdiskusikesehatan') }}" class="btn btn-danger btn-block mt-3 rounded-2">Cek Forum</a>
             </div>
         </div>
         <div class="card shadow-lg w-100" style="width: 25rem; border-radius: 1rem;">

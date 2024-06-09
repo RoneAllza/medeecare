@@ -16,5 +16,3 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-medeecare\resources\views\auth\Registrasi.blade.php\
-medeecare\storage\logs\laravel.log

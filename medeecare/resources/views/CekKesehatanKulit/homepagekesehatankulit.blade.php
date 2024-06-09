@@ -1,53 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    <title>Kesehatan Kulit</title>
-    <style>
-       .flex-container {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            gap: 20px;
-        }
-        .flex-item {
-            text-align: center;
-        }
-    h1 {text-align: center;}
-    h2 {text-align: center;}
-    h3 {text-align: left;}
-    h6 {text-align: center;}
-    
+@extends('layouts.homepage.layout')
 
-    </style>
-  </head>
+<style>
+    .flex-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 20px;
+    }
 
-  <body>
-    <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" style="color: rgb(163, 38, 56); font-size: large;" href="#">medeecare</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </div>
-    </nav>
+    .flex-item {
+        text-align: center;
+    }
 
-    <h2 class="py-4" style="color: rgb(0, 0, 0);"><b>Kulit yang Sehat Berawal dari Kulit Bersih Terawat</b></h2>
-    <p class="py-1" style="text-align:center">Masalah kulit terjadi pada siapa saja. Banyaknya produk perawatan kulit dapat membingungkan dan mungkin tidak cocok bagi sebagian orang.</p>
-    <p style="text-align:center">Cek halaman ini sekarang untuk mencari perawatan yang sesuai dengan kondisi kulitmu!</p>
-    <img src="https://static.vecteezy.com/system/resources/previews/006/310/485/non_2x/skin-care-concept-african-american-woman-is-using-cream-under-the-eyes-to-remove-circles-under-your-eyes-before-and-after-using-cream-flat-cartoon-character-illustration-free-vector.jpg" class="card-img-top" style="max-width: 35%;display: block; margin: 0 auto;">
-    <p class="py-1">
+    h1 {
+        text-align: center;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    h3 {
+        text-align: left;
+    }
+
+    h6 {
+        text-align: center;
+    }
+</style>
+@section('content')
+
+<h2 class="py-4" style="color: rgb(0, 0, 0);"><b>Kulit yang Sehat Berawal dari Kulit Bersih Terawat</b></h2>
+<p class="py-1" style="text-align:center">Masalah kulit terjadi pada siapa saja. Banyaknya produk perawatan kulit dapat membingungkan dan mungkin tidak cocok bagi sebagian orang.</p>
+<p style="text-align:center">Cek halaman ini sekarang untuk mencari perawatan yang sesuai dengan kondisi kulitmu!</p>
+<img src="https://static.vecteezy.com/system/resources/previews/006/310/485/non_2x/skin-care-concept-african-american-woman-is-using-cream-under-the-eyes-to-remove-circles-under-your-eyes-before-and-after-using-cream-flat-cartoon-character-illustration-free-vector.jpg" class="card-img-top" style="max-width: 35%;display: block; margin: 0 auto;">
+<p class="py-1">
     <hr>
 
-    <h3 class="py-4" style="margin-top:1rem;color: rgb(0, 0, 0);text-align:center"><b>Pilih kategori yang sesuai dengan kondisi kulitmu</b></h3>
+<h3 class="py-4" style="margin-top:1rem;color: rgb(0, 0, 0);text-align:center"><b>Pilih kategori yang sesuai dengan kondisi kulitmu</b></h3>
 
 <div class="container">
     <div class="row">
@@ -121,4 +111,5 @@
         </div>
     </div>
 </div>
-</body>
+
+@endsection

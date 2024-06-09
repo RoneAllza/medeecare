@@ -22,7 +22,7 @@
             <a href="{{route('login')}}" class="text-decoration-none">
                 <div class="d-flex justify-content-center flex-column align-items-center" style="width: 100px;">
                     <img src="/assets/img/{{$feature->photo}}" style="height: 10vh; width: 10vh; border-radius:50%; object-fit: cover; filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.2))" alt="{{$feature->name}}">
-                    <div class="d-flex flex-row align-items-center text-dark text-center text-wrap" style="height:5vh; word-break: break-word">{{$feature->name}}</div>
+                    <div class="d-flex flex-row align-items-center text-dark text-center text-wrap mt-2" style="height:5vh; word-break: break-word">{{$feature->name}}</div>
                 </div>
             </a>
             @endforeach
@@ -32,8 +32,8 @@
             @foreach($features as $feature)
             <a href="{{$feature->link}}" class="text-decoration-none">
                 <div class="d-flex justify-content-center flex-column align-items-center" style="width: 100px;">
-                    <img src="/assets/img/doctor.png" style="height: 10vh; width: 10vh; border-radius:50%; object-fit: cover; filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.2))" class="" alt="">
-                    <div class="d-flex flex-row align-items-center text-dark text-center text-wrap" style="height:5vh; word-break: break-word">Cek Mental</div>
+                    <img src="/assets/img/{{$feature->photo}}" style="height: 10vh; width: 10vh; border-radius:50%; object-fit: cover; filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.2))" class="" alt="">
+                    <div class="d-flex flex-row align-items-center text-dark text-center text-wrap mt-2" style="height:5vh; word-break: break-word">{{$feature->name}}</div>
                 </div>
             </a>
             @endforeach
@@ -41,11 +41,11 @@
         @endguest
         @guest
         <div>
-            <a role="button" class="btn btn-danger " href="{{route('login')}}">Selengkapnya</a>
+            <a role="button" class="btn btn-danger mt-2" href="{{route('login')}}">Selengkapnya</a>
         </div>
         @else
         <div>
-            <a role="button" class="btn btn-danger " href="{{route('feature')}}">Selengkapnya</a>
+            <a role="button" class="btn btn-danger mt-2" href="{{route('feature')}}">Selengkapnya</a>
         </div>
         @endguest
     </div>
@@ -57,44 +57,39 @@
     <div class="container">
         <div class="d-flex flex-row justify-content-between align-items-center">
             <h2 class="mb-2">Artikel Kesehatan</h2>
-            <a href=" {{ route('informasipenyakit') }} " class="text-decoration-none">Lihat Semua</a>
+            <a href="{{ route('informasipenyakit') }}" class="text-decoration-none">Lihat Semua</a>
         </div>
-        <div>
-            <ul class="d-flex flex-row py-3 ps-0" style="overflow-x: auto;">
-                <li class="rounded px-2 py-1" style="text-wrap: nowrap; margin-right: 1rem;list-style: none;background-color: #B6252A;color: white;">
-                    <a href="" style="text-decoration: none; color:white">asdasdasd</a>
-                </li>
-            </ul>
-        </div>
-        @guest
-        <div class="d-flex flex-row d-grid gap-5" style="overflow-x: auto; scrollbar-width: none">
-            <a href="{{route('login')}}" class="text-decoration-none hover-overlay shadow-1-strong rounded" data-mdb-ripple-init data-mdb-ripple-color="light">
-                <div class="card" style="width: 18rem;">
-                    <img src="/assets/img/doctor.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <hr class="">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        
+        <div class="d-flex flex-row flex-nowrap gap-3" style="overflow-x: auto; scrollbar-width: none;">
+            @foreach($artikel as $art)
+                @guest
+                <a href="{{route('login')}}" class="text-decoration-none hover-overlay shadow-1-strong rounded" data-mdb-ripple-init data-mdb-ripple-color="light">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ asset('uploads/'.$art->gambar) }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{$art->judul}}</h5>
+                            <hr class="">
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi laborum non esse natus perferendis quasi tenetur, voluptatibus officia fuga, porro rem ut labore, itaque magni cum quas maxime nostrum recusandae.</p>
+                        </div>
                     </div>
-                </div>
-            </a>
-        </div>
-        @else
-        <div class="d-flex flex-row d-grid gap-5" style="overflow-x: auto; scrollbar-width: none">
-            <a href="" class="text-decoration-none hover-overlay shadow-1-strong rounded" data-mdb-ripple-init data-mdb-ripple-color="light">
-                <div class="card" style="width: 18rem;">
-                    <img src="/assets/img/doctor.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </a>
+                @else
+                <a href="" class="text-decoration-none hover-overlay shadow-1-strong rounded" data-mdb-ripple-init data-mdb-ripple-color="light">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ asset('uploads/'.$art->gambar) }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{$art->judul}}</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio iste harum ea laborum maxime. Debitis odio officia omnis eos. Consequuntur beatae reprehenderit voluptates deserunt? Optio facere eveniet aliquid iusto quisquam.</p>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
+                @endguest
+            @endforeach
         </div>
-        @endguest
     </div>
 </section>
 <!-- End Artikel -->
+
 
 <!-- Footer -->
 <footer class="footer border-top" style="background-color: #B6252A;">

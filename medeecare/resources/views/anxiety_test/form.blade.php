@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cek Gangguan Kecemasan</title>
+@extends('layouts.homepage.layout')
+
+@section('content')
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -223,5 +220,5 @@
             </form>
         </div>
     </div>
-</body>
-</html>
+    
+@endsection

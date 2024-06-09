@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Feature;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Artikel;
 
 class UserController extends Controller
 {
@@ -14,9 +15,9 @@ class UserController extends Controller
         
     }
     public function homepage(){
-        $features = Feature::where('name', 'like', '%cek%')->get();
-
-        return view('home', compact('features'));
+        $features = Feature::oldest()->take(4)->get();
+        $artikel=Artikel::latest()->get();
+        return view('home', compact('features', 'artikel'));
     }
 
     public function feature(){

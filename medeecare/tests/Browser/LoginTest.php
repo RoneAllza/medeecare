@@ -12,17 +12,15 @@ class LoginTest extends DuskTestCase
      * A Dusk test example.
      * @group login
      */
-    use DatabaseMigrations;
     public function testExample(): void
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                    ->assertSee(' ')
-                    ->clickLink('SignIn')
-                    ->pause(2000)
+                    ->assertSee('Ayo Cek')
+                    ->clickLink('Sign in')
                     ->assertPathIs('/SignIn')
-                    ->type('Email Address', 'min@min')
-                    ->type('Password', 'min')
+                    ->type('email', 'mon@mon')
+                    ->type('password', 'mona')
                     ->press('Login')
                     ->assertSee('Selamat Datang');
         });

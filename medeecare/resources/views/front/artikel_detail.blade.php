@@ -1,6 +1,6 @@
-@extends('template.app')
-@section('content')
+@extends('layouts.homepage.layout')
 
+@section('content')
 <!-- section -->
 <div class="section">
     <!-- container -->

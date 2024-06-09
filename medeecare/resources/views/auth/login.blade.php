@@ -32,8 +32,7 @@
                                     <div class="pt-1 mb-4">
                                         <button class="btn btn-light btn-block text-light" type="submit" style="background-color: #B6252A;">Login</button>
                                     </div>
-                                    <a class="small text-muted" href="#!">Forgot password?</a>
-                                    <p class="mt-3 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="#!" style="color: #393f81;">Register here</a></p>
+                                    <p class="mt-3 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="/registrasi" style="color: #393f81;">Register here</a></p>
                                 </form>
                             </div>
                         </div>

@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hasil Tes Indikasi Covid-19</title>
+@extends('layouts.homepage.layout')
+
+@section('content')
     <style>
         .card {
             border: 1px solid #ccc;
@@ -22,8 +19,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
     </style>
-</head>
-<body>
+
     <div class="card">
         <h1 style="color: #8B0C0C; text-align: center;">Hasil Tes</h1>
         <!-- Tampilkan saran atau rekomendasi berdasarkan skor disini -->
@@ -37,5 +33,4 @@
             @endif
         </p>
     </div>
-</body>
-</html>
+@endsection

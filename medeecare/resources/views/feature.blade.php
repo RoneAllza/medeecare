@@ -13,19 +13,18 @@
     </div>
 </section>
 
-<section class="container-fluid">
-    <div class="d-flex flex-row d-grid gap-5 row-cols-1 row-cols-md-5 justify-content-center ">
+<section class="container">
+    <div class="row justify-content-center">
         @foreach($features as $feature)
-        <div class="d-flex flex-column align-items-center">
-            <a href="{{$feature->link}}" class="text-decoration-none rounded">
-                <div class="card text-center text-dark boder border-0 shadow p-3 bg-body-tertiary" style="width: 16rem;">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+            <div class="card text-center text-dark border-0 shadow p-3 bg-body-tertiary" style="width: 100%;">
+                <a href="{{$feature->link}}" class="text-dark">
                     <img src="/assets/img/{{$feature->photo}}" class="card-img-top" alt="{{$feature->photo}}">
                     <div class="card-body">
                         <h5 class="card-title">{{$feature->name}}</h5>
-                        <p class="card-text">{{$feature->desc}}</p>
                     </div>
-                </div>
-            </a>
+                </a>
+            </div>
         </div>
         @endforeach
     </div>

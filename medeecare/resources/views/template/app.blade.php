@@ -34,7 +34,7 @@
 
             <!-- Tulisan "Medeecare" -->
             <div class="nav-title" style="margin-left: 30px;">
-                <h5 class="logo-text" style="color: #8B0C0C; font-size: 24px; margin: 0;">Medeecare</h5>
+                <a href="/"><h5 class="logo-text" style="color: #8B0C0C; font-size: 24px; margin: 0;">Medeecare</h5></a>
             </div>
                     <!-- nav -->
                     @stack('nav')
@@ -43,7 +43,6 @@
                     <!-- search & aside toggle -->
                     <form action="{{ route('informasipenyakit') }}" method="GET">
                     <div class="nav-btns">
-                        <button class="aside-btn"><i class="fa fa-bars"></i></button>
                         <button class="search-btn"><i class="fa fa-search"></i></button>
                         <div class="search-form">
                             <input class="search-input" type="text" name="search" placeholder="Search for articles..." required>

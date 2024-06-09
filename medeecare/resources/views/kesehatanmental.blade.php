@@ -1,4 +1,4 @@
-@extends('template.appMental')
+@extends('layouts.homepage.layout')
 @section('content')
 <!-- section -->
 <div class="section">

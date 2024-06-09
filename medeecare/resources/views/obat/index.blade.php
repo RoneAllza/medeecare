@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.homepage.layout')
 @push('customcss')
 <link rel="stylesheet" href="{{ asset('plugins/datatables/dataTables.bootstrap.css') }}">
 @endpush
