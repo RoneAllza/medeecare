@@ -45,12 +45,6 @@ class DummyFeaturesSeeder extends Seeder
                 'photo' => 'doctor.png'
             ],
             [
-                'name' => 'Rujukan Rumah Sakit',
-                'desc' => 'cacaca',
-                'link' => '/',
-                'photo' => 'doctor.png'
-            ],
-            [
                 'name' => 'Cek Kesehatan Kulit',
                 'desc' => 'lalala',
                 'link' => '/homepage-kesehatankulit',
@@ -87,7 +81,7 @@ class DummyFeaturesSeeder extends Seeder
                 'photo' => 'doctor.png'
             ],
             [
-                'name' => 'Rujuk Rumah Sakit',
+                'name' => 'Rujukan Rumah Sakit',
                 'desc' => 'lalala',
                 'link' => '/Rujukrs',
                 'photo' => 'doctor.png'
