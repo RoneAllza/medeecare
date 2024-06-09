@@ -201,6 +201,10 @@ Route::group(['middleware' => ['auth', 'checkrole:Admin']], function(){
     Route::post('/admin/store', [AdminController::class, 'store'])->name('admin.store');
     Route::get('/admin/{id}/edit', [AdminController::class, 'editadmin'])->name('admin.editadmin');
     Route::put('/admin/{id}', [AdminController::class, 'updateadmin'])->name('admin.updateadmin');
+    
+    //Atur Antrian
+    Route::get('/admin/antrian', [AdminController::class, 'aturantrian'])->name('admin.aturantrian');
+    Route::get('/admin/tambahantrian', [AdminController::class, 'tambahantrian'])->name('admin.tambahantrian');
 
     //Bagian User Pasien
     Route::get('/admin/administrasi', [AdminController::class, 'administrasi'])->name('admin.dashboard');

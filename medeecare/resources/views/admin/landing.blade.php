@@ -54,6 +54,15 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Atur Nomor Antrian</h5>
+                    <p class="card-text">Lakukan approval terhadap permintaan reservasi antrian dari pasien.</p>
+                    <a href="{{ route('admin.aturantrian') }}" class="btn btn-primary">Atur Nomor Antrian</a>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- Akhir Bagian Isi Konten Landing Page Admin -->
 </div>
