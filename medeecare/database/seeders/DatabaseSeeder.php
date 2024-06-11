@@ -29,7 +29,6 @@ class DatabaseSeeder extends Seeder
         $this->call(DummyFeaturesSeeder::class);
         $this->call(PertanyaanStressSeeder::class);
         $this->call(PertanyaanDepresiSeeder::class);
-        $this->call(PertanyaanStressSeeder::class);
         $this->call(GejalaSeeder::class);
     }
 }

@@ -13,7 +13,7 @@ class CreatePertanyaanStressTable extends Migration
     public function up()
     {
         Schema::create('pertanyaan_stress', function (Blueprint $table) {
-            $table->integer('id_pertanyaan_stress')->primary();
+            $table->unsignedBigInteger('id_pertanyaan_stress')->primary();
             $table->text('pertanyaan_stress');
         });
     }

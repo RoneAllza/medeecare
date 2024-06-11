@@ -13,7 +13,7 @@ class CreatePertanyaanDepresiTable extends Migration
     public function up()
     {
         Schema::create('pertanyaan_depresi', function (Blueprint $table) {
-            $table->integer('id_pertanyaan_depresi')->primary();
+            $table->unsignedBigInteger('id_pertanyaan_depresi')->primary();
             $table->text('pertanyaan_depresi');
         });
     }
