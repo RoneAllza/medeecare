@@ -87,13 +87,13 @@ Route::group(['middleware' => ['auth', 'checkrole:Pasien']], function(){
     Route::put('/category/{id}/update', [CategoryController::class, 'update'])->name('category.update');
     Route::delete('/category/{id}/destroy', [CategoryController::class, 'destroy'])->name('category.destroy');
     
-    //Route Artikel
-    Route::get('/Artikel', [ArtikelController::class, 'index'])->name('Artikel');
-    Route::get('/Artikel/create', [ArtikelController::class, 'create'])->name('Artikel.create');
-    Route::post('/Artikel/store', [ArtikelController::class, 'store'])->name('Artikel.store');
-    Route::get('/Artikel/{id}/edit', [ArtikelController::class, 'edit'])->name('Artikel.edit');
-    Route::put('/Artikel/{id}/update', [ArtikelController::class, 'update'])->name('Artikel.update');
-    Route::delete('/Artikel/{id}/destroy', [ArtikelController::class, 'destroy'])->name('Artikel.destroy');
+    // //Route Artikel
+    // Route::get('/Artikel', [ArtikelController::class, 'index'])->name('Artikel');
+    // Route::get('/Artikel/create', [ArtikelController::class, 'create'])->name('Artikel.create');
+    // Route::post('/Artikel/store', [ArtikelController::class, 'store'])->name('Artikel.store');
+    // Route::get('/Artikel/{id}/edit', [ArtikelController::class, 'edit'])->name('Artikel.edit');
+    // Route::put('/Artikel/{id}/update', [ArtikelController::class, 'update'])->name('Artikel.update');
+    // Route::delete('/Artikel/{id}/destroy', [ArtikelController::class, 'destroy'])->name('Artikel.destroy');
     
     
     //Route Tampilan Informasi Penyakit
@@ -219,6 +219,13 @@ Route::group(['middleware' => ['auth', 'checkrole:Admin']], function(){
     Route::put('/Dokter/{id}/update', [DokterMentalController::class, 'update'])->name('Dokter.update');
     Route::delete('/Dokter/{id}/destroy', [DokterMentalController::class, 'destroy'])->name('Dokter.destroy');
 
-
+    //Route Artikel
+    Route::get('/Artikel', [ArtikelController::class, 'index'])->name('Artikel');
+    Route::get('/Artikel/create', [ArtikelController::class, 'create'])->name('Artikel.create');
+    Route::post('/Artikel/store', [ArtikelController::class, 'store'])->name('Artikel.store');
+    Route::get('/Artikel/{id}/edit', [ArtikelController::class, 'edit'])->name('Artikel.edit');
+    Route::put('/Artikel/{id}/update', [ArtikelController::class, 'update'])->name('Artikel.update');
+    Route::delete('/Artikel/{id}/destroy', [ArtikelController::class, 'destroy'])->name('Artikel.destroy');
+    
 });
 

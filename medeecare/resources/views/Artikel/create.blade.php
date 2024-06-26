@@ -1,4 +1,4 @@
-@extends('layouts.homepage.layout')
+@extends('layouts.admin.layout')
   @push('customcss')
   <link rel="stylesheet" href="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
   @endpush
@@ -29,7 +29,7 @@
           <label>Kategori Artikel</label>
           <select name="categories_id" class="form-control">
               @foreach ($Category as $item)
-                <option value={{$item->id}}>{{$item->nama_kategori}}</option>
+                <option value={{$item->id }}>{{$item->nama_kategori}}</option>
               @endforeach
           </select>
         </div>
