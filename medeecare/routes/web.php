@@ -43,6 +43,7 @@ use App\Http\Controllers\TesDepresiController;
 use App\Http\Controllers\TesKecemasanController;
 use App\Http\Controllers\TesStressController;
 use App\Http\Controllers\RujukRSController;
+use App\Http\Controllers\PageController;
 
 //Route registrasi
 Route::get('/registrasi', [GuestController:: class, 'registrasi'])->name('registrasi');
@@ -53,6 +54,8 @@ Route::get('/SignIn', [AuthController::class, 'login'])->name('login');
 Route::post('/SignIn-Process', [AuthController::class, 'login_process'])->name('login-process');
 Route::get('/Logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/search', [UserController::class, 'search'])->name('search');
+
+Route::get('/about', [PageController::class, 'about']);
 
 Route::group(['middleware' => ['auth', 'checkrole:Pasien']], function(){
     Route::get('/Features', [UserController::class, 'feature'])->name('feature');
