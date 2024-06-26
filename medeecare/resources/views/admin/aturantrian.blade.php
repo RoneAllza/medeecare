@@ -42,7 +42,7 @@
                           </tbody>
                     </table>
                     
-                    <a href="/admin/tambahantrian" class="btn btn-primary float-end mt-2">Tambah Antrian</a>    
+                    <a href="/admin/tambahantrian" class="btn btn-primary float-end mt-2">Tambah Aantrian</a>    
                 </div>
 
 
